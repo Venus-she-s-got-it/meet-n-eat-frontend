@@ -8,6 +8,7 @@ import NavBar from './components/NavBar';
 import RestaurantDetail from './pages/RestaurantDetail';
 import SearchResults from './pages/SearchResults';
 import { createContext } from 'react';
+import ProfileSettings from './pages/ProfileSettings';
 
 export const UrlContext = createContext()
 
@@ -27,6 +28,7 @@ function App() {
           <Route path="/results/:searchString" element={<SearchResults />} />
           <Route path="/profile" element={<MyProfile />} />
           <Route path="/restaurants/:restaurantId" element={<RestaurantDetail />} />
+          <Route path="/profile/settings" element={<ProfileSettings />} />
           <Route path="/message-center" element={<MessageCenter />} />
           <Route path="/faq" element={<FAQ />} />
         </Routes>

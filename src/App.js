@@ -20,18 +20,16 @@ function App() {
         <NavBar />
       </header>
       <main>
-        <UrlContext.Provider value={url}>
-          <Routes>
-            <Route path="*" element={<Navigate to="/home" />} />
-            <Route path="/home" element={<Home />} />
-            <Route path="/users/authentication" element={<LogInSignUp />} />
-            <Route path="/results/:searchString" element={<SearchResults />} />
-            <Route path="/profile" element={<MyProfile />} />
-            <Route path="/results/:restaurantId" element={<RestaurantDetail />} />
-            <Route path="/message-center" element={<MessageCenter />} />
-            <Route path="/faq" element={<FAQ />} />
-          </Routes>
-        </UrlContext.Provider>
+        <Routes>
+          <Route path="*" element={<Navigate to="/home" />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/users/authentication" element={<LogInSignUp />} />
+          <Route path="/results/:searchString" element={<SearchResults />} />
+          <Route path="/profile" element={<MyProfile />} />
+          <Route path="/restaurants/:restaurantId" element={<RestaurantDetail />} />
+          <Route path="/message-center" element={<MessageCenter />} />
+          <Route path="/faq" element={<FAQ />} />
+        </Routes>
       </main>
     
     </div>

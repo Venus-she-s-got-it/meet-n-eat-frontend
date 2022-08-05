@@ -21,17 +21,19 @@ function App() {
         <NavBar />
       </header>
       <main>
-        <Routes>
-          <Route path="*" element={<Navigate to="/home" />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/users/authentication" element={<LogInSignUp />} />
-          <Route path="/results/:searchString" element={<SearchResults />} />
-          <Route path="/profile" element={<MyProfile />} />
-          <Route path="/restaurants/:restaurantId" element={<RestaurantDetail />} />
-          <Route path="/profile/settings" element={<ProfileSettings />} />
-          <Route path="/message-center" element={<MessageCenter />} />
-          <Route path="/faq" element={<FAQ />} />
-        </Routes>
+        <UrlContext.Provider value={url}>
+          <Routes>
+            <Route path="*" element={<Navigate to="/home" />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/users/authentication" element={<LogInSignUp />} />
+            <Route path="/results/:searchString" element={<SearchResults />} />
+            <Route path="/profile" element={<MyProfile />} />
+            <Route path="/profile/settings" element={<ProfileSettings />} />
+            <Route path="/restaurants/:restaurantId" element={<RestaurantDetail />} />
+            <Route path="/message-center" element={<MessageCenter />} />
+            <Route path="/faq" element={<FAQ />} />
+          </Routes>
+        </UrlContext.Provider>
       </main>
     
     </div>

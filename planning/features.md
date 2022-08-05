@@ -10,7 +10,7 @@
  - [ ] Build search form
    - [ ] Input (label, input box, submit button)
    - [ ] Filter options (drop down?)
-- [ ] Different categories of food (filter)
+ - [ ] Different categories of food (filter)
 
 ## Search Results
  - [ ] Display Card for each returned document (map)

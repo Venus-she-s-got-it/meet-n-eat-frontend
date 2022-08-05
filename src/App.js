@@ -7,7 +7,11 @@ import MyProfile from './pages/MyProfile';
 import NavBar from './components/NavBar';
 import RestaurantDetail from './pages/RestaurantDetail';
 import SearchResults from './pages/SearchResults';
+import { createContext } from 'react';
 
+export const UrlContext = createContext()
+
+const url = 'http://localhost:8000'
 
 function App() {
   return (

@@ -11,7 +11,9 @@ const url = useContext(UrlContext)
 
 return (
     <Container>
-        <Search />
+        <Row>
+            <Search />
+        </Row>
         <div>Not sure where to go? Start with a cuisine and see where it leads!</div>
         <Row className="d-flex">
             {categories.map((category, index) => <CuisineCategory key={index} category={category} />)}

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { Container } from 'react-bootstrap'
+import { Container, Row } from 'react-bootstrap'
 import Search from '../components/Search'
 import { UrlContext } from '../App'
 import CuisineCategory from '../components/CuisineCategory'
@@ -13,7 +13,9 @@ return (
     <Container>
         <Search />
         <div>Not sure where to go? Start with a cuisine and see where it leads!</div>
-        {categories.map(category => <CuisineCategory category={category} />)}
+        <Row className="d-flex">
+            {categories.map((category, index) => <CuisineCategory key={index} category={category} />)}
+        </Row>
     </Container>
 )
 }

@@ -5,7 +5,6 @@ import { useState } from 'react';
 
 const LogInSignUp = () => {
   const [loginSignup, setLoginSignup] = useState(false);
-
   return (
     <>
       <h1>MEET & EAT</h1>

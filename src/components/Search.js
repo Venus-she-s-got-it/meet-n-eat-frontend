@@ -76,7 +76,8 @@ const Search = () => {
                     </Row>
                 </Form.Group>
             </Form>
-            <SearchFilters 
+            <SearchFilters
+                searchCriteria={searchCriteria}
                 dispatch={dispatch} 
                 filterClick={filterClick}
                 showFilters={showFilters}

@@ -47,7 +47,9 @@ const SearchResults = () => {
         //         setLikedRestaurants()
         //     })
         // }, [])
-    if (restaurantsData) {
+    if (!restaurantsData) {
+        return <h1>Loading restaurants...</h1>
+    }
         return (
             <Container>
                 <Container>
@@ -57,7 +59,6 @@ const SearchResults = () => {
                 }
             </Container>
         )
-    }
 }
 
 export default SearchResults

@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom'
 import Card from 'react-bootstrap/Card'
 import Container from 'react-bootstrap/Container'
 import Image from 'react-bootstrap/Image'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
+import RestaurantDetail from '../pages/RestaurantDetail';
 
 
 const RestaurantCard = ({ restaurant }) => {
@@ -19,10 +21,16 @@ const RestaurantCard = ({ restaurant }) => {
         setCategories(categoriesArr)
     }, [])
     
+    // event handlers
+    function cardClick() {
+        <Link to='restaurants/:restaurantId'></Link>
+    }
 if (categories) {
     return (
         <Container className="fluid">
-            <Card className ="py-1 px-1">
+            <Card 
+            className ="py-1 px-1"
+            onClick={cardClick}>
                 <Row>
                     <Col>
                         <Container className="ml-1">

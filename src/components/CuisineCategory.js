@@ -10,7 +10,7 @@ return (
             style={{
                 textDecoration: 'none'
             }} 
-            to={`/results/${category}`}
+            to={`/results/${category.toLowerCase()}`}
         >
             <div className="d-flex align-items-center justify-content-center"
                 style={{ 

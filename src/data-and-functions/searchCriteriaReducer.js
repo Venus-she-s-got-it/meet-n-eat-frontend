@@ -12,8 +12,8 @@ export function searchCriteriaReducer(state, object) {
       case 'priceRange':
          return {...state, priceRange: object.value}
 
-      case 'wheelChairAccessible':
-         return {...state, wheelChairAccessible: object.value}
+      case 'wheelchairAccessible':
+         return {...state, wheelchairAccessible: object.value}
 
       case 'openLate':
          return {...state, openLate: object.value}

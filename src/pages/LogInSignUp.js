@@ -6,8 +6,9 @@ import { useParams } from 'react-router-dom';
 
 const LogInSignUp = () => {
   const { option } = useParams();
-  console.log(option);
+
   const [loginSignup, setLoginSignup] = useState('');
+
   useEffect(() => {
     setLoginSignup(option);
   }, [option]);

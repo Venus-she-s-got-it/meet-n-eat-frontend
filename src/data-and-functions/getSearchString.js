@@ -14,8 +14,8 @@ export function getSearchString(searchCriteria) {
    for(let i=1; i < keyArray.length; i++) {
       searchCriteria[keyArray[i]] && (
          searchString.includes('?') ?
-         (searchString += `&${keyArray[i]}=${searchCriteria[keyArray[i]]}`)
-         : (searchString += `?${keyArray[i]}=${searchCriteria[keyArray[i]]}`)
+         (searchString += `&${keyArray[i]}=${searchCriteria[keyArray[i]].toLowerCase()}`)
+         : (searchString += `?${keyArray[i]}=${searchCriteria[keyArray[i]].toLowerCase()}`)
       )  
    }
    

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useSearchParams } from 'react-router-dom';
 import axios from 'axios';
 import { UrlContext } from '../App';
 import RestaurantCard from '../components/RestaurantCard'
@@ -9,10 +9,12 @@ import RestaurantCard from '../components/RestaurantCard'
 const SearchResults = () => {
     const url = useContext(UrlContext)
     const { searchString } = useParams()
+    const [searchParams] = useSearchParams()
     const [restaurantData, setRestaurantData] = useState(null) 
     const [likedRestaurants, setLikedRestaurants] = useState()
     const [usersLikes, setUsersLikes] = useState()
 
+    searchParams.forEach(param => console.log(param))
 
     useEffect(() => {
         axios.get(`${url}/restaurants/62ed6adba46a4f49081829b9`)

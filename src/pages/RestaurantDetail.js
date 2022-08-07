@@ -11,9 +11,9 @@ const RestaurantDetail = () => {
     const url = useContext(UrlContext)
     const [resDetails, setResDetails] = useState(null)
     const { restaurantId } = useParams()
+
     useEffect(() => {
-        axios.get(`${url}/restaurants/62ef031d30bddbafcc0ba7c5 `)
-        // axios.get(`${url}/restaurants/${searchString}`)
+        axios.get(`${url}/restaurants/${restaurantId}`)
             .then((res, err) => { 
                 if (res.status === 404) {
                     console.log(err)

@@ -1,9 +1,8 @@
 import React from 'react'
 
-const MessageCenter = () => {
-
+const MessageCenter = () => { 
 return (
-    <></>
+    <div>Message Center</div>
 )
 }
 

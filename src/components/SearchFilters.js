@@ -1,4 +1,4 @@
-import { Modal, Dropdown, Row, Col } from 'react-bootstrap'
+import { Modal, Dropdown, Row } from 'react-bootstrap'
 import DropdownToggle from 'react-bootstrap/esm/DropdownToggle'
 import { categoriesArray } from '../data-and-functions/categoriesArray'
 import { citiesArray } from '../data-and-functions/citiesArray'

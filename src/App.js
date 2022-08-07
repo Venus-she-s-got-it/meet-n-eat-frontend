@@ -25,7 +25,7 @@ function App() {
           <Routes>
             <Route path="*" element={<Navigate to="/home" />} />
             <Route path="/home" element={<Home />} />
-            <Route path="/users/authentication" element={<LogInSignUp />} />
+            <Route path="/users/authentication/:option" element={<LogInSignUp />} />
             <Route path="/results/:searchString" element={<SearchResults />} />
             <Route path="/profile" element={<MyProfile />} />
             <Route path="/profile/settings" element={<ProfileSettings />} />

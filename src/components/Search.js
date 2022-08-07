@@ -36,15 +36,10 @@ const Search = () => {
     function formSubmit(e) {
         e.preventDefault()
         searchCriteria && navigate(searchString)
-
     }
     
     function filterClick() {
         setShowFilters(prev => !prev)
-    }
-
-    function containerClick() {
-        showFilters && setShowFilters(false)
     }
 
     return (

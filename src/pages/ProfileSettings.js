@@ -23,7 +23,6 @@ const ProfileSettings = () => {
 
 // state hooks and variable declaration
 //===========================================================================
-    const url = useContext(UrlContext)
     const [userSettings, dispatch] = useReducer(userSettingsReducer, initialState)
     const [updateKey, setUpdateKey] = useState('')
     const [user, setUser] = useState()
@@ -46,8 +45,6 @@ const ProfileSettings = () => {
             })
         }, [])
  
-        const [userSettings, dispatch] = useReducer(userSettingsReducer, initialState)
-        const [updateKey, setUpdateKey] = useState('')
 
 // Event Handler Functions
 // ===========================================================================

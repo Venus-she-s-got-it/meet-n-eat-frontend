@@ -9,6 +9,7 @@ import { BsFillTrashFill } from "react-icons/bs"
 const ProfileSettings = () => {
 
     const { url } = useContext(UrlContext)
+
     // Initial State for userSettings
     const initialState = {
         username: '',
@@ -72,6 +73,7 @@ const ProfileSettings = () => {
     function handleShow() {
         setModalShow(true)
     }
+
     // have to make a route in db that access likedrestaurants and deletes by restaurant id
     // function onDelete(e) {
     //     e.preventDefault()

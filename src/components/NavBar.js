@@ -5,7 +5,7 @@ import { HiMail, HiCog } from 'react-icons/hi'
 import { CgProfile } from 'react-icons/cg'
 
 const NavBar = () => {
-const [sessionId, setSessionId] = useState(null)
+const [sessionId, setSessionId] = useState(true)
 const [option, setOption] = useState('')
 const navigate = useNavigate()
 

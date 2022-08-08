@@ -7,7 +7,6 @@ import { BsFillTrashFill } from "react-icons/bs"
 
 
 const ProfileSettings = () => {
-    const url = useContext(UrlContext)
     // Initial State for userSettings
     const initialState = {
         username: '',
@@ -18,16 +17,17 @@ const ProfileSettings = () => {
         email: '',
         likedrestaurants: ''
     }
+
+// state hooks and variable declaration
+//===========================================================================
+    const url = useContext(UrlContext)
     const [userSettings, dispatch] = useReducer(userSettingsReducer, initialState)
     const [updateKey, setUpdateKey] = useState('')
+    const [user, setUser] = useState()
+    const [modalShow, setModalShow] = useState(false)
 
-// state hooks
-//===========================================================================
-const [user, setUser] = useState()
-const [modalShow, setModalShow] = useState(false)
-// State hook and variable declaration for getting user data
+// Getting user data
 // ===========================================================================
-    
     useEffect(() => {
         axios.get(`${url}/users/62ed53ae80c5c665832c887d`)
         // axios.get(`${url}/restaurants/${searchString}`)
@@ -42,10 +42,7 @@ const [modalShow, setModalShow] = useState(false)
                 setUser(data)
             })
         }, [])
-        
     
-        
-
 // Event Handler Functions
 // ===========================================================================
     function inputChange(e) {
@@ -70,7 +67,6 @@ const [modalShow, setModalShow] = useState(false)
     function handleShow() {
         setModalShow(true)
     }
-
     // have to make a route in db that access likedrestaurants and deletes by restaurant id
     // function onDelete(e) {
     //     e.preventDefault()

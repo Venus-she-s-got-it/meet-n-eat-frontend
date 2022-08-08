@@ -6,7 +6,7 @@ import { CgProfile } from 'react-icons/cg'
 import DropdownListItem from "./DropdownListItem"
 
 const NavBar = () => {
-const [sessionId, setSessionId] = useState(null)
+const [sessionId, setSessionId] = useState(true)
 const [option, setOption] = useState('')
 const navigate = useNavigate()
 

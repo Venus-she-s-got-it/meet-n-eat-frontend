@@ -31,7 +31,7 @@ const ReviewForm = ({ restaurantId }) => {
             .then(() => {
                 setReviewState(initialState)
                 navigate(`/restaurants/${restaurantId}`)
-            })c
+            })
     }
 
 return (

@@ -7,9 +7,8 @@ import { formatDateTime } from "../data-and-functions/formatDateTime"
 
 const FriendRequest = ({ request, noImage }) => {
     const [choice, setChoice] = useState('')
-    console.log("- choice", choice)
     const [date, time] = formatDateTime(request.createdAt)
-    const url = useContext(UrlContext)
+    const { url } = useContext(UrlContext)
 
     function clickHandler(e) {
         setChoice(e.target.classList[0])
@@ -35,7 +34,7 @@ const FriendRequest = ({ request, noImage }) => {
 return (
     <Card className='d-flex flex-row justify-content-center align-items-center' style={{ width: '70%', padding:'1%' }}>
         <div style={{ width:'20%'}} >      
-            <Card.Img style={{ width:'60%' }} variant="top" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" />
+            <Card.Img style={{ width:'60%' }} variant="top" src={request.sender.profileimg || noImage} />
             <Card.Text>{request && request.sender.displayname}</Card.Text>
         </div>
         <Card.Body>
@@ -60,6 +59,10 @@ return (
                 </Col>
             </Row>
         </Card.Body>
+        <Card.Footer>
+            <Card.Text>{date}</Card.Text>
+            <Card.Text>{time}</Card.Text>
+        </Card.Footer>
     </Card>
 )
 }

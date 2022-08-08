@@ -9,7 +9,7 @@ import { Container } from 'react-bootstrap'
 
 
 const SearchResults = () => {
-    const url = useContext(UrlContext)
+    const { url } = useContext(UrlContext)
     const { searchString } = useParams()
     const [ searchParams ] = useSearchParams()
     const [restaurantsData, setRestaurantsData] = useState(null) 

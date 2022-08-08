@@ -10,9 +10,7 @@ import ProfileCard from '../components/ProfileCard'
 import Event from '../components/Event'
 
 const MyProfile = () => {
-
-const url = useContext(UrlContext)
-
+const { url } = useContext(UrlContext)
 const [profile, setProfile] = useState(null)
 
 const profileExample = require('../data-and-functions/userexample.json')
@@ -22,7 +20,7 @@ let restaurantlist = profileExample[0].likedrestaurants;
 
 useEffect(() => {
 
-    axios.get('http://localhost:8000/users/62ed53ae80c5c665832c887d', profile) //Temporary ID just to test out page
+    axios.get(`${url}/users/62ed53ae80c5c665832c887d`) //Temporary ID just to test out page
     .then((res) => {
         setProfile(res.data)
         console.log(res.data)

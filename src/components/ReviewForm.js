@@ -1,8 +1,12 @@
-import React from 'react'
+import { Container } from 'react-bootstrap'
 
-const ReviewForm = () => {
+const ReviewForm = ({ restaurantId }) => {
 return (
-    <></>
+    <Container>
+        <Form>
+            
+        </Form>
+    </Container>
 )
 }
 

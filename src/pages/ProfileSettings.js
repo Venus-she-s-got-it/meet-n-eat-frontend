@@ -79,7 +79,9 @@ const ProfileSettings = () => {
     //     e.preventDefault()
     //     axios.delete(`${url}/users/62ed53ae80c5c665832c887d/`)
     // }
-   
+
+    // eventhandler for modal
+    
 // Conditional Rendering
     if (!user) {
         return null

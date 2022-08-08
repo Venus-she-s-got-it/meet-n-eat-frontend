@@ -78,6 +78,7 @@ const [modalShow, setModalShow] = useState(false)
     //     e.preventDefault()
     //     axios.delete(`${url}/users/62ed53ae80c5c665832c887d/`)
     // }
+    // eventhandler for modal
     const handleClose = () => {
         setModalShow(false)
     }

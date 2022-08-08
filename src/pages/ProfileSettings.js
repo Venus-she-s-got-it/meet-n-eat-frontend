@@ -7,6 +7,9 @@ import { BsFillTrashFill } from "react-icons/bs"
 
 
 const ProfileSettings = () => {
+
+    const { url } = useContext(UrlContext)
+
     // Initial State for userSettings
     const initialState = {
         username: '',
@@ -20,7 +23,6 @@ const ProfileSettings = () => {
 
 // state hooks and variable declaration
 //===========================================================================
-    const url = useContext(UrlContext)
     const [userSettings, dispatch] = useReducer(userSettingsReducer, initialState)
     const [updateKey, setUpdateKey] = useState('')
     const [user, setUser] = useState()
@@ -42,7 +44,8 @@ const ProfileSettings = () => {
                 setUser(data)
             })
         }, [])
-    
+ 
+
 // Event Handler Functions
 // ===========================================================================
     function inputChange(e) {
@@ -67,12 +70,15 @@ const ProfileSettings = () => {
     function handleShow() {
         setModalShow(true)
     }
+
     // have to make a route in db that access likedrestaurants and deletes by restaurant id
     // function onDelete(e) {
     //     e.preventDefault()
     //     axios.delete(`${url}/users/62ed53ae80c5c665832c887d/`)
     // }
-   
+
+    // eventhandler for modal
+    
 // Conditional Rendering
     if (!user) {
         return null

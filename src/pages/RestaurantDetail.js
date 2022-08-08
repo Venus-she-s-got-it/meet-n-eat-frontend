@@ -12,7 +12,8 @@ const RestaurantDetail = () => {
 
     // State hooks and variable declarations
     // ===========================================================================
-    const url = useContext(UrlContext)
+
+    const { url } = useContext(UrlContext)
     const [resDetails, setResDetails] = useState(null)
     const { restaurantId } = useParams()
 

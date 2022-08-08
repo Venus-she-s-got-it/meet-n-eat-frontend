@@ -14,7 +14,7 @@ return (
                 <Form.Control placeholder="Search Friends" aria-label="Recipient's username" aria-describedby="basic-addon2"/>
                 <Button variant="outline-secondary" id="button-addon2"> Search </Button>
                 </InputGroup>
-                {friends && friends.map(friend =>  <FriendCard key={friend._id} profileExample={profileExample} />)}
+                {friends && friends.map(friend =>  <FriendCard key={friend._id} friend={friend} />)}
             </div>
             </Card.Body>
         </Card.Body>

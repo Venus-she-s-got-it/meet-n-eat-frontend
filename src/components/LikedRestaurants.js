@@ -5,6 +5,7 @@ import RestaurantCard from './RestaurantCard';
 
 const LikedRestaurant = ( {restaurantlist} ) => {
 
+    const restaurant = restaurantlist;
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
@@ -17,7 +18,7 @@ return (
             <Button variant="outline-secondary" id="button-addon2"> Search </Button>
         </InputGroup>
                 <div style={{ padding:'5%', overflow:'scroll', overflowX:'hidden', maxHeight:'76%', display:'flex', flexDirection:'column', alignItems:'center' }}>
-                    {/* {restaurantlist && restaurantlist.map(restaurant => <RestaurantCard key={restaurant._id}/> )} */}
+                    {restaurantlist && restaurantlist.map(restaurant => <RestaurantCard key={restaurant._id} restaurant={restaurant}/> )}
                 </div>
                 <div style={{display:'flex' }}>
                     <a style={{ margin:'0 auto', textAlign:'center'}} href=''>Browse Restaurants</a>

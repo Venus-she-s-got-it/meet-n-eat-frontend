@@ -10,6 +10,7 @@ const FriendRequest = ({ request, noImage }) => {
     const [date, time] = formatDateTime(request.createdAt)
     const { url, defaultImage } = useContext(UrlContext)
 
+
     function clickHandler(e) {
         setChoice(e.target.classList[0])
     }
@@ -35,6 +36,7 @@ return (
     <Card className='d-flex flex-row justify-content-center align-items-center' style={{ width: '70%', padding:'1%' }}>
         <div style={{ width:'20%'}} >      
             <Card.Img style={{ width:'60%' }} variant="top" src={request.sender.profileimg || defaultImage} />
+
             <Card.Text>{request && request.sender.displayname}</Card.Text>
         </div>
         <Card.Body>

@@ -7,6 +7,8 @@ import { BsFillTrashFill } from "react-icons/bs"
 
 
 const ProfileSettings = () => {
+
+    const { url } = useContext(UrlContext)
     // Initial State for userSettings
     const initialState = {
         username: '',
@@ -42,7 +44,10 @@ const ProfileSettings = () => {
                 setUser(data)
             })
         }, [])
-    
+ 
+        const [userSettings, dispatch] = useReducer(userSettingsReducer, initialState)
+        const [updateKey, setUpdateKey] = useState('')
+
 // Event Handler Functions
 // ===========================================================================
     function inputChange(e) {

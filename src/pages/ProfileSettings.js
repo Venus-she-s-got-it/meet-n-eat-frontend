@@ -8,7 +8,6 @@ import { BsFillTrashFill } from "react-icons/bs"
 
 const ProfileSettings = () => {
     const url = useContext(UrlContext)
-    const { url } = useContext(UrlContext)
     // Initial State for userSettings
     const initialState = {
         username: '',
@@ -19,6 +18,8 @@ const ProfileSettings = () => {
         email: '',
         likedrestaurants: ''
     }
+    const [userSettings, dispatch] = useReducer(userSettingsReducer, initialState)
+    const [updateKey, setUpdateKey] = useState('')
 
 // state hooks
 //===========================================================================
@@ -42,18 +43,8 @@ const [modalShow, setModalShow] = useState(false)
             })
         }, [])
         
-        const initialState = {
-            username: '',
-            profileimg: 'https://freesvg.org/img/abstract-user-flat-4.png',
-            about: '',
-            location: '',
-            displayname: '',
-            email: '',
-            likedrestaurants: ''
-        }
     
-        const [userSettings, dispatch] = useReducer(userSettingsReducer, initialState)
-        const [updateKey, setUpdateKey] = useState('')
+        
 
 // Event Handler Functions
 // ===========================================================================
@@ -73,18 +64,19 @@ const [modalShow, setModalShow] = useState(false)
             value: ''
         })
     }
+    function handleClose() {
+        setModalShow(false)
+    }
+    function handleShow() {
+        setModalShow(true)
+    }
+
     // have to make a route in db that access likedrestaurants and deletes by restaurant id
     // function onDelete(e) {
     //     e.preventDefault()
     //     axios.delete(`${url}/users/62ed53ae80c5c665832c887d/`)
     // }
-    // eventhandler for modal
-    const handleClose = () => {
-        setModalShow(false)
-    }
-    const handleShow = () => {
-        setModalShow(true)
-    }
+   
 // Conditional Rendering
     if (!user) {
         return null

@@ -6,7 +6,7 @@ import { Container, Card, Form, Row, Col, Image } from 'react-bootstrap'
 import { useResolvedPath } from 'react-router-dom'
 
 const ProfileSettings = () => {
-    const url = useContext(UrlContext)
+    const { url } = useContext(UrlContext)
     // Initial State for userSettings
     const initialState = {
         username: '',

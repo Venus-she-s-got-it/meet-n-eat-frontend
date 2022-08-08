@@ -8,7 +8,7 @@ import { Card, Container, Col, Row, } from 'react-bootstrap'
 
 // /restaurants/:restaurantId
 const RestaurantDetail = () => {
-    const url = useContext(UrlContext)
+    const { url } = useContext(UrlContext)
     const [resDetails, setResDetails] = useState(null)
     const { restaurantId } = useParams()
 

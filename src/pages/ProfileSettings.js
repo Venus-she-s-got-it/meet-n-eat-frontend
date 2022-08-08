@@ -2,10 +2,12 @@ import React, { useReducer, useEffect, useContext, useState } from 'react'
 import { UrlContext } from '../App'
 import axios from 'axios'
 import { userSettingsReducer } from '../data-and-functions/userSettingsReducer'
-import { Container, Card, Form, Row, Col, Image } from 'react-bootstrap'
-import { useResolvedPath } from 'react-router-dom'
+import { Container, Card, Form, Row, Col, Image, Modal, Button, ListGroup } from 'react-bootstrap'
+import { BsFillTrashFill } from "react-icons/bs"
+
 
 const ProfileSettings = () => {
+    const url = useContext(UrlContext)
     const { url } = useContext(UrlContext)
     // Initial State for userSettings
     const initialState = {
@@ -18,9 +20,12 @@ const ProfileSettings = () => {
         likedrestaurants: ''
     }
 
-    const [user, setUser] = useState()
-    const [userSettings, dispatch] = useReducer(userSettingsReducer, initialState)
-    const [updateKey, setUpdateKey] = useState('')
+// state hooks
+//===========================================================================
+const [user, setUser] = useState()
+const [modalShow, setModalShow] = useState(false)
+// State hook and variable declaration for getting user data
+// ===========================================================================
     
     useEffect(() => {
         axios.get(`${url}/users/62ed53ae80c5c665832c887d`)
@@ -36,8 +41,22 @@ const ProfileSettings = () => {
                 setUser(data)
             })
         }, [])
+        
+        const initialState = {
+            username: '',
+            profileimg: 'https://freesvg.org/img/abstract-user-flat-4.png',
+            about: '',
+            location: '',
+            displayname: '',
+            email: '',
+            likedrestaurants: ''
+        }
+    
+        const [userSettings, dispatch] = useReducer(userSettingsReducer, initialState)
+        const [updateKey, setUpdateKey] = useState('')
 
-    // onChange or onSubmit  function
+// Event Handler Functions
+// ===========================================================================
     function inputChange(e) {
         setUpdateKey(e.target.classList[0])
         dispatch({
@@ -54,14 +73,23 @@ const ProfileSettings = () => {
             value: ''
         })
     }
-
-
+    // have to make a route in db that access likedrestaurants and deletes by restaurant id
+    // function onDelete(e) {
+    //     e.preventDefault()
+    //     axios.delete(`${url}/users/62ed53ae80c5c665832c887d/`)
+    // }
+    const handleClose = () => {
+        setModalShow(false)
+    }
+    const handleShow = () => {
+        setModalShow(true)
+    }
+// Conditional Rendering
     if (!user) {
         return null
     } else if (!userSettings) {
         return null
     }
-    
     return (
         <Container>
             <Card className="fluid px-4 py-4">
@@ -135,21 +163,40 @@ const ProfileSettings = () => {
                                 id="save-changes"
                                 onClick={onSubmit}
                                 >Save</button>
-                                <Form.Label>Liked Restaurants</Form.Label>
-                                <Form.Control
-                                className="likedrestaurants"
-                                type="likedrestaurants" 
-                                placeholder={user.likedrestaurants}
-                                onChange={inputChange}
-                                value={userSettings.likedrestaurants}
-                                />
+                            </Row>
+                        </Form>
+                                <button onClick={handleShow}>Edit Liked Restaurants</button>
+                                <Modal 
+                                show={modalShow}
+                                onHide={handleClose}
+                                animation={false}
+                                size="md"
+                                aria-labelledby="likedrestaurants-modal"
+                                centered
+                                >
+                                    <Modal.Header closeButton>
+                                        <Modal.Title id="likedrestaurants-modal">
+                                            Liked Restaurants
+                                        </Modal.Title>
+                                    </Modal.Header>
+                                    <Modal.Body>
+                                        <ListGroup>
+                                            {user.likedrestaurants.map(likedrestaurant => (
+                                                <ListGroup.Item>{likedrestaurant}</ListGroup.Item>
+                                            ))}
+                                            <BsFillTrashFill 
+                                            className="likedrestaurants"
+                                            type="delete-likedrestaurant"
+                                            onClick/>
+                                        </ListGroup>
+                                    </Modal.Body>
+                                </Modal>
                                 <button 
                                 type="submit"
                                 id="save-changes"
                                 onClick={onSubmit}
-                                >Save</button>
-                            </Row>
-                        </Form>
+                                >Save Changes</button>
+                                 
                     </Col>
                 </Row>
             </Card>

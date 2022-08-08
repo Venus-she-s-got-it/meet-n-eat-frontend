@@ -11,7 +11,7 @@ export function userSettingsReducer(state, object) {
         case 'displayname':
             return {...state, displayname: object.value}
         case 'email':
-            return {...state, displayname: object.value}
+            return {...state, email: object.value}
         case 'likedrestaurants':
             return {...state, likedrestaurants: object.value}
     default:

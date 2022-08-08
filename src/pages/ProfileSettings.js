@@ -8,6 +8,17 @@ import { BsFillTrashFill } from "react-icons/bs"
 
 const ProfileSettings = () => {
     const url = useContext(UrlContext)
+    const { url } = useContext(UrlContext)
+    // Initial State for userSettings
+    const initialState = {
+        username: '',
+        profileimg: 'https://freesvg.org/img/abstract-user-flat-4.png',
+        about: '',
+        location: '',
+        displayname: '',
+        email: '',
+        likedrestaurants: ''
+    }
 
 // state hooks
 //===========================================================================

@@ -23,7 +23,6 @@ const Search = () => {
     const [showFilters, setShowFilters] = useState(false)
     const navigate = useNavigate()
     const searchString = getSearchString(searchCriteria)
-    console.log(searchString)
     
     // Event handlers
     // ===========================================================================

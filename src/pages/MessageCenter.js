@@ -1,27 +1,36 @@
-import React from 'react'
 import { useState, useContext, useEffect } from 'react'
-import axios from 'axios'
+import { Button, Form, InputGroup } from 'react-bootstrap'
 import { UrlContext } from '../App'
+import axios from 'axios'
 import Message from '../components/Message'
-import { Button, Form, InputGroup, Card, ListGroup, ButtonGroup } from 'react-bootstrap'
+import FriendRequest from '../components/FriendRequest'
 
+const dummyFriendRequest = [{
+    _id: '62ed53ab80c7c665832e887a',
+    sender: {
+        _id: '62f1449c1cb9cddfe13009b6',
+        displayname: 'Charles',
+        profileimg: 'https://assets.entrepreneur.com/content/3x2/2000/20160901055636-ProfessorX.jpeg?crop=1:1'
+    },
+    recipient: {
+        _id: '62ed53de80c5c665832c8882',
+    },
+    message: "Hi, I saw that you also like restaurants for gifted youngsters.  Let's be friends!",
+    createdAt: '2022-08-05T19:05:22.934Z'
+}]
 
 const MessageCenter = () => {
 // ID of currently logged in user (will be implemented later)
 const userId = '62ed53ae80c5c665832c887d'
-const url = useContext(UrlContext)
-
-//messages
+const { url, defaultImage } = useContext(UrlContext)
 const [messages, setMessages] = useState(null)
-//requests
-const [requests, setRequests] = useState(null)
+const [requests, setRequests] = useState(dummyFriendRequest)
 
 useEffect ( () => {
     // Get messages
     axios.get(`${url}/messages`)
     .then((res) => {
         setMessages(res.data)
-        console.log("- messages", res.data)
     })
     
     // Get friend requests
@@ -41,25 +50,12 @@ return (
                 <Button variant="outline-secondary" id="button-addon2"> Search </Button>
             </InputGroup>
             <div style={{ display:'flex', flexDirection:'column', alignItems:'center' }} className='messages-area'>
-                {messages && messages.map((message) => <Message message={message} key={message._id}/>)} 
+                {messages && messages.map(message => <Message message={message} defaultImage={defaultImage} key={message._id}/>)} 
             </div>     
         </div>
         <div style={{ border:'1px solid black', margin:'2%', width:'35%', display:'flex', flexDirection:'column', alignItems:'center'}} className='requests-section'>
-        <Card className='d-flex flex-row justify-content-center align-items-center' style={{ width: '70%', padding:'1%' }}>
-                    <div style={{ width:'20%'}} >      
-                    <Card.Img style={{ width:'60%' }} variant="top" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" />
-                    <Card.Text>{messages && messages[0].recipients[0].username}</Card.Text>
-                    </div>
-                    <Card.Body>
-                    <ButtonGroup style={{float:'right', display:'flex', justifyContent:'space-around', width:'80%'}} aria-label="Basic example">
-                        <Button style={{ borderRight:'3px solid white' }} variant="secondary">Confirm</Button>
-                        <Button variant="secondary">Delete</Button>
-                    </ButtonGroup>
-                    </Card.Body>
-                </Card>
-            {/* map requests and display 'Friend Request Component' */}
+            {requests && requests.map(request => <FriendRequest request={request} defaultImage={defaultImage} key={request._id}/>)}
         </div>
-
     </div>
 )
 }

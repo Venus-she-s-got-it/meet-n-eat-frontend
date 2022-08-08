@@ -9,6 +9,7 @@ import { Card, Container, Col, Row, } from 'react-bootstrap'
 
 // /restaurants/:restaurantId
 const RestaurantDetail = () => {
+
     // State hooks and variable declarations
     // ===========================================================================
     const url = useContext(UrlContext)

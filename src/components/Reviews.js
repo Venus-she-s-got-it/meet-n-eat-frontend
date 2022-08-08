@@ -16,7 +16,6 @@ const Reviews = () => {
     // }, [])
 return (
     <Card>
-        <Card.Title>Reviews</Card.Title>
         {/* map over Review here */}
         <Review />
     </Card>

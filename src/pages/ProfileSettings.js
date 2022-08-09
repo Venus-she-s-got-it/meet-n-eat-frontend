@@ -128,7 +128,7 @@ const ProfileSettings = () => {
                             type="submit"
                             id="save-changes"
                             onClick={onSubmit}
-                            >Edit</button>
+                            >Save Changes</button>
                         </Form>
                     </Col>
                     <Col>
@@ -146,7 +146,7 @@ const ProfileSettings = () => {
                                 type="submit"
                                 id="save-changes"
                                 onClick={onSubmit}
-                                >Save</button>
+                                >Save Changes</button>
                                 <Form.Label>Display Name</Form.Label>
                                 <Form.Control 
                                 className="displayname"
@@ -159,7 +159,7 @@ const ProfileSettings = () => {
                                 type="submit"
                                 id="save-changes"
                                 onClick={onSubmit}
-                                >Save</button>
+                                >Save Changes</button>
                                 <Form.Text className="text-muted">This will be the name other users see when they view your profile.</Form.Text>
                             </Row>
                             <Row>
@@ -175,7 +175,7 @@ const ProfileSettings = () => {
                                 type="submit"
                                 id="save-changes"
                                 onClick={onSubmit}
-                                >Save</button>
+                                >Save Changes</button>
                             </Row>
                         </Form>
                                 <button onClick={handleShow}>Edit Liked Restaurants</button>
@@ -204,12 +204,6 @@ const ProfileSettings = () => {
                                         </ListGroup>
                                     </Modal.Body>
                                 </Modal>
-                                <button 
-                                type="submit"
-                                id="save-changes"
-                                onClick={onSubmit}
-                                >Save Changes</button>
-                                 
                     </Col>
                 </Row>
             </Card>

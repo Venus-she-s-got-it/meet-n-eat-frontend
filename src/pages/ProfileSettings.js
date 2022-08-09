@@ -7,20 +7,18 @@ import { BsFillTrashFill } from "react-icons/bs"
 
 
 const ProfileSettings = () => {
+// state hooks and variable declaration
+//===========================================================================
+    const { url, defaultImage }  = useContext(UrlContext)
     // Initial State for userSettings
     const initialState = {
-        username: '',
-        profileimg: 'https://freesvg.org/img/abstract-user-flat-4.png',
+        profileimg: `${defaultImage}`,
         about: '',
         location: '',
         displayname: '',
         email: '',
         likedrestaurants: ''
     }
-
-// state hooks and variable declaration
-//===========================================================================
-    const { url }  = useContext(UrlContext)
     const [userSettings, dispatch] = useReducer(userSettingsReducer, initialState)
     const [updateKey, setUpdateKey] = useState('')
     const [user, setUser] = useState()

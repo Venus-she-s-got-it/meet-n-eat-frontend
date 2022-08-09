@@ -13,13 +13,13 @@ const LikedRestaurant = ( {restaurantlist} ) => {
     const handleShow = () => setShow(true);
 
 return (
-    <div style={{}}>
+    <div style={{ display:'flex', flexDirection:'column', alignItems:'center'}}>
         <InputGroup style={{ margin:'2%', width:'90%', marginTop:'10%'}} className="mb-3">
+        <InputGroup.Text id="basic-addon2">Enter Name</InputGroup.Text>
             <Form.Control onChange={e => {
                     setSearchCharacters(e.target.value
                         )}
                     } type={true} placeholder="Liked restaurants" aria-label="Recipient's username" aria-describedby="basic-addon2"/>
-            <Button variant="outline-secondary" id="button-addon2"> Search </Button>
         </InputGroup>
                 <div style={{ padding:'5%', overflow:'scroll', overflowX:'hidden', maxHeight:'76%', display:'flex', flexDirection:'column', alignItems:'center' }}>
                     {restaurantlist && restaurantlist.filter((restaurant) => {

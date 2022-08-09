@@ -7,9 +7,6 @@ import { BsFillTrashFill } from "react-icons/bs"
 
 
 const ProfileSettings = () => {
-
-    const { url } = useContext(UrlContext)
-
     // Initial State for userSettings
     const initialState = {
         username: '',
@@ -23,6 +20,7 @@ const ProfileSettings = () => {
 
 // state hooks and variable declaration
 //===========================================================================
+    const { url }  = useContext(UrlContext)
     const [userSettings, dispatch] = useReducer(userSettingsReducer, initialState)
     const [updateKey, setUpdateKey] = useState('')
     const [user, setUser] = useState()
@@ -42,6 +40,31 @@ const ProfileSettings = () => {
             })
             .then((data) => {
                 setUser(data)
+                dispatch({
+                    key: 'about',
+                    value: data.about
+                })
+                dispatch({
+                    key: 'username',
+                    value: data.username
+                })
+                dispatch({
+                    key: 'profileimg',
+                    value: data.profileimg
+                })
+                dispatch({
+                    key: 'location',
+                    value: data.location
+                })
+                dispatch({
+                    key: 'displayname',
+                    value: data.displayname
+                })
+                dispatch({
+                    key: 'email',
+                    value: data.email
+                })
+                console.log(data)
             })
         }, [])
  
@@ -64,11 +87,8 @@ const ProfileSettings = () => {
             value: ''
         })
     }
-    function handleClose() {
-        setModalShow(false)
-    }
     function handleShow() {
-        setModalShow(true)
+        setModalShow(!modalShow)
     }
 
     // have to make a route in db that access likedrestaurants and deletes by restaurant id
@@ -80,7 +100,7 @@ const ProfileSettings = () => {
     // eventhandler for modal
     
 // Conditional Rendering
-    if (!user) {
+    if (!user) { 
         return null
     } else if (!userSettings) {
         return null
@@ -163,7 +183,7 @@ const ProfileSettings = () => {
                                 <button onClick={handleShow}>Edit Liked Restaurants</button>
                                 <Modal 
                                 show={modalShow}
-                                onHide={handleClose}
+                                onHide={handleShow}
                                 animation={false}
                                 size="md"
                                 aria-labelledby="likedrestaurants-modal"
@@ -177,7 +197,7 @@ const ProfileSettings = () => {
                                     <Modal.Body>
                                         <ListGroup>
                                             {user.likedrestaurants.map(likedrestaurant => (
-                                                <ListGroup.Item>{likedrestaurant}</ListGroup.Item>
+                                                <ListGroup.Item>{likedrestaurant.name}</ListGroup.Item>
                                             ))}
                                             <BsFillTrashFill 
                                             className="likedrestaurants"

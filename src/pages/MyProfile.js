@@ -2,14 +2,11 @@ import axios from 'axios'
 import React, { useContext, useEffect } from 'react'
 import { useState } from 'react'
 import { UrlContext } from '../App'
-import { Card, Form, InputGroup, Button, OverlayTrigger, Popover} from 'react-bootstrap' 
 import LikedRestaurant from '../components/LikedRestaurants'
 import Friends from '../components/Friends'
 import CoordinateMeetup from '../components/CoordinateMeetup'
 import ProfileCard from '../components/ProfileCard'
-import Event from '../components/Event'
 import Itinerary from '../components/Itinerary'
-import RestaurantCard from '../components/RestaurantCard'
 
 const MyProfile = () => {
 const { url } = useContext(UrlContext)
@@ -30,7 +27,6 @@ return (
     <div style={{margin:'4%', height:'85vh', display:'flex', flexDirection:'row' }} className='my-profile'>
         <div style={{ border:'1px solid black', width:'30%', marginRight:'3%', display:'flex', justifyContent:'center', borderRadius:'10px'}} className='info-section'>
             <ProfileCard username={profile && profile.username} location={profile && profile.location} profileimg={profile && profile.profileimg} about={profile && profile.about}/>
-            {/* PROFILE INFORMATION CARD COMPONENT  */}
         </div>
         <div style={{width:'45%', marginRight:'3%', display:'flex', flexWrap:'wrap', justifyContent:'space-between' }} className='middle-section'>
             <div style={{ border:'1px solid black', height:'68%', width:'49%', borderRadius:'10px',overflow:'scroll', overflowX:'hidden'}} className='restaurants-block'>

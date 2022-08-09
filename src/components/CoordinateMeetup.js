@@ -2,16 +2,24 @@ import React, { useEffect } from 'react'
 import { Card, Dropdown, Button, Form  } from 'react-bootstrap'
 import { useState } from 'react'
 
-const CoordinateMeetup = ( {username, name, profile, friends} ) => {
+const CoordinateMeetup = ( {profileExample} ) => {
 
-    const [value, setValue ] = useState('Choose Friend')
+    const friends = profileExample[0].friends;
+    const profile = profileExample[0]
+
+    const [value, setValue ] = useState(friends[0].username)
     const [therestaurant, setTheRestaurant] = useState('Choose Restaurant')
     const [date, setDate] = useState(null)
     const [hour, setHour] = useState(null)
+    
+    
+    const name = friends && friends.filter((friend) => value === friend.username)
 
+    
     const handleSelect = (e) => {
         console.log(e)
         setValue(e)
+        
     }
     const handleRestaurant = (e) => {
         console.log(e)
@@ -32,13 +40,12 @@ return (
         <Card.Body>
             <Card.Title>Coordinate Meet 'n Eat with friends</Card.Title>
             <div style={{ display:'flex', flexDirection:'row', justifyContent:'space-between', width:'105%', alignItems:'self-end'}}>
-                <Dropdown onSelect={handleSelect}>
-                    <Dropdown.Toggle style={{ width:'100%' }}  variant="secondary" id="dropdown-basic">
+                <Dropdown  onSelect={handleSelect}>
+                    <Dropdown.Toggle  style={{ width:'100%' }}  variant="secondary" id="dropdown-basic">
                         {value}
                     </Dropdown.Toggle>
-                    <Dropdown.Menu  >
-                        {/* NEED TO MAP FRIENDS */}
-                        {friends && friends.map(friend => <Dropdown.Item eventKey={friend.username} key={friend._id}> {friend.username} </Dropdown.Item>)}
+                    <Dropdown.Menu >
+                        {profile && profile.friends.map(friend => <Dropdown.Item eventKey={friend.username} key={friend._id}>{friend.username}</Dropdown.Item>)}
                     </Dropdown.Menu>
                     </Dropdown>
                     <Dropdown onSelect={handleRestaurant} style={{ marginTop:'5%'}}>
@@ -46,8 +53,8 @@ return (
                         { therestaurant }
                     </Dropdown.Toggle>
                     <Dropdown.Menu>
-                        {/* NEED TO MAP RESTAURANTS <Message message={message} key={message._id}/> */}
-                        {profile && profile.likedrestaurants.map((restaurant) => <Dropdown.Item eventKey={restaurant.name} restaurant={restaurant} key={restaurant._id}> {name} </Dropdown.Item> )}
+                        { name && name[0].likedrestaurants.map((rest) => <Dropdown.Item eventKey={rest.name} key={rest._id}> {rest.name} </Dropdown.Item> )}
+                        <Dropdown.Item></Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>
             <input onChange={handleDate} type='date'></input>

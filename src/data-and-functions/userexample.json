@@ -541,7 +541,253 @@
                 "displayname": "BigPimpin'",
                 "location": "Pacifica",
                 "likedrestaurants": [
-                    "62ed6adba46a4f49081829b9"
+                    {
+                        "location": {
+                            "address1": "123 Second St",
+                            "city": "San Francisco",
+                            "zip_code": "94105",
+                            "country": "US",
+                            "state": "CA",
+                            "display_address": [
+                                "123 Second St",
+                                "San Francisco, CA 94105"
+                            ],
+                            "cross_streets": ""
+                        },
+                        "coordinates": {
+                            "latitude": 37.787789124691,
+                            "longitude": -122.399305736113
+                        },
+                        "_id": "62eed01acb16aedefa5eeb8c0c",
+                        "name": "North India Restaurant",
+                        "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/_nJ2VTeTZe5-gePr8PXTxg/o.jpg",
+                        "is_closed": false,
+                        "url": "https://www.yelp.com/biz/north-india-restaurant-san-francisco-7?adjust_creative=PKFU5g36rFayBfle34hYWw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_lookup&utm_source=PKFU5g36rFayBfle34hYWw",
+                        "display_phone": "(415) 348-1234",
+                        "categories": [
+                            {
+                                "title": "Indian",
+                                "_id": "62eed01acb16aeef5eeb8c0d"
+                            },
+                            {
+                                "title": "Food Delivery Services",
+                                "_id": "62eed01acb16aeef5eeb8c0e"
+                            },
+                            {
+                                "title": "Caterers",
+                                "_id": "62eed01acb16aeef5eeb8c0f"
+                            }
+                        ],
+                        "photos": [
+                            "https://s3-media1.fl.yelpcdn.com/bphoto/_nJ2VTeTZe5-gePr8PXTxg/o.jpg",
+                            "https://s3-media4.fl.yelpcdn.com/bphoto/W2oBBWPGm3bRYEuHKGMtCw/o.jpg",
+                            "https://s3-media1.fl.yelpcdn.com/bphoto/AHm5LPigScMuUG-bT9jqdw/o.jpg"
+                        ],
+                        "price": "$$",
+                        "hours": [
+                            {
+                                "open": [
+                                    {
+                                        "is_overnight": false,
+                                        "start": "1000",
+                                        "end": "2300",
+                                        "day": 0,
+                                        "_id": "62eed01acb16aeef5eeb8c11"
+                                    },
+                                    {
+                                        "is_overnight": false,
+                                        "start": "1000",
+                                        "end": "2300",
+                                        "day": 1,
+                                        "_id": "62eed01acb16aeef5eeb8c12"
+                                    },
+                                    {
+                                        "is_overnight": false,
+                                        "start": "1000",
+                                        "end": "2300",
+                                        "day": 2,
+                                        "_id": "62eed01acb16aeef5eeb8c13"
+                                    },
+                                    {
+                                        "is_overnight": false,
+                                        "start": "1000",
+                                        "end": "2300",
+                                        "day": 3,
+                                        "_id": "62eed01acb16aeef5eeb8c14"
+                                    },
+                                    {
+                                        "is_overnight": false,
+                                        "start": "1000",
+                                        "end": "2330",
+                                        "day": 4,
+                                        "_id": "62eed01acb16aeef5eeb8c15"
+                                    },
+                                    {
+                                        "is_overnight": false,
+                                        "start": "1000",
+                                        "end": "2330",
+                                        "day": 5,
+                                        "_id": "62eed01acb16aeef5eeb8c16"
+                                    },
+                                    {
+                                        "is_overnight": false,
+                                        "start": "1000",
+                                        "end": "2300",
+                                        "day": 6,
+                                        "_id": "62eed01acb16aeef5eeb8c17"
+                                    }
+                                ],
+                                "_id": "62eed01acb16aeef5eeb8c10"
+                            }
+                        ],
+                        "reviews": [],
+                        "__v": 0
+                    },
+                    {
+                        "location": {
+                            "address1": "123 Second St",
+                            "city": "San Francisco",
+                            "zip_code": "94105",
+                            "country": "US",
+                            "state": "CA",
+                            "display_address": [
+                                "123 Second St",
+                                "San Francisco, CA 94105"
+                            ],
+                            "cross_streets": ""
+                        },
+                        "coordinates": {
+                            "latitude": 37.787789124691,
+                            "longitude": -122.399305736113
+                        },
+                        "_id": "62eed01acb16aeef5eeb8c0c",
+                        "name": "North India Restaurant",
+                        "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/_nJ2VTeTZe5-gePr8PXTxg/o.jpg",
+                        "is_closed": false,
+                        "url": "https://www.yelp.com/biz/north-india-restaurant-san-francisco-7?adjust_creative=PKFU5g36rFayBfle34hYWw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_lookup&utm_source=PKFU5g36rFayBfle34hYWw",
+                        "display_phone": "(415) 348-1234",
+                        "categories": [
+                            {
+                                "title": "Indian",
+                                "_id": "62eed01acb16aeef5eeb8c0d"
+                            },
+                            {
+                                "title": "Food Delivery Services",
+                                "_id": "62eed01acb16aeef5eeb8c0e"
+                            },
+                            {
+                                "title": "Caterers",
+                                "_id": "62eed01acb16aeef5eeb8c0f"
+                            }
+                        ],
+                        "photos": [
+                            "https://s3-media1.fl.yelpcdn.com/bphoto/_nJ2VTeTZe5-gePr8PXTxg/o.jpg",
+                            "https://s3-media4.fl.yelpcdn.com/bphoto/W2oBBWPGm3bRYEuHKGMtCw/o.jpg",
+                            "https://s3-media1.fl.yelpcdn.com/bphoto/AHm5LPigScMuUG-bT9jqdw/o.jpg"
+                        ],
+                        "price": "$$",
+                        "hours": [
+                            {
+                                "open": [
+                                    {
+                                        "is_overnight": false,
+                                        "start": "1000",
+                                        "end": "2300",
+                                        "day": 0,
+                                        "_id": "62eed01acb16aeef5eeb8c11"
+                                    },
+                                    {
+                                        "is_overnight": false,
+                                        "start": "1000",
+                                        "end": "2300",
+                                        "day": 1,
+                                        "_id": "62eed01acb16aeef5eeb8c12"
+                                    },
+                                    {
+                                        "is_overnight": false,
+                                        "start": "1000",
+                                        "end": "2300",
+                                        "day": 2,
+                                        "_id": "62eed01acb16aeef5eeb8c13"
+                                    },
+                                    {
+                                        "is_overnight": false,
+                                        "start": "1000",
+                                        "end": "2300",
+                                        "day": 3,
+                                        "_id": "62eed01acb16aeef5eeb8c14"
+                                    },
+                                    {
+                                        "is_overnight": false,
+                                        "start": "1000",
+                                        "end": "2330",
+                                        "day": 4,
+                                        "_id": "62eed01acb16aeef5eeb8c15"
+                                    },
+                                    {
+                                        "is_overnight": false,
+                                        "start": "1000",
+                                        "end": "2330",
+                                        "day": 5,
+                                        "_id": "62eed01acb16aeef5eeb8c16"
+                                    },
+                                    {
+                                        "is_overnight": false,
+                                        "start": "1000",
+                                        "end": "2300",
+                                        "day": 6,
+                                        "_id": "62eed01acb16aeef5eeb8c17"
+                                    }
+                                ],
+                                "_id": "62eed01acb16aeef5eeb8c10"
+                            }
+                        ],
+                        "reviews": [],
+                        "__v": 0
+                    },
+                    {
+                        "location": {
+                            "address1": "727 N Broadway",
+                            "city": "Los Angeles",
+                            "zip_code": "90012",
+                            "country": "US",
+                            "state": "CA",
+                            "display_address": [
+                                "727 N Broadway",
+                                "Ste 128",
+                                "Los Angeles, CA 90012"
+                            ]
+                        },
+                        "coordinates": {
+                            "latitude": 34.061517,
+                            "longitude": -118.239716
+                        },
+                        "_id": "62ef031d30bddbafcc0ba7c5",
+                        "name": "Howlin' Ray's",
+                        "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/MJUkD3lWR3-2hO7fZsg_0g/o.jpg",
+                        "is_closed": false,
+                        "url": "https://www.yelp.com/biz/howlin-rays-los-angeles-3?adjust_creative=PKFU5g36rFayBfle34hYWw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=PKFU5g36rFayBfle34hYWw",
+                        "display_phone": "(213) 935-8399",
+                        "categories": [
+                            {
+                                "title": "Southern",
+                                "_id": "62ef031d30bddbafcc0ba7c6"
+                            },
+                            {
+                                "title": "Chicken Shop",
+                                "_id": "62ef031d30bddbafcc0ba7c7"
+                            },
+                            {
+                                "title": "American (Traditional)",
+                                "_id": "62ef031d30bddbafcc0ba7c8"
+                            }
+                        ],
+                        "photos": [],
+                        "price": "$$",
+                        "hours": [],
+                        "reviews": [],
+                        "__v": 0
+                    }
                 ],
                 "friends": [],
                 "messages": [],
@@ -557,7 +803,101 @@
                 "displayname":"DavidJoao",
                 "location":"Los Angeles",
                 "likedrestaurants": [
-                    "62eff1810f1b3cc1ea9e4a1b"
+                    {
+                        "id": "DceTpSF9RJ9PBvfX-_EImQ",
+                        "alias": "shandong-restaurant-oakland",
+                        "name": "Shandong Restaurant",
+                        "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/DKHAlj5Mpqs1HjZt36XsDg/o.jpg",
+                        "is_closed": false,
+                        "url": "https://www.yelp.com/biz/shandong-restaurant-oakland?adjust_creative=PKFU5g36rFayBfle34hYWw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=PKFU5g36rFayBfle34hYWw",
+                        "review_count": 3381,
+                        "categories": [
+                            {
+                                "alias": "chinese",
+                                "title": "Chinese"
+                            },
+                            {
+                                "alias": "seafood",
+                                "title": "Seafood"
+                            },
+                            {
+                                "alias": "noodles",
+                                "title": "Noodles"
+                            }
+                        ],
+                        "rating": 4.0,
+                        "coordinates": {
+                            "latitude": 37.800607171031,
+                            "longitude": -122.26986193448
+                        },
+                        "transactions": [
+                            "delivery",
+                            "pickup"
+                        ],
+                        "price": "$$",
+                        "location": {
+                            "address1": "328 10th St",
+                            "address2": "Ste 101",
+                            "address3": "",
+                            "city": "Oakland",
+                            "zip_code": "94607",
+                            "country": "US",
+                            "state": "CA",
+                            "display_address": [
+                                "328 10th St",
+                                "Ste 101",
+                                "Oakland, CA 94607"
+                            ]
+                        },
+                        "phone": "+15108392299",
+                        "display_phone": "(510) 839-2299",
+                        "distance": 2559.878740139515
+                    },
+                    {
+                        "id": "FI66b4YDj7rDA257iole4Q",
+                        "alias": "homeroom-oakland",
+                        "name": "Homeroom",
+                        "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/5L-BCZi-MkMDxuwuhLUO-Q/o.jpg",
+                        "is_closed": false,
+                        "url": "https://www.yelp.com/biz/homeroom-oakland?adjust_creative=PKFU5g36rFayBfle34hYWw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=PKFU5g36rFayBfle34hYWw",
+                        "review_count": 6189,
+                        "categories": [
+                            {
+                                "alias": "tradamerican",
+                                "title": "American (Traditional)"
+                            },
+                            {
+                                "alias": "comfortfood",
+                                "title": "Comfort Food"
+                            }
+                        ],
+                        "rating": 4.0,
+                        "coordinates": {
+                            "latitude": 37.828739,
+                            "longitude": -122.259982
+                        },
+                        "transactions": [
+                            "delivery",
+                            "pickup"
+                        ],
+                        "price": "$$",
+                        "location": {
+                            "address1": "400 40th St",
+                            "address2": "",
+                            "address3": "",
+                            "city": "Oakland",
+                            "zip_code": "94609",
+                            "country": "US",
+                            "state": "CA",
+                            "display_address": [
+                                "400 40th St",
+                                "Oakland, CA 94609"
+                            ]
+                        },
+                        "phone": "+15105970400",
+                        "display_phone": "(510) 597-0400",
+                        "distance": 3458.14851437346
+                    }
                 ],
                 "friends":[],
                 "messages":[],
@@ -574,7 +914,51 @@
                 "displayname":"Hans123",
                 "location":"Los Angeles",
                 "likedrestaurants": [
-                    "onIogVwj7ab8esx8Cgk1SA"
+            {
+                "id": "FI66b4YDj7rDasdA257iole4Q",
+                "alias": "homeroom-oakland123",
+                "name": "Homeroom",
+                "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/5L-BCZi-MkMDxuwuhLUO-Q/o.jpg",
+                "is_closed": false,
+                "url": "https://www.yelp.com/biz/homeroom-oakland?adjust_creative=PKFU5g36rFayBfle34hYWw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=PKFU5g36rFayBfle34hYWw",
+                "review_count": 6189,
+                "categories": [
+                    {
+                        "alias": "tradamerican",
+                        "title": "American (Traditional)"
+                    },
+                    {
+                        "alias": "comfortfood",
+                        "title": "Comfort Food"
+                    }
+                ],
+                "rating": 4.0,
+                "coordinates": {
+                    "latitude": 37.828739,
+                    "longitude": -122.259982
+                },
+                "transactions": [
+                    "delivery",
+                    "pickup"
+                ],
+                "price": "$$",
+                "location": {
+                    "address1": "400 40th St",
+                    "address2": "",
+                    "address3": "",
+                    "city": "Oakland",
+                    "zip_code": "94609",
+                    "country": "US",
+                    "state": "CA",
+                    "display_address": [
+                        "400 40th St",
+                        "Oakland, CA 94609"
+                    ]
+                },
+                "phone": "+15105970400",
+                "display_phone": "(510) 597-0400",
+                "distance": 3458.14851437346
+            }
                 ],
                 "friends":[],
                 "messages":[],
@@ -605,7 +989,53 @@
         "username": "Andrew",
         "displayname": "BigPimpin'",
         "location": "Pacifica",
-        "likedrestaurants": [],
+        "likedrestaurants": [
+            {
+                "id": "FI66b4YDj7rDA257iole4Q",
+                "alias": "homeroom-oakland",
+                "name": "Homeroom",
+                "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/5L-BCZi-MkMDxuwuhLUO-Q/o.jpg",
+                "is_closed": false,
+                "url": "https://www.yelp.com/biz/homeroom-oakland?adjust_creative=PKFU5g36rFayBfle34hYWw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=PKFU5g36rFayBfle34hYWw",
+                "review_count": 6189,
+                "categories": [
+                    {
+                        "alias": "tradamerican",
+                        "title": "American (Traditional)"
+                    },
+                    {
+                        "alias": "comfortfood",
+                        "title": "Comfort Food"
+                    }
+                ],
+                "rating": 4.0,
+                "coordinates": {
+                    "latitude": 37.828739,
+                    "longitude": -122.259982
+                },
+                "transactions": [
+                    "delivery",
+                    "pickup"
+                ],
+                "price": "$$",
+                "location": {
+                    "address1": "400 40th St",
+                    "address2": "",
+                    "address3": "",
+                    "city": "Oakland",
+                    "zip_code": "94609",
+                    "country": "US",
+                    "state": "CA",
+                    "display_address": [
+                        "400 40th St",
+                        "Oakland, CA 94609"
+                    ]
+                },
+                "phone": "+15105970400",
+                "display_phone": "(510) 597-0400",
+                "distance": 3458.14851437346
+            }
+        ],
         "friends": [],
         "messages": [],
         "password": "test",

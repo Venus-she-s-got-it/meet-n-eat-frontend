@@ -40,6 +40,30 @@ const ProfileSettings = () => {
             })
             .then((data) => {
                 setUser(data)
+                dispatch({
+                    key: 'about',
+                    value: data.about
+                })
+                dispatch({
+                    key: 'username',
+                    value: data.username
+                })
+                dispatch({
+                    key: 'profileimg',
+                    value: data.profileimg
+                })
+                dispatch({
+                    key: 'location',
+                    value: data.location
+                })
+                dispatch({
+                    key: 'displayname',
+                    value: data.displayname
+                })
+                dispatch({
+                    key: 'email',
+                    value: data.email
+                })
                 console.log(data)
             })
         }, [])

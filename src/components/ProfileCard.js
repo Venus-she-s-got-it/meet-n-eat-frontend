@@ -5,17 +5,17 @@ import { Card, ListGroup } from 'react-bootstrap'
 const ProfileCard = ( {username, location, profileimg, about} ) => {
 
 return (
-    <Card style={{ width: '90%', padding:'3%' }}>
-        <Card.Img variant="top" src={profileimg} />
-        <Card.Body>
+    <Card style={{ width: '90%', padding:'3%', border:'none'}}>
+        <Card.Img style={{borderRadius:'50%', border:'1px solid #D6300F'}} variant="top" src={profileimg} />
+        <Card.Body style={{display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center'}}>
             <Card.Title>{username}</Card.Title>
                 {/* need to fix location */}
             <Card.Text> {location} </Card.Text>
         </Card.Body>
         <ListGroup className="list-group-flush">
-        <p style={{ textAlign:'center', fontWeight:'500' }}>About</p>
+        <p style={{ textAlign:'center', fontWeight:'500' }}>about</p>
             <Card.Body>
-                <ListGroup.Item>{about}</ListGroup.Item>
+                <ListGroup.Item style={{ border:'1px solid #D6300F'}}>{about}</ListGroup.Item>
             </Card.Body>
         </ListGroup>
     </Card>

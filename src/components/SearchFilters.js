@@ -1,9 +1,9 @@
-import { Modal, Dropdown, Row, Col } from 'react-bootstrap'
+import { Modal, Dropdown, Row } from 'react-bootstrap'
+import DropdownItem from 'react-bootstrap/esm/DropdownItem'
 import DropdownToggle from 'react-bootstrap/esm/DropdownToggle'
 import { categoriesArray } from '../data-and-functions/categoriesArray'
 import { citiesArray } from '../data-and-functions/citiesArray'
 import { priceRangeArray } from '../data-and-functions/priceRangeArray'
-import DropdownListItem from './DropdownListItem'
 
 const SearchFilters = ({ searchCriteria, dispatch, filterClick, showFilters }) => {
     const { city, category, priceRange } = searchCriteria
@@ -46,7 +46,7 @@ const SearchFilters = ({ searchCriteria, dispatch, filterClick, showFilters }) =
                             {city || 'select city'}
                         </Dropdown.Toggle>
                         <Dropdown.Menu>
-                            {citiesArray.map((city, index) => <DropdownListItem className='city' onClick={dropdownChoice} itemName={city} key={index}/>)}
+                            {citiesArray.map((city, index) => <DropdownItem className='city' onClick={dropdownChoice} key={index}>{city}</DropdownItem>)}
                         </Dropdown.Menu>
                     </Dropdown>
                     <Dropdown>
@@ -54,7 +54,7 @@ const SearchFilters = ({ searchCriteria, dispatch, filterClick, showFilters }) =
                             {category || 'select category'}
                         </Dropdown.Toggle>
                         <Dropdown.Menu>
-                            {categoriesArray.map((category, index) => <DropdownListItem className='category' onClick={dropdownChoice} itemName={category} key={index}/>)}
+                            {categoriesArray.map((category, index) => <DropdownItem className='category' onClick={dropdownChoice} key={index}>{category}</DropdownItem>)}
                         </Dropdown.Menu>
                     </Dropdown>
                     <Dropdown>
@@ -62,7 +62,7 @@ const SearchFilters = ({ searchCriteria, dispatch, filterClick, showFilters }) =
                             {priceRange || 'select price range'}
                         </DropdownToggle>
                         <Dropdown.Menu>
-                            {priceRangeArray.map((price, index) => <DropdownListItem className='priceRange' onClick={dropdownChoice} itemName={price} key={index}/>)}
+                            {priceRangeArray.map((price, index) => <DropdownItem className='priceRange' onClick={dropdownChoice} key={index}>{price}</DropdownItem>)}
                         </Dropdown.Menu>
                     </Dropdown>
                 </Row>

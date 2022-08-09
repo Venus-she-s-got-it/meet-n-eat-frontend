@@ -9,7 +9,7 @@ import { Container } from 'react-bootstrap'
 
 
 const SearchResults = () => {
-    const url = useContext(UrlContext)
+    const { url } = useContext(UrlContext)
     const { searchString } = useParams()
     const [ searchParams ] = useSearchParams()
     const [restaurantsData, setRestaurantsData] = useState(null) 
@@ -47,7 +47,9 @@ const SearchResults = () => {
         //         setLikedRestaurants()
         //     })
         // }, [])
-    if (restaurantsData) {
+    if (!restaurantsData) {
+        return <h1>Loading restaurants...</h1>
+    }
         return (
             <Container>
                 <Container>
@@ -57,7 +59,6 @@ const SearchResults = () => {
                 }
             </Container>
         )
-    }
 }
 
 export default SearchResults

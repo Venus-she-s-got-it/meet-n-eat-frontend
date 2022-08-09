@@ -23,7 +23,6 @@ const Search = () => {
     const [showFilters, setShowFilters] = useState(false)
     const navigate = useNavigate()
     const searchString = getSearchString(searchCriteria)
-    console.log(searchString)
     
     // Event handlers
     // ===========================================================================
@@ -36,15 +35,10 @@ const Search = () => {
     function formSubmit(e) {
         e.preventDefault()
         searchCriteria && navigate(searchString)
-
     }
     
     function filterClick() {
         setShowFilters(prev => !prev)
-    }
-
-    function containerClick() {
-        showFilters && setShowFilters(false)
     }
 
     return (

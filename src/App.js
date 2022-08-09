@@ -12,7 +12,9 @@ import ProfileSettings from './pages/ProfileSettings';
 
 export const UrlContext = createContext()
 
+// Context variables
 const url = 'http://localhost:8000'
+const defaultImage = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'
 
 function App() {
   return (
@@ -21,11 +23,11 @@ function App() {
         <NavBar />
       </header>
       <main>
-        <UrlContext.Provider value={url}>
+        <UrlContext.Provider value={{'url': url, 'defaultImage': defaultImage}}>
           <Routes>
             <Route path="*" element={<Navigate to="/home" />} />
             <Route path="/home" element={<Home />} />
-            <Route path="/users/authentication" element={<LogInSignUp />} />
+            <Route path="/users/authentication/:option" element={<LogInSignUp />} />
             <Route path="/results/:searchString" element={<SearchResults />} />
             <Route path="/profile" element={<MyProfile />} />
             <Route path="/profile/settings" element={<ProfileSettings />} />

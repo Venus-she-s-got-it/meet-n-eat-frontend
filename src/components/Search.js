@@ -12,7 +12,7 @@ const Search = () => {
         searchString: '',
         city: '',
         category: '',
-        priceRange: '',
+        price: '',
         wheelchairAccessible: '',
         openLate: ''
     }
@@ -22,7 +22,6 @@ const Search = () => {
     const [searchCriteria, dispatch] = useReducer(searchCriteriaReducer, initialState)
     const [showFilters, setShowFilters] = useState(false)
     const navigate = useNavigate()
-    const searchString = getSearchString(searchCriteria)
     
     // Event handlers
     // ===========================================================================
@@ -34,6 +33,7 @@ const Search = () => {
 
     function formSubmit(e) {
         e.preventDefault()
+        const searchString = getSearchString(searchCriteria)
         searchCriteria && navigate(searchString)
     }
     

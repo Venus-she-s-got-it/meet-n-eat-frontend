@@ -6,7 +6,7 @@ import { citiesArray } from '../data-and-functions/citiesArray'
 import { priceRangeArray } from '../data-and-functions/priceRangeArray'
 
 const SearchFilters = ({ searchCriteria, dispatch, filterClick, showFilters }) => {
-    const { city, category, priceRange } = searchCriteria
+    const { city, category, price } = searchCriteria
 
     // Handles click events for dropdown menus
     function dropdownChoice(e) {
@@ -59,10 +59,10 @@ const SearchFilters = ({ searchCriteria, dispatch, filterClick, showFilters }) =
                     </Dropdown>
                     <Dropdown>
                         <DropdownToggle id='price-range-select'>
-                            {priceRange || 'select price range'}
+                            {price || 'select price range'}
                         </DropdownToggle>
                         <Dropdown.Menu>
-                            {priceRangeArray.map((price, index) => <DropdownItem className='priceRange' onClick={dropdownChoice} key={index}>{price}</DropdownItem>)}
+                            {priceRangeArray.map((price, index) => <DropdownItem className='price' onClick={dropdownChoice} key={index}>{price}</DropdownItem>)}
                         </Dropdown.Menu>
                     </Dropdown>
                 </Row>

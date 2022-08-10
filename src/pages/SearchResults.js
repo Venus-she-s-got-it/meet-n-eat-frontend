@@ -15,22 +15,25 @@ const SearchResults = () => {
     const [restaurantsData, setRestaurantsData] = useState(null) 
     // const [likedRestaurants, setLikedRestaurants] = useState()
     // const [usersLikes, setUsersLikes] = useState()
-    searchParams.forEach((entry) => console.log(entry))
+    for(const entry of searchParams.entries()) {
+        const [param, value] = entry
+        console.log("- param, value", param, value)
+    }
 
-    useEffect(() => {
-        axios.get(`${url}/restaurants/`)
-        // axios.get(`${url}/restaurants/${searchString}`)
-            .then((res, err) => { 
-                if (res.status === 404) {
-                    console.log(err)
-                } else if(res.status === 200 || res.status === 304) {
-                    return res.data
-                }
-            })
-            .then((data) => {
-                setRestaurantsData(data)
-            }) 
-        }, [])
+    // useEffect(() => {
+    //     axios.get(`${url}/restaurants/`)
+    //     // axios.get(`${url}/restaurants/${searchString}`)
+    //         .then((res, err) => { 
+    //             if (res.status === 404) {
+    //                 console.log(err)
+    //             } else if(res.status === 200 || res.status === 304) {
+    //                 return res.data
+    //             }
+    //         })
+    //         .then((data) => {
+    //             setRestaurantsData(data)
+    //         }) 
+    //     }, [])
 
         // to update users likedrestaurants onClick
         // useEffect(() => {

@@ -30,23 +30,24 @@ return (
     <Navbar expand='lg'>
         <Container>
             <Row>
+        
                 <Col>
-                    <Link to='/home'>
-                        <Navbar.Brand>MEET 'N EAT</Navbar.Brand>
-                    </Link>
+                    <Link to='/home'><Navbar.Brand>MEET 'N EAT</Navbar.Brand></Link>
                     <Link to='/faq'>FAQ</Link>
                 </Col>
-                <Col> 
-                    <NavLink to='/message-center' style={{color: 'black'}}><HiMail size={40}/></NavLink>
+                
+
+                <Col style={{display:'flex'}}> 
+                    <NavLink to='/message-center' style={{color: '#EB3510'}}><HiMail size={40}/></NavLink>
                     {sessionId ?
-                        <NavLink to='/profile' style={{color: 'black'}}><CgProfile size={40}/></NavLink>
+                        <NavLink to='/profile' style={{color: '#EB3510'}}><CgProfile size={40}/></NavLink>
                         : (
                             <NavDropdown className="nav-dropdown d-inline-block" title={<CgProfile size={40}/>}>
                                 {['Log In', 'Sign Up'].map((text, index) => <NavDropdown.Item onClick={userAuthClick} key={index}>{text}</NavDropdown.Item>)}
                             </NavDropdown> 
                         )
                     }
-                    <Link to='/profile/settings' style={{color: 'black'}}><HiCog size={40}/></Link>
+                    <Link to='/profile/settings' style={{color: '#EB3510'}}><HiCog size={40}/></Link>
                 </Col>
             </Row>
         </Container>

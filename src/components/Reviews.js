@@ -17,10 +17,13 @@ const Reviews = () => {
     //     axios.get()
     // }, [])
 return (
-    <Card>
-        {/* map over Review here */}
-        <Review />
-    </Card>
+    <div style={{  display:'flex', justifyContent:'center', marginTop:'2%'}}>
+
+        <Card style={{width:'50%', borderColor:'#D6300F'}}>
+            {/* map over Review here */}
+            <Review />
+        </Card>
+    </div>
 )
 }
 

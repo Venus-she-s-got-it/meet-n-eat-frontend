@@ -182,7 +182,6 @@ const ProfileSettings = () => {
                                 <Modal 
                                 show={modalShow}
                                 onHide={handleShow}
-                                animation={false}
                                 size="md"
                                 aria-labelledby="likedrestaurants-modal"
                                 centered

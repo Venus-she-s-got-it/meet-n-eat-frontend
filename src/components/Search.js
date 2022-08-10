@@ -42,12 +42,13 @@ const Search = () => {
     }
 
     return (
-        <Container>
-            <Form onSubmit={formSubmit}>
-                <Form.Group controlId='searchInput'>
+        <Container style={{}}>
+            <Form style={{marginBottom:'2%'}} onSubmit={formSubmit}>
+                <Form.Group style={{width:'100%', display:'flex', flexDirection:'row', justifyContent:'center'}} controlId='searchInput'>
                     <Row className='d-flex justify-content-end'>
                         <Col className='gx-1'>
                             <Form.Control
+                                style={{ width:'100%', border:'1px solid #D6300F', backgroundColor:'white'}}
                                 type='text'
                                 placeholder='find restaurants'
                                 onChange={inputChange}
@@ -57,11 +58,11 @@ const Search = () => {
                         <Col>
                             <ButtonGroup>
                                 <Button
-                                    variant='secondary'
+                                    style={{backgroundColor:'#D6300F', border:'1px solid #D6300F'}}
                                     type='submit'
                                 >Search</Button>
                                 <Button
-                                    variant='secondary'
+                                    style={{backgroundColor:'#D6300F', border:'1px solid #D6300F', borderLeft:'2px solid white'}}
                                     type='button'
                                     onClick={filterClick}
                                 >Filters</Button>

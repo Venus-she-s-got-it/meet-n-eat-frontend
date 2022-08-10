@@ -12,9 +12,16 @@ import ProfileSettings from './pages/ProfileSettings';
 
 export const UrlContext = createContext()
 
+
 // Context variables
 const url = 'http://localhost:8000'
 const defaultImage = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'
+const colorTemplate = {
+  darkColor: '#D6300F',
+  mediumColor: '#F7EEE6',
+  lightColor: '#F0704E'
+
+}
 
 function App() {
   return (
@@ -23,7 +30,7 @@ function App() {
         <NavBar />
       </header>
       <main>
-        <UrlContext.Provider value={{'url': url, 'defaultImage': defaultImage}}>
+        <UrlContext.Provider value={{'url': url, 'defaultImage': defaultImage, 'colorTemplate': colorTemplate}}>
           <Routes>
             <Route path="*" element={<Navigate to="/home" />} />
             <Route path="/home" element={<Home />} />

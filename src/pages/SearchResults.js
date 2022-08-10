@@ -55,8 +55,11 @@ const SearchResults = () => {
                 <Container>
                     <Search />
                 </Container>
+                <Container style={{ display:'flex', flexDirection:'row', flexWrap:'wrap', width:'100%', alignItems:'center', justifyContent:'center'}}>
                 {restaurantsData.map(restaurantData => <RestaurantCard restaurant={restaurantData} key={restaurantData._id}/>)
                 }
+
+                </Container>
             </Container>
         )
 }

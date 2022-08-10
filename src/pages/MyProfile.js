@@ -40,14 +40,14 @@ return (
             <div style={{ boxShadow:'2px 5px 26px -9px rgba(0,0,0,0.75)', height:'68%', width:'49%', borderRadius:'10px',overflow:'scroll', overflowX:'hidden', border:'1px solid #D6300F'}} className='restaurants-block'>
                 <LikedRestaurant restaurantlist={restaurantlist} />
             </div>
-            <div style={{ boxShadow:'2px 5px 26px -9px rgba(0,0,0,0.75)', height:'68%', width:'49%', borderRadius:'10px', overflow:'scroll', overflowX:'hidden' }} className='friends-block'>
+            <div style={{ boxShadow:'2px 5px 26px -9px rgba(0,0,0,0.75)', height:'68%', width:'49%', borderRadius:'10px', overflow:'scroll', overflowX:'hidden', border:'1px solid #D6300F' }} className='friends-block'>
                 <Friends profileExample={profileExample} />             
             </div>
             <div style={{ boxShadow:'2px 5px 26px -9px rgba(0,0,0,0.75)', height:'30%', width:'100%', marginTop:'2%', borderRadius:'10px'}} className='coordinate-block'>
                 <CoordinateMeetup profileExample={profileExample}/>
             </div>
         </div>
-        <div style={{ boxShadow:'2px 5px 26px -9px rgba(0,0,0,0.75)', width:'25%', borderRadius:'10px'}} className='itinerary-section'>
+        <div style={{ boxShadow:'2px 5px 26px -9px rgba(0,0,0,0.75)', width:'25%', borderRadius:'10px', border:'1px solid #D6300F'}} className='itinerary-section'>
               <Itinerary />                      
         </div>
     </div>

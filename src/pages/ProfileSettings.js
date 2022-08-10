@@ -4,6 +4,7 @@ import axios from 'axios'
 import { userSettingsReducer } from '../data-and-functions/userSettingsReducer'
 import { Container, Card, Form, Row, Col, Image, Modal, Button, ListGroup } from 'react-bootstrap'
 import { BsFillTrashFill } from "react-icons/bs"
+import ImageUploading from 'react-images-uploading'
 
 
 const ProfileSettings = () => {
@@ -23,6 +24,8 @@ const ProfileSettings = () => {
     const [updateKey, setUpdateKey] = useState('')
     const [user, setUser] = useState()
     const [modalShow, setModalShow] = useState(false)
+    // const [image, setImage] = useState()
+    const maxNum = 1
 
 // Getting user data
 // ===========================================================================
@@ -88,6 +91,9 @@ const ProfileSettings = () => {
     function handleShow() {
         setModalShow(!modalShow)
     }
+    // function uploadHandler(imageList) {
+    //     setImage(imageList)
+    //   }
 
     // have to make a route in db that access likedrestaurants and deletes by restaurant id
     // function onDelete(e) {
@@ -98,23 +104,35 @@ const ProfileSettings = () => {
     // eventhandler for modal
     
 // Conditional Rendering
-    if (!user) { 
-        return null
-    } else if (!userSettings) {
-        return null
-    }
+    if (user && userSettings)
     return (
         <Container style={{ marginTop: '18vh', border: '1px solid #EB3510', boxShadow:'2px 5px 26px -9px rgba(0,0,0,0.75)', borderRadius:'10px'}}>
             <Card style={{border: 'none'}} className="fluid px-4 py-4">
                 <Row>
                     <Col style={{textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', borderRight: '1px solid #EB3510' }}>
-                        <Image 
-                        src={userSettings.profileimg} 
-                        alt="profile-image"
-                        width={200}
-                        height={200}
-                        style={{border: '1px solid #EB3510', margin: '1rem', borderRadius: '5px'}}></Image>
-                        <Button variant="danger" style={{backgroundColor:'#EB3510', borderColor: '#D6300F'}}>Change Profile Picture</Button>
+                        <ImageUploading 
+                            className="profileimg"
+                            value={userSettings.profileimg}
+                            maxNumber={maxNum}
+                            onChange={inputChange}
+                            dataURLKey="data_url"
+                            acceptType={["jpg", "png"]}
+                        >
+                        {({
+                            onImageUpload,
+                        }) => (
+                            <div>
+                                <Button onClick={onImageUpload} variant="danger" style={{backgroundColor:'#EB3510', borderColor: '#D6300F'}}>Change Profile Picture</Button>
+                                <Image 
+                                    className="profileimg"
+                                    src={userSettings.profileimg[0].data_url} 
+                                    alt="profile-image"
+                                    width={200}
+                                    height={200}
+                                    style={{border: '1px solid #EB3510', margin: '1rem', borderRadius: '5px'}}></Image>
+                            </div>
+                        )}
+                        </ImageUploading>
                         <h3 style={{marginTop:'1rem'}}>{user.username}</h3>
                         <Form> 
                             <Form.Label>About me</Form.Label>

@@ -43,7 +43,7 @@ const FAQ = () => {
           </Nav>
         </Col>
         <Col sm={9}>
-          <Tab.Content style={{marginTop: '2rem'}}>
+          <Tab.Content style={{marginTop: '1rem'}}>
             <Tab.Pane eventKey="first">
               <Troubleshooting />
             </Tab.Pane>

@@ -28,24 +28,29 @@ const FriendRequest = ({ request, noImage }) => {
                 break
 
             default:
-                break
+                break 
         }
     }, [choice])
 
 return (
-    <Card className='d-flex flex-row justify-content-center align-items-center' style={{ width: '70%', padding:'1%', marginTop: '1rem' }}>
-        <div style={{ width:'20%'}} >      
-            <Card.Img style={{ width:'100%' }}  src={request.sender.profileimg || defaultImage} />
+    
+    <Card className='d-flex flex-row justify-content-center align-items-center' style={{ width: '90%', padding:'1%', marginTop: '1rem'}}>
+        <div style={{ backgroundColor:'white', width:'30%', textAlign: 'center', border: '1px solid #eb350f', borderRadius: '6px', boxShadow: '1px 1px 7px -2px rgba(0,0,0,0.75)' }} >
 
-            <Card.Text>{request && request.sender.displayname}</Card.Text>
+            <div>
+                <Card.Img style={{ width:'100%', border: '1px solid #eb350f' }}  src={request.sender.profileimg || defaultImage} />
+            </div>
+
+            <Card.Text >{request && request.sender.displayname}</Card.Text>
         </div>
+        
         <Card.Body>
             <Row>
                 <Col>
-                    <Card.Text>{request.message}</Card.Text>
+                    <Card.Text style={{ marginLeft: '1rem', width: '100%'}}>{request.message}</Card.Text>
                 </Col>
                 <Col>
-                    <Container style={{marginTop: '1rem', display:'flex', flexDirection: 'column', justifyContent:'space-around', width:'80%', }} aria-label="Basic example">
+                    <Container style={{marginTop: '0.3rem', display:'flex', flexDirection: 'column', justifyContent:'space-around', width:'80%', }} aria-label="Basic example">
                         <Button 
                             className='accept' 
                             style={{ marginBottom: '5%', backgroundColor:'#D6300F', border:'1px solid #D6300F' }} 

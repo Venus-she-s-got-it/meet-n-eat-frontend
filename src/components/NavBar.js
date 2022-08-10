@@ -27,30 +27,33 @@ function userAuthClick(e) {
 }
 
 return (
-    <Navbar expand='lg'>
-        <Container>
-            <Row>
-        
-                <Col>
-                    <Link to='/home'><Navbar.Brand>MEET 'N EAT</Navbar.Brand></Link>
-                    <Link to='/faq'>FAQ</Link>
-                </Col>
-                
+    <Navbar expand='lg' >
+        <Container style={{borderBottom: '1px solid black' }}>
 
-                <Col style={{display:'flex'}}> 
-                    <NavLink to='/message-center' style={{color: '#EB3510'}}><HiMail size={40}/></NavLink>
-                    {sessionId ?
-                        <NavLink to='/profile' style={{color: '#EB3510'}}><CgProfile size={40}/></NavLink>
-                        : (
-                            <NavDropdown className="nav-dropdown d-inline-block" title={<CgProfile size={40}/>}>
-                                {['Log In', 'Sign Up'].map((text, index) => <NavDropdown.Item onClick={userAuthClick} key={index}>{text}</NavDropdown.Item>)}
-                            </NavDropdown> 
-                        )
-                    }
-                    <Link to='/profile/settings' style={{color: '#EB3510'}}><HiCog size={40}/></Link>
-                </Col>
-            </Row>
+                        <Link to='/home'><Navbar.Brand style={{border: '1px solid black', backgroundColor:'#EB3510', color: 'white', paddingLeft: '2rem', paddingRight: '2rem', paddingTop: '1rem', paddingBottom: '0.7rem', float: 'left', marginLeft: '0px'}}>MEET 'N EAT</Navbar.Brand></Link>
+
+                        <Link to='/faq' style={{paddingLeft: '0px'}}>FAQ</Link>
+
+                        <div></div>
+                        <div></div>
+                        <div></div>
+
+                        <NavLink to='/message-center' style={{color: '#EB3510'}}><HiMail size={40}/></NavLink>
+
+                        {sessionId ?
+
+                            <NavLink to='/profile' style={{color: '#EB3510'}}><CgProfile size={40}/></NavLink>
+                            : (
+
+                                <NavDropdown className="nav-dropdown d-inline-block" title={<CgProfile size={40}/>}>
+                                    {['Log In', 'Sign Up'].map((text, index) => <NavDropdown.Item onClick={userAuthClick} key={index}>{text}</NavDropdown.Item>)}
+                                </NavDropdown> 
+                            )
+                        }
+
+                        <Link to='/profile/settings' style={{color: '#EB3510'}}><HiCog size={40}/></Link>
         </Container>
+        
     </Navbar>
 )
 }

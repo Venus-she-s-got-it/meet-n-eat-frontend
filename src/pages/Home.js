@@ -10,11 +10,11 @@ const categories = ['Italian', 'Southern', 'American (Traditional)']
 const url = useContext(UrlContext)
 
 return (
-    <Container>
+    <Container style={{height:'90vh', display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center'}}>
         <Row>
             <Search />
         </Row>
-        <div>Not sure where to go? Start with a cuisine and see where it leads!</div>
+        <h2 style={{paddingTop:'10%', marginBottom:'5%'}}>Not sure where to go? Start with a cuisine and see where it leads!</h2>
         <Row className="d-flex">
             {categories.map((category, index) => <CuisineCategory key={index} category={category} />)}
         </Row>

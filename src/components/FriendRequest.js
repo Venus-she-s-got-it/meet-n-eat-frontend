@@ -1,6 +1,6 @@
 import axios from "axios"
 import { useContext, useEffect, useState } from "react"
-import { Card, ButtonGroup, Button, Row, Col } from "react-bootstrap"
+import { Container, Card, ButtonGroup, Button, Row, Col } from "react-bootstrap"
 import { UrlContext } from "../App"
 import { formatDateTime } from "../data-and-functions/formatDateTime"
 
@@ -33,9 +33,9 @@ const FriendRequest = ({ request, noImage }) => {
     }, [choice])
 
 return (
-    <Card className='d-flex flex-row justify-content-center align-items-center' style={{ width: '70%', padding:'1%' }}>
+    <Card className='d-flex flex-row justify-content-center align-items-center' style={{ width: '70%', padding:'1%', marginTop: '1rem' }}>
         <div style={{ width:'20%'}} >      
-            <Card.Img style={{ width:'60%' }} variant="top" src={request.sender.profileimg || defaultImage} />
+            <Card.Img style={{ width:'100%' }}  src={request.sender.profileimg || defaultImage} />
 
             <Card.Text>{request && request.sender.displayname}</Card.Text>
         </div>
@@ -45,10 +45,10 @@ return (
                     <Card.Text>{request.message}</Card.Text>
                 </Col>
                 <Col>
-                    <ButtonGroup style={{float:'right', display:'flex', justifyContent:'space-around', width:'80%'}} aria-label="Basic example">
+                    <Container style={{marginTop: '1rem', display:'flex', flexDirection: 'column', justifyContent:'space-around', width:'80%', }} aria-label="Basic example">
                         <Button 
                             className='accept' 
-                            style={{ borderRight:'3px solid white' }} 
+                            style={{ marginBottom: '5%', backgroundColor:'#D6300F', border:'1px solid #D6300F' }} 
                             variant="secondary"
                             onClick={clickHandler}                            
                         >Accept</Button>
@@ -56,15 +56,16 @@ return (
                             className='decline' 
                             variant="secondary"
                             onClick={clickHandler}
+                            style={{ marginLeft: '1px', backgroundColor:'#D6300F', border:'1px solid #D6300F' }}
                         >Decline</Button>
-                    </ButtonGroup>
+                    </Container>
                 </Col>
             </Row>
         </Card.Body>
-        <Card.Footer>
+        {/* <Card.Footer>
             <Card.Text>{date}</Card.Text>
             <Card.Text>{time}</Card.Text>
-        </Card.Footer>
+        </Card.Footer> */}
     </Card>
 )
 }

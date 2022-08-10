@@ -16,7 +16,7 @@ return (
     <div style={{ display:'flex', flexDirection:'column', alignItems:'center'}}>
         <InputGroup style={{ margin:'2%', width:'90%', marginTop:'10%'}} className="mb-3">
         <InputGroup.Text style={{backgroundColor:'#D6300F', color:'white'}} id="basic-addon2">enter name</InputGroup.Text>
-            <Form.Control style={{border:'1px solid #D6300F', backgroundColor:'#F7EEE6'}} onChange={e => {
+            <Form.Control style={{border:'1px solid #D6300F'}} onChange={e => {
                     setSearchCharacters(e.target.value
                         )}
                     } type={true} placeholder="Liked restaurants" aria-label="Recipient's username" aria-describedby="basic-addon2"/>
@@ -31,7 +31,7 @@ return (
                 }).map(restaurant => <RestaurantCard key={restaurant._id} restaurant={restaurant}/> )}
                 </div>
                 <div style={{display:'flex' }}>
-                    <a style={{ margin:'0 auto', textAlign:'center', color:'#D6300F', textDecoration:'none', border:'1px solid #D6300F', borderRadius:'10px', padding:'3px', backgroundColor:'#F7EEE6'}} href=''>Browse Restaurants</a>
+                    <a style={{ margin:'0 auto', textAlign:'center', color:'#D6300F', textDecoration:'none', border:'1px solid #D6300F', borderRadius:'10px', padding:'3px'}} href=''>Browse Restaurants</a>
                 </div>
         
     </div>

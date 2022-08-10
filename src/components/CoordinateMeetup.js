@@ -36,12 +36,12 @@ const CoordinateMeetup = ( {profileExample} ) => {
 
 
 return (
-    <Card style={{ width: '100%', height:'100%', display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center'}}>
+    <Card style={{ width: '100%', height:'100%', display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center', border:'1px solid #D6300F'}}>
         <Card.Body>
-            <Card.Title>Coordinate Meet 'n Eat with friends</Card.Title>
+            <Card.Title style={{textAlign:'center'}}>Coordinate Meet 'n Eat with friends</Card.Title>
             <div style={{ display:'flex', flexDirection:'row', justifyContent:'space-between', width:'105%', alignItems:'self-end'}}>
                 <Dropdown  onSelect={handleSelect}>
-                    <Dropdown.Toggle  style={{ width:'100%' }}  variant="secondary" id="dropdown-basic">
+                    <Dropdown.Toggle  style={{ width:'100%', border:'1px solid #D6300F', backgroundColor:'white', color:'black' }}  variant="secondary" id="dropdown-basic">
                         {value}
                     </Dropdown.Toggle>
                     <Dropdown.Menu >
@@ -49,7 +49,7 @@ return (
                     </Dropdown.Menu>
                     </Dropdown>
                     <Dropdown onSelect={handleRestaurant} style={{ marginTop:'5%'}}>
-                    <Dropdown.Toggle style={{ width:'100%' }} variant="secondary" id="dropdown-basic">
+                    <Dropdown.Toggle style={{ width:'100%', border:'1px solid #D6300F', backgroundColor:'white', color:'black' }} variant="secondary" id="dropdown-basic">
                         { therestaurant }
                     </Dropdown.Toggle>
                     <Dropdown.Menu>
@@ -57,10 +57,10 @@ return (
                         <Dropdown.Item></Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>
-            <input onChange={handleDate} type='date'></input>
-            <input onChange={handleHour} type='time' ></input>
+            <input style={{padding:'1%', borderRadius:'5px', border:"1px solid #D6300F"}} onChange={handleDate} type='date'></input>
+            <input style={{padding:'1%', borderRadius:'5px', border:"1px solid #D6300F"}} onChange={handleHour} type='time' ></input>
             </div>
-            <Button style={{ width:'100%', marginTop:'5%' }} variant="success" id="button-addon2"> Invite </Button>
+            <Button style={{ width:'100%', marginTop:'5%', backgroundColor:'#D6300F', border:'none' }} id="button-addon2"> Invite </Button>
         </Card.Body>
     </Card>
 )

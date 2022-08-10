@@ -104,35 +104,38 @@ const ProfileSettings = () => {
         return null
     }
     return (
-        <Container>
-            <Card className="fluid px-4 py-4">
+        <Container style={{ marginTop: '18vh', border: '1px solid #EB3510', boxShadow:'2px 5px 26px -9px rgba(0,0,0,0.75)', borderRadius:'10px'}}>
+            <Card style={{border: 'none'}} className="fluid px-4 py-4">
                 <Row>
-                    <Col>
+                    <Col style={{textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', borderRight: '1px solid #EB3510' }}>
                         <Image 
                         src={userSettings.profileimg} 
                         alt="profile-image"
                         width={200}
-                        height={200}></Image>
-                        <button>Change Profile Picture</button>
-                        <h3>{user.username}</h3>
-                        <Form>
+                        height={200}
+                        style={{border: '1px solid #EB3510', margin: '1rem', borderRadius: '5px'}}></Image>
+                        <Button variant="danger" style={{backgroundColor:'#EB3510', borderColor: '#D6300F'}}>Change Profile Picture</Button>
+                        <h3 style={{marginTop:'1rem'}}>{user.username}</h3>
+                        <Form> 
                             <Form.Label>About me</Form.Label>
-                            <Form.Control 
+                            <Form.Control  
                             className="about"
                             type="about-me" 
                             placeholder="Write your About Me here for others to see"
-                            onChange={inputChange}
+                            onChange={inputChange}  
                             value={userSettings.about}
+                            style={{width: '105%'}}
                             />
-                            <button 
+                            <Button variant="danger" 
                             type="submit"
                             id="save-changes"
                             onClick={onSubmit}
-                            >Save Changes</button>
+                            style={{marginTop: '1rem',backgroundColor:'#EB3510', borderColor: '#D6300F'}}
+                            >Save Changes</Button>
                         </Form>
                     </Col>
-                    <Col>
-                        <Form>
+                    <Col style={{textAlign: 'left', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+                        <Form style={{paddingLeft: '4rem'}}>
                             <Row>
                                 <Form.Label>Location</Form.Label>
                                 <Form.Control 
@@ -141,44 +144,51 @@ const ProfileSettings = () => {
                                 placeholder="eg. Los Angeles, California"
                                 onChange={inputChange}
                                 value={userSettings.location}
+                                style={{border: '1px solid #EB3510', width: '70%'}}
                                 />
-                                <button 
+                                <Button variant="danger"
                                 type="submit"
                                 id="save-changes"
                                 onClick={onSubmit}
-                                >Save Changes</button>
-                                <Form.Label>Display Name</Form.Label>
+                                style={{width: 'auto', marginLeft:'2rem', backgroundColor:'#EB3510', borderColor: '#D6300F'}}
+                                >Save</Button>
+                                <Form.Label style={{marginTop:'2rem'}}>Display Name</Form.Label>
                                 <Form.Control 
-                                className="displayname"
-                                type="display-name" 
+                                className="displayname" 
+                                type="display-name"
                                 placeholder="Change Display Name"
                                 onChange={inputChange}
                                 value={userSettings.displayname}
+                                style={{border: '1px solid #EB3510', width: '70%'}}
                                 />
-                                <button 
+                                <Button variant="danger"
                                 type="submit"
                                 id="save-changes"
                                 onClick={onSubmit}
-                                >Save Changes</button>
+                                style={{width: 'auto', marginLeft:'2rem', backgroundColor:'#EB3510', borderColor: '#D6300F'}}
+                                >Save</Button>
                                 <Form.Text className="text-muted">This will be the name other users see when they view your profile.</Form.Text>
                             </Row>
                             <Row>
-                                <Form.Label>Email</Form.Label>
+                                <Form.Label style={{marginTop:'2rem'}}>Email</Form.Label>
                                 <Form.Control 
                                 className="email"
                                 type="email-address" 
                                 placeholder="Change your email address"
                                 onChange={inputChange}
                                 value={userSettings.email}
+                                style={{border: '1px solid #EB3510', width: '70%'}}
                                 />
-                                <button 
+                                <Button variant="danger"
                                 type="submit"
                                 id="save-changes"
                                 onClick={onSubmit}
-                                >Save Changes</button>
+                                style={{width: 'auto', marginLeft:'2rem', backgroundColor:'#EB3510', borderColor: '#D6300F'}}
+
+                                >Save</Button>
                             </Row>
                         </Form>
-                                <button onClick={handleShow}>Edit Liked Restaurants</button>
+                                <Button variant="danger" style={{width: 'auto', marginLeft:'2rem', backgroundColor:'#EB3510', borderColor: '#D6300F', marginTop:'5rem'}} onClick={handleShow}>Edit Liked Restaurants</Button>
                                 <Modal 
                                 show={modalShow}
                                 onHide={handleShow}
@@ -186,6 +196,7 @@ const ProfileSettings = () => {
                                 size="md"
                                 aria-labelledby="likedrestaurants-modal"
                                 centered
+                                
                                 >
                                     <Modal.Header closeButton>
                                         <Modal.Title id="likedrestaurants-modal">

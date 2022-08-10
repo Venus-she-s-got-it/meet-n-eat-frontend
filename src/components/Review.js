@@ -14,8 +14,8 @@ const [review, setReview] = useState(null)
 
 return (
     <ListGroup horizontal>
-        <ListGroup.Item>User123</ListGroup.Item>
-        <ListGroup.Item>"Food is on point! Service is incredible... What more could a girl ask for?"</ListGroup.Item>
+        <ListGroup.Item style={{borderRightColor:'#D6300F'}}>User123</ListGroup.Item>
+        <ListGroup.Item style={{ borderRightColor:'#D6300F' }}>"Food is on point! Service is incredible... What more could a girl ask for?"</ListGroup.Item>
         {/* dateObj would go here instead */}
         <ListGroup.Item>8/5/2022 4:03PM</ListGroup.Item>
     </ListGroup>

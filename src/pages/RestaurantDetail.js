@@ -12,7 +12,7 @@ const RestaurantDetail = () => {
 
     // State hooks and variable declarations
     // ===========================================================================
-    const { url } = useContext(UrlContext)
+    const { url, colorTemplate } = useContext(UrlContext)
     const [resDetails, setResDetails] = useState(null)
     const { restaurantId } = useParams()
 
@@ -42,9 +42,9 @@ const address = `${resDetails.location.address1}, ${resDetails.location.city}, $
     
 return (
     <Container>
-    <Card className="border-dark fluid px-2 py-2">
+    <Card style={{padding:'1%', borderColor:`${colorTemplate.darkColor}`, boxShadow:'-1px 3px 11px 0px rgba(0,0,0,0.75)'}}>
         <Row>
-            <Col>
+            <Col style={{ display:'flex', flexDirection:'column', alignItems:'center'}}>
                 <RestaurantCard restaurant={resDetails} />
                 <p>{address}</p>
             </Col>
@@ -52,18 +52,24 @@ return (
         <Row>
             <Col>
                 <Row>
-                    <Col>
+                    <div style={{ display:'flex', justifyContent:'center', marginTop:'2%' }}>
                         <h4>Reviews</h4>
+                    </div>
+                    <Col>
                     </Col>
                     <Col>
+                    </Col>
+                </Row>
+                <Reviews />
+                <div style={{ display:'flex', justifyContent:'center', marginTop:'2%' }}>
                     <button 
+                    style={{backgroundColor:'white', borderRadius:'10px', borderColor:`${colorTemplate.darkColor}`, color:`${colorTemplate.darkColor}`}}
                     type="submit"
                     onClick={submitHandler}
                     >Write a Review
                     </button>
-                    </Col>
-                </Row>
-                <Reviews />
+
+                </div>
             </Col>
         </Row>
     </Card>

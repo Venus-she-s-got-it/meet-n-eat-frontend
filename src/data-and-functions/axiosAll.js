@@ -1,31 +1,44 @@
 import axios from "axios"
 
-export function axiosAll(method, path, authToken, dispatch, body) {
+export async function axiosAll(method, path, authToken, dispatch, body) {
    const headers = { headers: { Authorization: `Bearer ${authToken}`}}
+   let res
    switch(method) {
       case 'GET':
-         axios.get(`http://localhost:8000${path}`, headers)
-            .then(res => {
+         res = await axios.get(`http://localhost:8000${path}`, headers)
                dispatch({
-                  key: response,
-                  value: res
+                  key: 'response',
+                  value: res.data
                })
-            })
+               console.log(res.data)
          break
       
       case 'PUT':
-         axios.put(`http://localhost:8000${path}`,body, headers)
+         res = axios.put(`http://localhost:8000${path}`,body, headers)
          break
 
       case 'POST':
-         axios.post(`http://localhost:8000${path}`,body, headers)
+         res = axios.post(`http://localhost:8000${path}`,body, headers)
+         dispatch && dispatch({ key: 'response', value: res.data })
          break
 
       case 'DELETE':
-         axios.delete(`http://localhost:8000${path}`, headers)
+         res = axios.delete(`http://localhost:8000${path}`, headers)
          break
 
       default:
          break
+   }
+}
+
+export function axiosReducer (state, object) {
+   switch(object.key) {
+      case 'response':
+         return {...state, response: object.value}
+      
+      case 'searchString':
+         return {...state, searchString: object.value}
+      default:
+         return state
    }
 }

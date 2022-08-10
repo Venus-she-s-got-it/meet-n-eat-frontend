@@ -5,7 +5,7 @@ import { UrlContext } from '../App'
 import RestaurantCard from '../components/RestaurantCard'
 import Reviews from '../components/Reviews'
 import ReviewForm from '../components/ReviewForm'
-import { Card, Container, Col, Row, } from 'react-bootstrap'
+import { Card, Container, Col, Row, Modal } from 'react-bootstrap'
 
 // /restaurants/:restaurantId
 const RestaurantDetail = () => {
@@ -15,6 +15,7 @@ const RestaurantDetail = () => {
     const { url, colorTemplate } = useContext(UrlContext)
     const [resDetails, setResDetails] = useState(null)
     const { restaurantId } = useParams()
+    const [reviewModalShow, setReviewModalShow] = useState(false)
 
     // Getting restaurant data by restaurantId
     // ===========================================================================
@@ -32,10 +33,13 @@ const RestaurantDetail = () => {
             }) 
         }, [])
 
-    // Event Handler for submitting review
+    /// Event Handlers
+    // ===========================================================================
     function submitHandler() {
         <Navigate to={<ReviewForm />}/>
+        setReviewModalShow(!reviewModalShow)
     }
+
  // conditional rendering & once resDetails is rendered, address variable declaration   
 if (resDetails) {
 const address = `${resDetails.location.address1}, ${resDetails.location.city}, ${resDetails.location.state}` 
@@ -68,8 +72,17 @@ return (
                     onClick={submitHandler}
                     >Write a Review
                     </button>
-
                 </div>
+                <Modal
+                show={reviewModalShow}
+                onHide={submitHandler}
+                size="md"
+                aria-labelledby="reviewform-modal"
+                centered
+                >
+                    <Modal.Header closeButton>
+                    </Modal.Header>
+                </Modal>
             </Col>
         </Row>
     </Card>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Nav } from 'react-bootstrap';
+import { Col, Row, Nav, Tab, TabIndicatorProps} from 'react-bootstrap';
 import { useState } from 'react';
 import PersonalInfo from '../components/PersonalInfo';
 import Troubleshooting from '../components/Troubleshooting';
@@ -14,36 +14,53 @@ const FAQ = () => {
     <div>
       <div 
         style={{
-        border: '1px solid black',
+        border: '1px solid #D6300F',
         margin: '0 auto',
         marginTop: '5%',
         width: '50%',
-        height: '70vh',
+        height: 'auto',
+        padding: '1rem',
+        borderRadius: '10px',
+        boxShadow:'2px 5px 26px -9px rgba(0,0,0,0.75)',
         }}>
         
-        <Nav style={{ width: '100%', border: '1px solid black' }} variant='pills' defaultActiveKey='/faq'>
-
+        <Tab.Container id="left-tabs-example" defaultActiveKey="first">
+      <Row>
+        <Col sm={3} >
+          <Nav variant="pills" className="flex-column" >
             <Nav.Item>
-                <Nav.Link href="/faq" onClick={() => setActiveElement('personalinfo')}>Personal Info</Nav.Link>
+              <Nav.Link style={{color: 'white', border: '1px solid black', backgroundColor: '#eb350f', margin: '0.2rem',}} eventKey="first">Troubleshooting</Nav.Link>
             </Nav.Item>
-
             <Nav.Item>
-                <Nav.Link eventKey='link-1' onClick={() => setActiveElement('troubleshooting')}>Troubleshooting</Nav.Link>
+              <Nav.Link style={{color: 'white', border: '1px solid black', backgroundColor: '#eb350f', margin: '0.2rem'}} eventKey="second">User Interactions</Nav.Link>
             </Nav.Item>
-
             <Nav.Item>
-                <Nav.Link eventKey="link-2" onClick={() => setActiveElement('searchQuestions')}>Search Questions</Nav.Link>
+              <Nav.Link style={{color: 'white', border: '1px solid black', backgroundColor: '#eb350f', margin: '0.2rem'}} eventKey="third">Search Questions</Nav.Link>
             </Nav.Item>
-
             <Nav.Item>
-                <Nav.Link eventKey="link-3" onClick={() => setActiveElement('userInteractions')}>User Interactions</Nav.Link>
+              <Nav.Link style={{color: 'white', border: '1px solid black', backgroundColor: '#eb350f', margin: '0.2rem'}} eventKey="fourth">Personal Info</Nav.Link>
             </Nav.Item>
-        </Nav>
+          </Nav>
+        </Col>
+        <Col sm={9}>
+          <Tab.Content style={{marginTop: '2rem'}}>
+            <Tab.Pane eventKey="first">
+              <Troubleshooting />
+            </Tab.Pane>
+            <Tab.Pane eventKey="second">
+              <UserInteractions />
+            </Tab.Pane>
+            <Tab.Pane eventKey="third">
+              <SearchQuestions />
+            </Tab.Pane>
+            <Tab.Pane eventKey="fourth">
+              <PersonalInfo />
+            </Tab.Pane>
+          </Tab.Content>
+        </Col>
+      </Row>
+    </Tab.Container>
 
-        {activeElement === 'personalinfo' && <PersonalInfo />}
-        {activeElement === 'troubleshooting' && <Troubleshooting />}
-        {activeElement === 'searchQuestions' && <SearchQuestions />}
-        {activeElement === 'userInteractions' && <UserInteractions />}
 
       </div>
     </div>

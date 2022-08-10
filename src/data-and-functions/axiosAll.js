@@ -7,7 +7,7 @@ export function axiosAll(method, path, authToken, dispatch, body) {
          axios.get(`http://localhost:8000${path}`, headers)
             .then(res => {
                dispatch({
-                  key: response,
+                  key: 'response',
                   value: res
                })
             })
@@ -27,5 +27,17 @@ export function axiosAll(method, path, authToken, dispatch, body) {
 
       default:
          break
+   }
+}
+
+export function axiosReducer (state, object) {
+   switch(object.key) {
+      case 'response':
+         return {...state, response: object.value}
+      
+      case 'searchString':
+         return {...state, searchString: object.value}
+      default:
+         return state
    }
 }

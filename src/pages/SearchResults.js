@@ -1,24 +1,36 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useReducer, useState } from 'react';
 import { useParams, useSearchParams } from 'react-router-dom';
 import axios from 'axios';
 import { UrlContext } from '../App';
 import RestaurantCard from '../components/RestaurantCard'
 import Search from '../components/Search'
 import { Container } from 'react-bootstrap'
-// import { set } from 'mongoose';
+import { axiosReducer } from '../data-and-functions/axiosAll';
+import { buildSearchParams } from '../data-and-functions/searchParams';
 
 
 const SearchResults = () => {
     const { url } = useContext(UrlContext)
     const { searchString } = useParams()
     const [ searchParams ] = useSearchParams()
-    const [restaurantsData, setRestaurantsData] = useState(null) 
+    const [restaurantsData, dispatch] = useReducer(axiosReducer, { response: null, searchString: '' })
     // const [likedRestaurants, setLikedRestaurants] = useState()
     // const [usersLikes, setUsersLikes] = useState()
-    for(const entry of searchParams.entries()) {
-        const [param, value] = entry
-        console.log("- param, value", param, value)
-    }
+    useEffect(() => {
+        let params = [], values = []
+        for(const entry of searchParams.entries()) {
+            const [param, value] = entry
+            params.push(param)
+            values.push(value)
+            console.log('params, values', params, values)
+            // Push param and value into restaurantsData.searchString on each pass
+        }
+        dispatch({
+            key: 'searchString',
+            value: buildSearchParams(params, values)
+        })
+        console.log(restaurantsData)
+    },[])
 
     // useEffect(() => {
     //     axios.get(`${url}/restaurants/`)
@@ -59,9 +71,7 @@ const SearchResults = () => {
                     <Search />
                 </Container>
                 <Container style={{ display:'flex', flexDirection:'row', flexWrap:'wrap', width:'100%', alignItems:'center', justifyContent:'center'}}>
-                {restaurantsData.map(restaurantData => <RestaurantCard restaurant={restaurantData} key={restaurantData._id}/>)
-                }
-
+                    {/* {restaurantsData.map(restaurantData => <RestaurantCard restaurant={restaurantData} key={restaurantData._id}/>)} */}
                 </Container>
             </Container>
         )

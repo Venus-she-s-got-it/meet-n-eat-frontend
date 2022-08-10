@@ -5,7 +5,7 @@ import { HiMail, HiCog } from 'react-icons/hi'
 import { CgProfile } from 'react-icons/cg'
 
 const NavBar = () => {
-const [sessionId, setSessionId] = useState(true)
+const [sessionId, setSessionId] = useState(null)
 const [option, setOption] = useState('')
 const navigate = useNavigate()
 
@@ -45,7 +45,7 @@ return (
                             <NavLink to='/profile' style={{color: '#EB3510'}}><CgProfile size={40}/></NavLink>
                             : (
 
-                                <NavDropdown className="nav-dropdown d-inline-block" title={<CgProfile size={40}/>}>
+                                <NavDropdown className="nav-dropdown d-inline-block" title={<CgProfile style={{color:'#D6300F'}} size={40}/>}>
                                     {['Log In', 'Sign Up'].map((text, index) => <NavDropdown.Item onClick={userAuthClick} key={index}>{text}</NavDropdown.Item>)}
                                 </NavDropdown> 
                             )

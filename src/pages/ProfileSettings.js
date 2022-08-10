@@ -1,5 +1,5 @@
 import React, { useReducer, useEffect, useContext, useState } from 'react'
-import { UrlContext } from '../App'
+import { Context } from '../App'
 import axios from 'axios'
 import { userSettingsReducer } from '../data-and-functions/userSettingsReducer'
 import { Container, Card, Form, Row, Col, Image, Modal, Button, ListGroup } from 'react-bootstrap'
@@ -10,7 +10,7 @@ import ImageUploading from 'react-images-uploading'
 const ProfileSettings = () => {
 // state hooks and variable declaration
 //===========================================================================
-    const { url, defaultImage }  = useContext(UrlContext)
+    const { defaultImage }  = useContext(Context)
     // Initial State for userSettings
     const initialState = {
         profileimg: `${defaultImage}`,
@@ -29,45 +29,45 @@ const ProfileSettings = () => {
 
 // Getting user data
 // ===========================================================================
-    useEffect(() => {
-        axios.get(`${url}/users/62ed53ae80c5c665832c887d`)
-        // axios.get(`${url}/restaurants/${searchString}`)
-            .then((res, err) => { 
-                if (res.status === 404) {
-                    console.log(err)
-                } else if(res.status === 200 || res.status === 204 || res.status === 201) {
-                    return res.data
-                }
-            })
-            .then((data) => {
-                setUser(data)
-                dispatch({
-                    key: 'about',
-                    value: data.about
-                })
-                dispatch({
-                    key: 'username',
-                    value: data.username
-                })
-                dispatch({
-                    key: 'profileimg',
-                    value: data.profileimg
-                })
-                dispatch({
-                    key: 'location',
-                    value: data.location
-                })
-                dispatch({
-                    key: 'displayname',
-                    value: data.displayname
-                })
-                dispatch({
-                    key: 'email',
-                    value: data.email
-                })
-                console.log(data)
-            })
-        }, [])
+    // useEffect(() => {
+    //     axios.get(`${url}/users/62ed53ae80c5c665832c887d`)
+    //     // axios.get(`${url}/restaurants/${searchString}`)
+    //         .then((res, err) => { 
+    //             if (res.status === 404) {
+    //                 console.log(err)
+    //             } else if(res.status === 200 || res.status === 204 || res.status === 201) {
+    //                 return res.data
+    //             }
+    //         })
+    //         .then((data) => {
+    //             setUser(data)
+    //             dispatch({
+    //                 key: 'about',
+    //                 value: data.about
+    //             })
+    //             dispatch({
+    //                 key: 'username',
+    //                 value: data.username
+    //             })
+    //             dispatch({
+    //                 key: 'profileimg',
+    //                 value: data.profileimg
+    //             })
+    //             dispatch({
+    //                 key: 'location',
+    //                 value: data.location
+    //             })
+    //             dispatch({
+    //                 key: 'displayname',
+    //                 value: data.displayname
+    //             })
+    //             dispatch({
+    //                 key: 'email',
+    //                 value: data.email
+    //             })
+    //             console.log(data)
+    //         })
+    //     }, [])
  
 
 // Event Handler Functions
@@ -82,11 +82,11 @@ const ProfileSettings = () => {
     }
     function onSubmit(e) {
         e.preventDefault()
-        axios.put(`${url}/users/62ed53ae80c5c665832c887d`, { [updateKey]: userSettings[updateKey] })
-        dispatch({
-            key: updateKey,
-            value: ''
-        })
+        // axios.put(`${url}/users/62ed53ae80c5c665832c887d`, { [updateKey]: userSettings[updateKey] })
+        // dispatch({
+        //     key: updateKey,
+        //     value: ''
+        // })
     }
     function handleShow() {
         setModalShow(!modalShow)

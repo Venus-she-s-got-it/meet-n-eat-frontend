@@ -1,7 +1,6 @@
 import axios from 'axios'
-import React, { useContext, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react'
-import { UrlContext } from '../App'
 import LikedRestaurant from '../components/LikedRestaurants'
 import Friends from '../components/Friends'
 import CoordinateMeetup from '../components/CoordinateMeetup'
@@ -9,7 +8,6 @@ import ProfileCard from '../components/ProfileCard'
 import Itinerary from '../components/Itinerary'
 
 const MyProfile = () => {
-const { url } = useContext(UrlContext)
 const [profile, setProfile] = useState(null)
 
 const profileExample = require('../data-and-functions/userexample.json')
@@ -17,10 +15,10 @@ const profileExample = require('../data-and-functions/userexample.json')
 
 useEffect(() => {
 
-    axios.get(`${url}/users/62ed53ae80c5c665832c887d`) //Temporary ID just to test out page
-    .then((res) => {
-        setProfile(res.data)
-    })
+    // axios.get(`${url}/users/62ed53ae80c5c665832c887d`) //Temporary ID just to test out page
+    // .then((res) => {
+    //     setProfile(res.data)
+    // })
 },[])
 
 

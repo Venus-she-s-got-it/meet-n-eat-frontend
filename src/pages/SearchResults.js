@@ -1,7 +1,5 @@
 import React, { useContext, useEffect, useReducer, useState } from 'react';
 import { useParams, useSearchParams } from 'react-router-dom';
-import axios from 'axios';
-import { UrlContext } from '../App';
 import RestaurantCard from '../components/RestaurantCard'
 import Search from '../components/Search'
 import { Container } from 'react-bootstrap'
@@ -10,7 +8,6 @@ import { buildSearchParams } from '../data-and-functions/searchParams';
 
 
 const SearchResults = () => {
-    const { url } = useContext(UrlContext)
     const { searchString } = useParams()
     const [ searchParams ] = useSearchParams()
     const [restaurantsData, dispatch] = useReducer(axiosReducer, { response: '', searchString: '' })

@@ -1,9 +1,7 @@
 import axios from 'axios'
-import { useContext, useState } from 'react'
+import { useState } from 'react'
 import { Button, Container, Dropdown, Form } from 'react-bootstrap'
-import DropdownItem from 'react-bootstrap/esm/DropdownItem'
 import { useNavigate } from 'react-router-dom'
-import { UrlContext } from '../App'
 
 const ReviewForm = ({ restaurantId }) => {
     const initialState = {
@@ -11,7 +9,6 @@ const ReviewForm = ({ restaurantId }) => {
         body: ''
     }
     const [reviewState, setReviewState] = useState(initialState)
-    const { url } = useContext(UrlContext)
     const navigate = useNavigate()
     const starMenu = ['None', '1', '2', '3', '4', '5']
 
@@ -27,11 +24,11 @@ const ReviewForm = ({ restaurantId }) => {
 
     function reviewSubmit(e) {
         e.preventDefault()
-        reviewState.stars !== '' && axios.put(`${url}/restaurants/${restaurantId}`, reviewState)
-            .then(() => {
-                setReviewState(initialState)
-                navigate(`/restaurants/${restaurantId}`)
-            })
+        // reviewState.stars !== '' && axios.put(`${url}/restaurants/${restaurantId}`, reviewState)
+        //     .then(() => {
+        //         setReviewState(initialState)
+        //         navigate(`/restaurants/${restaurantId}`)
+        //     })
     }
 
 return (

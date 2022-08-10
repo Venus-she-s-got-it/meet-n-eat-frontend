@@ -1,14 +1,14 @@
 import axios from "axios"
 import { useContext, useEffect, useState } from "react"
-import { Container, Card, ButtonGroup, Button, Row, Col } from "react-bootstrap"
-import { UrlContext } from "../App"
+import { Card, ButtonGroup, Button, Row, Col } from "react-bootstrap"
+import { Context } from "../App"
 import { formatDateTime } from "../data-and-functions/formatDateTime"
 
 
 const FriendRequest = ({ request, noImage }) => {
     const [choice, setChoice] = useState('')
     const [date, time] = formatDateTime(request.createdAt)
-    const { url, defaultImage } = useContext(UrlContext)
+    const { defaultImage } = useContext(Context)
 
 
     function clickHandler(e) {
@@ -18,13 +18,13 @@ const FriendRequest = ({ request, noImage }) => {
     useEffect(() => {
         switch(choice) {
             case 'accept':
-                axios.put(`${url}/users/${request.recipient._id}`, { newFriend: request.sender_id, removeRequest: request._id})
-                setChoice('')
+                // axios.put(`${url}/users/${request.recipient._id}`, { newFriend: request.sender_id, removeRequest: request._id})
+                // setChoice('')
                 break
 
             case 'decline':
-                axios.put(`${url}/users/${request.recipient._id}`, { removeRequest: request._id})
-                setChoice('')
+                // axios.put(`${url}/users/${request.recipient._id}`, { removeRequest: request._id})
+                // setChoice('')
                 break
 
             default:

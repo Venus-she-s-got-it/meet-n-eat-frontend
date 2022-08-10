@@ -14,16 +14,19 @@ export async function axiosAll(method, path, authToken, dispatch, body) {
          break
       
       case 'PUT':
-         res = axios.put(`http://localhost:8000${path}`,body, headers)
+         res = await axios.put(`http://localhost:8000${path}`,body, headers)
          break
 
       case 'POST':
-         res = axios.post(`http://localhost:8000${path}`,body, headers)
-         dispatch && dispatch({ key: 'response', value: res.data })
+         res = await axios.post(`http://localhost:8000${path}`,body, headers)
+         !authToken ? dispatch(res.data.token)
+               : dispatch({ key: 'response', value: res.data.token })
+
+         
          break
 
       case 'DELETE':
-         res = axios.delete(`http://localhost:8000${path}`, headers)
+         res = await axios.delete(`http://localhost:8000${path}`, headers)
          break
 
       default:
@@ -38,6 +41,13 @@ export function axiosReducer (state, object) {
       
       case 'searchString':
          return {...state, searchString: object.value}
+
+      case 'username':
+         return {...state, username: object.value}
+
+      case 'password':
+         return {...state, password: object.value}
+
       default:
          return state
    }

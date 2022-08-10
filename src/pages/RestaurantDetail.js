@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useParams, Navigate } from 'react-router-dom'
 import axios from 'axios'
-import { UrlContext } from '../App'
+import { Context } from '../App'
 import RestaurantCard from '../components/RestaurantCard'
 import Reviews from '../components/Reviews'
 import ReviewForm from '../components/ReviewForm'
@@ -12,25 +12,25 @@ const RestaurantDetail = () => {
 
     // State hooks and variable declarations
     // ===========================================================================
-    const { url, colorTemplate } = useContext(UrlContext)
+    const { colorTemplate } = useContext(Context)
     const [resDetails, setResDetails] = useState(null)
     const { restaurantId } = useParams()
 
     // Getting restaurant data by restaurantId
     // ===========================================================================
-    useEffect(() => {
-        axios.get(`${url}/restaurants/${restaurantId}`)
-            .then((res, err) => { 
-                if (res.status === 404) {
-                    console.log(err)
-                } else if(res.status === 200 || res.status === 304) {
-                    return res.data
-                }
-            })
-            .then((data) => {
-                setResDetails(data)
-            }) 
-        }, [])
+    // useEffect(() => {
+    //     axios.get(`${url}/restaurants/${restaurantId}`)
+    //         .then((res, err) => { 
+    //             if (res.status === 404) {
+    //                 console.log(err)
+    //             } else if(res.status === 200 || res.status === 304) {
+    //                 return res.data
+    //             }
+    //         })
+    //         .then((data) => {
+    //             setResDetails(data)
+    //         }) 
+    //     }, [])
 
     // Event Handler for submitting review
     function submitHandler() {

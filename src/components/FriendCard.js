@@ -1,9 +1,9 @@
 import { useContext } from 'react';
 import { Card, Row, Col } from 'react-bootstrap';
-import { UrlContext } from '../App';
+import { Context } from '../App';
 
 const FriendCard = ({ friend }) => {
-  const { defaultImage } = useContext(UrlContext);
+  const { defaultImage } = useContext(Context);
 
   return (
     <Card

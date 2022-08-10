@@ -10,6 +10,7 @@ export async function axiosAll(method, path, authToken, dispatch, body) {
                   key: 'response',
                   value: res.data
                })
+               console.log(res.data)
          break
       
       case 'PUT':

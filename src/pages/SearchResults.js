@@ -13,7 +13,7 @@ const SearchResults = () => {
     const { url } = useContext(UrlContext)
     const { searchString } = useParams()
     const [ searchParams ] = useSearchParams()
-    const [restaurantsData, dispatch] = useReducer(axiosReducer, { response: null, searchString: '' })
+    const [restaurantsData, dispatch] = useReducer(axiosReducer, { response: '', searchString: '' })
     const authToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZjJmNWMzMzgxNjY4NzhkYzVkNTUxZSIsImlhdCI6MTY2MDE1MDY1MSwiZXhwIjoxNjYwMjM3MDUxfQ.FT76SgYlECDCuBaQyR5w0SavnDRSJacDdTDnHXFz-vs'
     // const [likedRestaurants, setLikedRestaurants] = useState()
     // const [usersLikes, setUsersLikes] = useState()
@@ -38,8 +38,8 @@ const SearchResults = () => {
         axiosAll('GET', `/restaurants/results/${searchString}${restaurantsData.searchString}`, authToken, dispatch)
     },[restaurantsData.searchString])
 
-
-    if (typeof restaurantsData.response !== 'object') {
+    // console.log('type', typeof restaurantsData.response)
+    if (typeof restaurantsData.response === 'string') {
         return <h1>Loading restaurants...</h1>
     } else {
         return (

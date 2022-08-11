@@ -7,23 +7,30 @@ import MyProfile from './pages/MyProfile';
 import NavBar from './components/NavBar';
 import RestaurantDetail from './pages/RestaurantDetail';
 import SearchResults from './pages/SearchResults';
-import { createContext } from 'react';
+import { createContext, useReducer, useState } from 'react';
 import ProfileSettings from './pages/ProfileSettings';
+import { axiosReducer } from './data-and-functions/axiosAll';
 
-export const UrlContext = createContext()
-
-// Context variables
-const url = 'http://localhost:8000'
-const defaultImage = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'
+export const Context = createContext()
 
 function App() {
+  // Context variables
+  const [loggedInUser, dispatchUser] = useReducer(axiosReducer, { username: '' })
+  const defaultImage = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'
+  const colorTemplate = {
+    darkColor: '#D6300F',
+    mediumColor: '#F7EEE6',
+    lightColor: '#F0704E'
+    
+  }
+  
   return (
     <div className="App">
+        <Context.Provider value={{'loggedInUser': loggedInUser, 'dispatchUser': dispatchUser, 'defaultImage': defaultImage, 'colorTemplate': colorTemplate}}>
       <header>
         <NavBar />
       </header>
       <main>
-        <UrlContext.Provider value={{'url': url, 'defaultImage': defaultImage}}>
           <Routes>
             <Route path="*" element={<Navigate to="/home" />} />
             <Route path="/home" element={<Home />} />
@@ -35,8 +42,8 @@ function App() {
             <Route path="/message-center" element={<MessageCenter />} />
             <Route path="/faq" element={<FAQ />} />
           </Routes>
-        </UrlContext.Provider>
       </main>
+        </Context.Provider>
     
     </div>
   );

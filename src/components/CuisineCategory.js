@@ -13,14 +13,16 @@ return (
             to={`/results/${category.toLowerCase()}`}
         >
             <div className="d-flex align-items-center justify-content-center"
-                style={{ 
+                style={{
+                    borderRadius:'10px',
+                    border:'1px solid #D6300F',
                     backgroundImage: `url("https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=800")`,
                     height: '200px',
                     width: '200px',
                     fontWeight: "bold",
                     fontSize: '28px',
                     backgroundSize: 'cover',
-                    color: 'black'
+                    color: 'black',
                 }}
             >
                 {category}

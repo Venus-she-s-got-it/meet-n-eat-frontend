@@ -1,69 +1,73 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { useParams, Navigate } from 'react-router-dom'
-import axios from 'axios'
-import { UrlContext } from '../App'
+import React, { useContext, useEffect, useReducer, useState } from 'react'
+import { useParams } from 'react-router-dom'
+import { Context } from '../App'
 import RestaurantCard from '../components/RestaurantCard'
 import Reviews from '../components/Reviews'
 import ReviewForm from '../components/ReviewForm'
-import { Card, Container, Col, Row, } from 'react-bootstrap'
+import { Card, Container, Col, Row, Modal } from 'react-bootstrap'
+import { axiosAll, axiosReducer } from '../data-and-functions/axiosAll'
 
-// /restaurants/:restaurantId
+
 const RestaurantDetail = () => {
-
     // State hooks and variable declarations
     // ===========================================================================
-    const { url } = useContext(UrlContext)
-    const [resDetails, setResDetails] = useState(null)
+    const [resDetails, dispatch] = useReducer(axiosReducer, { response: null })
+    const { colorTemplate, loggedInUser } = useContext(Context)
     const { restaurantId } = useParams()
-
+    const [modalShow, setModalShow] = useState(false)
+    
     // Getting restaurant data by restaurantId
     // ===========================================================================
     useEffect(() => {
-        axios.get(`${url}/restaurants/${restaurantId}`)
-            .then((res, err) => { 
-                if (res.status === 404) {
-                    console.log(err)
-                } else if(res.status === 200 || res.status === 304) {
-                    return res.data
-                }
-            })
-            .then((data) => {
-                setResDetails(data)
-            }) 
+        axiosAll('GET', `/restaurants/${restaurantId}`, loggedInUser.token, dispatch)
         }, [])
-
-    // Event Handler for submitting review
-    function submitHandler() {
-        <Navigate to={<ReviewForm />}/>
+    // Event Handler
+    async function handleShow() {
+        setModalShow(!modalShow) 
     }
+
  // conditional rendering & once resDetails is rendered, address variable declaration   
-if (resDetails) {
-const address = `${resDetails.location.address1}, ${resDetails.location.city}, ${resDetails.location.state}` 
+if (resDetails.response) {
+const address = `${resDetails.response.location.address1}, ${resDetails.response.location.city}, ${resDetails.response.location.state}` 
     
 return (
     <Container>
-    <Card className="border-dark fluid px-2 py-2">
+    <Card style={{padding:'1%', borderColor:`${colorTemplate.darkColor}`, boxShadow:'-1px 3px 11px 0px rgba(0,0,0,0.75)'}}>
         <Row>
-            <Col>
-                <RestaurantCard restaurant={resDetails} />
+            <Col style={{ display:'flex', flexDirection:'column', alignItems:'center'}}>
+                <RestaurantCard restaurant={resDetails.response} />
                 <p>{address}</p>
             </Col>
         </Row>
         <Row>
             <Col>
                 <Row>
-                    <Col>
+                    <div style={{ display:'flex', justifyContent:'center', marginTop:'2%' }}>
                         <h4>Reviews</h4>
+                    </div>
+                    <Col>
                     </Col>
                     <Col>
-                    <button 
-                    type="submit"
-                    onClick={submitHandler}
-                    >Write a Review
-                    </button>
                     </Col>
                 </Row>
-                <Reviews />
+                <Reviews restaurantId={resDetails.response._id} />
+                <div style={{ display:'flex', justifyContent:'center', marginTop:'2%' }}>
+                    <button 
+                    style={{backgroundColor:'white', borderRadius:'10px', borderColor:`${colorTemplate.darkColor}`, color:`${colorTemplate.darkColor}`}}
+                    type="submit"
+                    onClick={handleShow}
+                    >Write a Review
+                    </button>
+                    <Modal 
+                        show={modalShow}
+                        onHide={handleShow}
+                        size="md"
+                        aria-labelledby="likedrestaurants-modal"
+                        centered
+                    > 
+                    <ReviewForm restaurantId={resDetails.response._id} handleShow={handleShow} />
+                </Modal>
+                </div>
             </Col>
         </Row>
     </Card>

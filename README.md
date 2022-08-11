@@ -1,70 +1,49 @@
-# Getting Started with Create React App
+# Meet 'N Eat
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Ever found the perfect restaurant, but had no one to go with? Ever wanted to meet someone based on your love of food? Meet 'n Eat is an app that helps match people who have common tastes! The platform allows users to add friends and send DMs, as well as schedule and track meetups from their profile page. On top of that users can browse available restaurants and get information such as average user rating, general price point, and more.
 
-## Available Scripts
+## Getting Started
 
-In the project directory, you can run:
+Fork and clone the front and backend repositories from this link: [Front & Backend](https://github.com/Venus-she-s-got-it)
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Installing
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Run 'npm i' in your terminal after installing
 
-### `npm test`
+```
+npm i
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
 
-### `npm run build`
+## User Stories
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+These are a handful of the user stories we came up with:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+ - As a User, I want to be able to make a profile in order to store details about myself																
+ - As a User, I want to be able to view other users who are interested in the restaurants that I like so that I can invite them to check it out				
+ - As a User, I want to be able to view details about other users in their profile so that I can make better decisions about who to meet up with																
+ - As a User, I want to be able to save a list of restaurants that I like so that I can keep track of them																
+ - As a User, I want to see relevant details of restaurants such as ratings, prices, type of food on the menu, business hours, etc so that I can decide which ones I like																
+ - As a User, I would like the ability to leave reviews for restaurants that I've been to in order to help the community with feedback																
+ - As a User, I want to be able to search restaurants by location so that I can make decisions which restaurants to visit based on travel time																
+ - As a User, I want to be able to search restaurants by certain attributes, such as genre, price, etc to help me narrow down the choices																
+ - As a User, I want to be able to search by multiple attributes at once so that I don't have to search separately for each	
+ - As a User, I want to be able to schedule meetups and invite other users to them from my profile in order to keep track of who I'm meeting, when I'm meeting them, and where we're going		
+- As a User, I want to be able to send friend request to other people to keep track of the people I want to meet with
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+## Built With
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+* [React.js](https://reactjs.org/)
+* [React Bootstrap](https://react-bootstrap.github.io/)
+* [Mongoose](https://mongoosejs.com/)
+* [MongoDB](https://www.mongodb.com/)
+* [Express](https://expressjs.com/) - Dependency Management
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Authors
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+* **Andrew Rethorford** - [GitHub](https://github.com/andrewretherford)
+* **Aimee Misaki** - [GitHub](https://github.com/aimeemisaki)
+* **David Sandoval** - [GitHub](https://github.com/DavidJoao)
+* **Hans Watkins** - [GitHub](https://github.com/hanswatkins)

@@ -1,64 +1,48 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useReducer, useState } from 'react';
 import { useParams, useSearchParams } from 'react-router-dom';
-import axios from 'axios';
-import { UrlContext } from '../App';
 import RestaurantCard from '../components/RestaurantCard'
 import Search from '../components/Search'
 import { Container } from 'react-bootstrap'
-// import { set } from 'mongoose';
+import { axiosAll, axiosReducer } from '../data-and-functions/axiosAll';
+import { buildSearchParams } from '../data-and-functions/searchParams';
+import { Context } from '../App';
 
 
 const SearchResults = () => {
-    const { url } = useContext(UrlContext)
     const { searchString } = useParams()
     const [ searchParams ] = useSearchParams()
-    const [restaurantsData, setRestaurantsData] = useState(null) 
-    // const [likedRestaurants, setLikedRestaurants] = useState()
-    // const [usersLikes, setUsersLikes] = useState()
-    searchParams.forEach((entry) => console.log(entry))
+    const [restaurantsData, dispatch] = useReducer(axiosReducer, { response: '', searchString: '' })
+    const { loggedInUser } = useContext(Context)
 
     useEffect(() => {
-        axios.get(`${url}/restaurants/`)
-        // axios.get(`${url}/restaurants/${searchString}`)
-            .then((res, err) => { 
-                if (res.status === 404) {
-                    console.log(err)
-                } else if(res.status === 200 || res.status === 304) {
-                    return res.data
-                }
-            })
-            .then((data) => {
-                setRestaurantsData(data)
-            }) 
-        }, [])
+        let params = [], values = []
+        for(const entry of searchParams.entries()) {
+            // Pull out the paramater and value on each pass
+            const [param, value] = entry
+            // Push param and value into arrays on each pass
+            params.push(param)
+            values.push(value)
+        }
+        axiosAll('GET', `/restaurants/results/${searchString}${buildSearchParams(params, values)}`, loggedInUser.token, dispatch)
+        console.log('axios call ran')
+    },[])
+    console.log()
 
-        // to update users likedrestaurants onClick
-        // useEffect(() => {
-        // // const likes = { likedrestaurants: {...likedrestaurants, }}
-        // axios.put(`${url}/users/:id`)
-        //     .then((res, err) => {
-        //         if (res.status === 404) {
-        //             console.log(err)
-        //         } else if (res.status === 200 || res.status === 304) {
-        //             return res.data
-        //         }
-        //     })
-        //     .then((data) => {
-        //         setLikedRestaurants()
-        //     })
-        // }, [])
-    if (!restaurantsData) {
+    // console.log('type', typeof restaurantsData.response)
+    if (typeof restaurantsData.response === 'string') {
         return <h1>Loading restaurants...</h1>
-    }
+    } else {
         return (
             <Container>
                 <Container>
                     <Search />
                 </Container>
-                {restaurantsData.map(restaurantData => <RestaurantCard restaurant={restaurantData} key={restaurantData._id}/>)
-                }
+                <Container style={{ display:'flex', flexDirection:'row', flexWrap:'wrap', width:'100%', alignItems:'center', justifyContent:'center'}}>
+                    {restaurantsData.response.map(restaurantData => <RestaurantCard restaurant={restaurantData} key={restaurantData._id}/>)}
+                </Container>
             </Container>
         )
+    }
 }
 
 export default SearchResults

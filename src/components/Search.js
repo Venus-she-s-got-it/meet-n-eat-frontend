@@ -1,7 +1,7 @@
 import { useReducer, useState } from "react"
 import { Button, ButtonGroup, Col, Container,  Form, Row } from "react-bootstrap"
 import { useNavigate } from "react-router-dom"
-import { getSearchString } from "../data-and-functions/getSearchString"
+import { getSearchParams } from "../data-and-functions/searchParams"
 import { searchCriteriaReducer } from "../data-and-functions/searchCriteriaReducer"
 import SearchFilters from "./SearchFilters"
 
@@ -12,7 +12,7 @@ const Search = () => {
         searchString: '',
         city: '',
         category: '',
-        priceRange: '',
+        price: '',
         wheelchairAccessible: '',
         openLate: ''
     }
@@ -22,7 +22,6 @@ const Search = () => {
     const [searchCriteria, dispatch] = useReducer(searchCriteriaReducer, initialState)
     const [showFilters, setShowFilters] = useState(false)
     const navigate = useNavigate()
-    const searchString = getSearchString(searchCriteria)
     
     // Event handlers
     // ===========================================================================
@@ -34,6 +33,7 @@ const Search = () => {
 
     function formSubmit(e) {
         e.preventDefault()
+        const searchString = getSearchParams(searchCriteria)
         searchCriteria && navigate(searchString)
     }
     
@@ -42,12 +42,13 @@ const Search = () => {
     }
 
     return (
-        <Container>
-            <Form onSubmit={formSubmit}>
-                <Form.Group controlId='searchInput'>
+        <Container style={{}}>
+            <Form style={{marginBottom:'2%'}} onSubmit={formSubmit}>
+                <Form.Group style={{width:'100%', display:'flex', flexDirection:'row', justifyContent:'center'}} controlId='searchInput'>
                     <Row className='d-flex justify-content-end'>
-                        <Col className='gx-1'>
+                        <Col className='gx-5'>
                             <Form.Control
+                                style={{ width:'200%', border:'1px solid #D6300F', backgroundColor:'white'}}
                                 type='text'
                                 placeholder='find restaurants'
                                 onChange={inputChange}
@@ -57,14 +58,14 @@ const Search = () => {
                         <Col>
                             <ButtonGroup>
                                 <Button
-                                    variant='secondary'
+                                    style={{backgroundColor:'#D6300F', border:'1px solid #D6300F'}}
                                     type='submit'
-                                >Search</Button>
+                                >search</Button>
                                 <Button
-                                    variant='secondary'
+                                    style={{backgroundColor:'#D6300F', border:'1px solid #D6300F', borderLeft:'2px solid white'}}
                                     type='button'
                                     onClick={filterClick}
-                                >Filters</Button>
+                                >filters</Button>
                             </ButtonGroup>
                         </Col>
                     </Row>

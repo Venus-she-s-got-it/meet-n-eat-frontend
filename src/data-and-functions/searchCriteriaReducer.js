@@ -9,8 +9,8 @@ export function searchCriteriaReducer(state, object) {
       case 'category':
          return {...state, category: object.value}
 
-      case 'priceRange':
-         return {...state, priceRange: object.value}
+      case 'price':
+         return {...state, price: object.value}
 
       case 'wheelchairAccessible':
          return {...state, wheelchairAccessible: object.value}

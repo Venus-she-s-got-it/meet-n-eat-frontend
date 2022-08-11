@@ -1,213 +1,207 @@
 import React, { useReducer, useEffect, useContext, useState } from 'react'
-import { UrlContext } from '../App'
+import { Context } from '../App'
 import axios from 'axios'
-import { userSettingsReducer } from '../data-and-functions/userSettingsReducer'
 import { Container, Card, Form, Row, Col, Image, Modal, Button, ListGroup } from 'react-bootstrap'
 import { BsFillTrashFill } from "react-icons/bs"
+import { axiosAll, axiosReducer } from '../data-and-functions/axiosAll'
 
 
 const ProfileSettings = () => {
 // state hooks and variable declaration
 //===========================================================================
-    const { url, defaultImage }  = useContext(UrlContext)
+    const { defaultImage, loggedInUser }  = useContext(Context)
     // Initial State for userSettings
     const initialState = {
-        profileimg: `${defaultImage}`,
+        profileimg: '',
         about: '',
         location: '',
         displayname: '',
         email: '',
         likedrestaurants: ''
     }
-    const [userSettings, dispatch] = useReducer(userSettingsReducer, initialState)
-    const [updateKey, setUpdateKey] = useState('')
-    const [user, setUser] = useState()
+    const [userData, dispatch] = useReducer(axiosReducer, initialState)
+    const [reload, setReload] = useState(true)
     const [modalShow, setModalShow] = useState(false)
+    // const [image, setImage] = useState()
+    const maxNum = 1
+
+    useEffect(() => {
+        userData.response &&dispatch({
+            key: 'loadProfile',
+            value: {
+                profileimg: userData.response.profileimg,
+                about: userData.response.about,
+                location: userData.response.location,
+                displayname: userData.response.displayname,
+                email: userData.response.email,
+                likedrestaurants: userData.response.likedrestaurants
+            }
+        })
+    },[userData.response])
+
 
 // Getting user data
 // ===========================================================================
-    useEffect(() => {
-        axios.get(`${url}/users/62ed53ae80c5c665832c887d`)
-        // axios.get(`${url}/restaurants/${searchString}`)
-            .then((res, err) => { 
-                if (res.status === 404) {
-                    console.log(err)
-                } else if(res.status === 200 || res.status === 204 || res.status === 201) {
-                    return res.data
-                }
-            })
-            .then((data) => {
-                setUser(data)
-                dispatch({
-                    key: 'about',
-                    value: data.about
-                })
-                dispatch({
-                    key: 'username',
-                    value: data.username
-                })
-                dispatch({
-                    key: 'profileimg',
-                    value: data.profileimg
-                })
-                dispatch({
-                    key: 'location',
-                    value: data.location
-                })
-                dispatch({
-                    key: 'displayname',
-                    value: data.displayname
-                })
-                dispatch({
-                    key: 'email',
-                    value: data.email
-                })
-                console.log(data)
-            })
-        }, [])
- 
+
+    useEffect(()=> {
+        axiosAll('GET', `/users/username/${loggedInUser.username}`, loggedInUser.token, dispatch)
+    },[reload])
+
+    function onDelete(e) {
+        e.preventDefault()
+        axiosAll('DELETE', `/users/${userData.response._id}/likedrestaurants/${e.target.classList[0]}`, loggedInUser.token)
+        console.log('iz deleted')
+        const likedrestaurants = userData.likedrestaurants
+        console.log("- likedrestaurants", likedrestaurants)
+        likedrestaurants.map(restaurant => {
+            if(restaurant._id === e.target.classList[0]) {
+                return
+            } else {
+                return restaurant
+            }
+        })
+    }
 
 // Event Handler Functions
-// ===========================================================================
+//===========================================================================
     function inputChange(e) {
-        setUpdateKey(e.target.classList[0])
         dispatch({
             key: e.target.classList[0],
             value: e.target.value
         })
-        console.log(userSettings[updateKey])
     }
+
     function onSubmit(e) {
         e.preventDefault()
-        axios.put(`${url}/users/62ed53ae80c5c665832c887d`, { [updateKey]: userSettings[updateKey] })
-        dispatch({
-            key: updateKey,
-            value: ''
-        })
+        console.log(userData)
+        axiosAll('PUT', `/users/${userData.response._id}`, loggedInUser.token, dispatch, userData)
     }
+    
     function handleShow() {
         setModalShow(!modalShow)
     }
+    // function uploadHandler(imageList) {
+    //     setImage(imageList)
+    //   }
 
-    // have to make a route in db that access likedrestaurants and deletes by restaurant id
-    // function onDelete(e) {
-    //     e.preventDefault()
-    //     axios.delete(`${url}/users/62ed53ae80c5c665832c887d/`)
-    // }
+    console.log(userData.likedrestaurants)
+    console.log(userData)
 
-    // eventhandler for modal
     
 // Conditional Rendering
-    if (!user) { 
-        return null
-    } else if (!userSettings) {
-        return null
-    }
+    if (userData)
     return (
-        <Container>
-            <Card className="fluid px-4 py-4">
-                <Row>
-                    <Col>
-                        <Image 
-                        src={userSettings.profileimg} 
-                        alt="profile-image"
-                        width={200}
-                        height={200}></Image>
-                        <button>Change Profile Picture</button>
-                        <h3>{user.username}</h3>
-                        <Form>
-                            <Form.Label>About me</Form.Label>
+        <Container style={{ marginTop: '18vh', border: '1px solid #EB3510', boxShadow:'2px 5px 26px -9px rgba(0,0,0,0.75)', borderRadius:'10px'}}>
+        <Card style={{border: 'none'}} className="fluid px-4 py-4">
+            <Row>
+                <Col style={{textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', borderRight: '1px solid #EB3510' }}>
+                            
+                <Image 
+                    className="profileimg"
+                    src={userData.profileimg || defaultImage} 
+                    alt="profile-image"
+                    width={200}
+                    height={200}
+                    style={{border: '1px solid #EB3510', margin: '1rem', borderRadius: '5px'}}></Image>
+                    <Form.Control className="profileimg"
+                        type="profile-image" 
+                        placeholder="paste a picture URL here"
+                        onChange={inputChange}  
+                        value={userData.profileimg}
+                        style={{width: '105%'}}
+                    />
+                    <Form.Text className="text-muted">only JPG and PNG files supported.</Form.Text>
+                    <h3 style={{marginTop:'1rem'}}>{userData.username}</h3>
+                    <Form> 
+                        <Form.Label>about me</Form.Label>
+                        <Form.Control  
+                        className="about"
+                        as="textarea" 
+                        rows={3}
+                        type="about-me" 
+                        placeholder="write your about me here for others to see"
+                        onChange={inputChange}  
+                        value={userData.about}
+                        style={{width: '105%'}}
+                        />
+                        <Form.Text className="text-muted d-block mt-3">maximum length: 500 characters</Form.Text>
+                        <Button variant="danger" 
+                        type="submit"
+                        id="save-changes"
+                        onClick={onSubmit}
+                        style={{marginTop: '1rem',backgroundColor:'#EB3510', borderColor: '#D6300F'}}
+                        >save changes</Button>
+                    </Form>
+                </Col>
+                <Col style={{textAlign: 'left', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+                    <Form style={{paddingLeft: '4rem'}}>
+                        <Row>
+                            <Form.Label>location</Form.Label>
                             <Form.Control 
-                            className="about"
-                            type="about-me" 
-                            placeholder="Write your About Me here for others to see"
+                            className="location"
+                            type="location" 
+                            placeholder="eg. los angeles, california"
                             onChange={inputChange}
-                            value={userSettings.about}
+                            value={userData.location}
+                            style={{border: '1px solid #EB3510', width: '70%'}}
                             />
-                            <button 
-                            type="submit"
-                            id="save-changes"
-                            onClick={onSubmit}
-                            >Save Changes</button>
-                        </Form>
-                    </Col>
-                    <Col>
-                        <Form>
-                            <Row>
-                                <Form.Label>Location</Form.Label>
-                                <Form.Control 
-                                className="location"
-                                type="location" 
-                                placeholder="eg. Los Angeles, California"
-                                onChange={inputChange}
-                                value={userSettings.location}
-                                />
-                                <button 
-                                type="submit"
-                                id="save-changes"
-                                onClick={onSubmit}
-                                >Save Changes</button>
-                                <Form.Label>Display Name</Form.Label>
-                                <Form.Control 
-                                className="displayname"
-                                type="display-name" 
-                                placeholder="Change Display Name"
-                                onChange={inputChange}
-                                value={userSettings.displayname}
-                                />
-                                <button 
-                                type="submit"
-                                id="save-changes"
-                                onClick={onSubmit}
-                                >Save Changes</button>
-                                <Form.Text className="text-muted">This will be the name other users see when they view your profile.</Form.Text>
-                            </Row>
-                            <Row>
-                                <Form.Label>Email</Form.Label>
-                                <Form.Control 
-                                className="email"
-                                type="email-address" 
-                                placeholder="Change your email address"
-                                onChange={inputChange}
-                                value={userSettings.email}
-                                />
-                                <button 
-                                type="submit"
-                                id="save-changes"
-                                onClick={onSubmit}
-                                >Save Changes</button>
-                            </Row>
-                        </Form>
-                                <button onClick={handleShow}>Edit Liked Restaurants</button>
-                                <Modal 
+                            <Form.Label style={{marginTop:'2rem'}}>display name</Form.Label>
+                            <Form.Control 
+                            className="displayname" 
+                            type="display-name"
+                            placeholder="change display name"
+                            onChange={inputChange}
+                            value={userData.displayname}
+                            style={{border: '1px solid #EB3510', width: '70%'}}
+                            />
+                            <Form.Text className="text-muted">this will be the name other users see when they view your profile.</Form.Text>
+                        </Row>
+                        <Row>
+                            <Form.Label style={{marginTop:'2rem'}}>email</Form.Label>
+                            <Form.Control 
+                            className="email"
+                            type="email-address" 
+                            placeholder="Change your email address"
+                            onChange={inputChange}
+                            value={userData.email}
+                            style={{border: '1px solid #EB3510', width: '70%'}}
+                            />
+                        </Row>
+                    </Form>
+                            <Button variant="danger" style={{width: 'auto', marginLeft:'2rem', backgroundColor:'#EB3510', borderColor: '#D6300F', marginTop:'5rem'}} onClick={handleShow}>edit liked restaurants</Button>
+                            <Modal 
                                 show={modalShow}
                                 onHide={handleShow}
                                 animation={false}
                                 size="md"
                                 aria-labelledby="likedrestaurants-modal"
                                 centered
-                                >
-                                    <Modal.Header closeButton>
-                                        <Modal.Title id="likedrestaurants-modal">
-                                            Liked Restaurants
-                                        </Modal.Title>
-                                    </Modal.Header>
-                                    <Modal.Body>
-                                        <ListGroup>
-                                            {user.likedrestaurants.map(likedrestaurant => (
+                            >
+                                <Modal.Header closeButton>
+                                    <Modal.Title id="likedrestaurants-modal">
+                                        liked restaurants
+                                    </Modal.Title>
+                                </Modal.Header>
+                                <Modal.Body>
+                                    <ListGroup>
+                                        {userData.likedrestaurants && userData.likedrestaurants.map(likedrestaurant => (
+                                            <div>
                                                 <ListGroup.Item>{likedrestaurant.name}</ListGroup.Item>
-                                            ))}
-                                            <BsFillTrashFill 
-                                            className="likedrestaurants"
-                                            type="delete-likedrestaurant"
-                                            onClick/>
-                                        </ListGroup>
-                                    </Modal.Body>
-                                </Modal>
-                    </Col>
-                </Row>
-            </Card>
-        </Container>
+                                                <BsFillTrashFill 
+                                                    className={likedrestaurant._id}
+                                                    type="delete-likedrestaurant"
+                                                    onClick={onDelete}
+                                                />
+                                            </div>
+                                        ))}
+                                        
+                                    </ListGroup>
+                                </Modal.Body>
+                            </Modal>
+                </Col>
+            </Row>
+        </Card>
+    </Container>
     )
 }
 

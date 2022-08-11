@@ -1,23 +1,25 @@
-import React, { useEffect, useState } from 'react'
-import {  Card, ListGroup } from 'react-bootstrap'
+import React, { useContext, useEffect, useReducer, useState } from 'react'
+import { Container, ListGroup } from 'react-bootstrap'
+import { Context } from '../App'
+import { axiosAll, axiosReducer } from '../data-and-functions/axiosAll'
+import { formatDateTime } from '../data-and-functions/formatDateTime'
 
-const Review = () => {
-const [review, setReview] = useState(null)
-// const dateObj = new Date(message.createdAt)
-// const date = dateObj.toLocaleDateString()
-// const time = dateObj.toLocaleTimeString("en", { timeStyle: 'short' })
+const Review = ({ review }) => {
+    const [reviewer, dispatch] = useReducer(axiosReducer, { response: null })
+    const { loggedInUser } = useContext(Context)
+    const [date, time] = formatDateTime(review.createdAt)
 
-// get reviews from restaurant id once we update controllers
-// useEffect(() => {
-//     axios.get()
-// }, [])
+    useEffect(() => {
+        axiosAll('GET', `/users/${review.reviewer}`, loggedInUser.token, dispatch)
+    },[])
+    console.log(reviewer)
 
+if(!reviewer.response) return <Container>Loading...</Container>
 return (
-    <ListGroup horizontal>
-        <ListGroup.Item>User123</ListGroup.Item>
-        <ListGroup.Item>"Food is on point! Service is incredible... What more could a girl ask for?"</ListGroup.Item>
-        {/* dateObj would go here instead */}
-        <ListGroup.Item>8/5/2022 4:03PM</ListGroup.Item>
+    <ListGroup style={{border:'1px solid #D6300F'}} horizontal>
+        <ListGroup.Item style={{borderRightColor:'#D6300F', width:'20%'}}>{reviewer.response.displayname}</ListGroup.Item>
+        <ListGroup.Item style={{ borderRightColor:'#D6300F', width:'60%' }}>{review.body}</ListGroup.Item>
+        <ListGroup.Item>{`${date} ${time}`}</ListGroup.Item>
     </ListGroup>
             
 )

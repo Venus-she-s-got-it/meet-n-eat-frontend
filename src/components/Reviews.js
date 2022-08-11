@@ -1,26 +1,35 @@
 
-import React, { useEffect, useState } from 'react'
-import {  Card, ListGroup } from 'react-bootstrap'
+import React, { useContext, useEffect, useReducer } from 'react'
+import {  Card, Container } from 'react-bootstrap'
+import { useParams } from 'react-router-dom'
+import { Context } from '../App'
+import { axiosAll, axiosReducer } from '../data-and-functions/axiosAll'
 import Review from './Review'
 
 
-const Reviews = () => {
+const Reviews = ({ restaurantId }) => {
     // State hooks and variable declarations
     // ===========================================================================
-    const [reviews, setReviews] = useState(null)
-    // const dateObj = new Date(message.createdAt)
-    // const date = dateObj.toLocaleDateString()
-    // const time = dateObj.toLocaleTimeString("en", { timeStyle: 'short' })
-    
-    // get reviews from restaurant id once we update controllers
-    // useEffect(() => {
-    //     axios.get()
-    // }, [])
+    const [reviews, dispatch] = useReducer(axiosReducer, { response: null })
+    const { loggedInUser } = useContext(Context)
+    console.log(restaurantId)
+    useEffect(() => {
+        axiosAll('GET', `/restaurants/${restaurantId}/reviews`, loggedInUser.token, dispatch)
+    }, [])
+
+    console.log(reviews.response)
+if(!reviews.response) {
+    return <Container>Loading...</Container>
+}
 return (
-    <Card>
-        {/* map over Review here */}
-        <Review />
-    </Card>
+    <div style={{  display:'flex', justifyContent:'center', marginTop:'2%'}}>
+
+        <Card style={{width:'50%', borderColor:'#D6300F'}}>
+            <Card.Body>
+                {reviews.response.reviews && reviews.response.reviews.map(review => <Review review={review} key={review._id} />)}
+            </Card.Body>
+        </Card>
+    </div>
 )
 }
 

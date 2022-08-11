@@ -33,18 +33,18 @@ const FriendRequest = ({ request, noImage }) => {
     }, [choice])
 
 return (
-    
+   
     <Card className='d-flex flex-row justify-content-center align-items-center' style={{ width: '90%', padding:'1%', marginTop: '1rem'}}>
-        <div style={{ backgroundColor:'white', width:'30%', textAlign: 'center', border: '1px solid #eb350f', borderRadius: '6px', boxShadow: '1px 1px 7px -2px rgba(0,0,0,0.75)' }} >
+        <div style={{ width:'30%', textAlign: 'center', border: '1px solid #eb350f', borderRadius: '6px', boxShadow: '1px 1px 7px -2px rgba(0,0,0,0.75)' }} >
 
-            <div>
+        
                 <Card.Img style={{ width:'100%', borderBottom: '1px solid #eb350f', padding: '0.5rem', borderRadius: '0px' }}  src={request.sender.profileimg || defaultImage} />
-            </div>
+            
 
             <Card.Text >{request && request.sender.displayname}</Card.Text>
         </div>
         
-        <Card.Body>
+        <Card.Body className='friend-card'>
             <Row>
                 <Col>
                     <Card.Text style={{ marginLeft: '1rem', width: '100%'}}>{request.message}</Card.Text>

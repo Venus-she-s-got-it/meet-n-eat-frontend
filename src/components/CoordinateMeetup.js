@@ -39,7 +39,7 @@ return (
     <Card style={{ width: '100%', height:'100%', display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center', border:'1px solid #D6300F'}}>
         <Card.Body>
             <Card.Title style={{textAlign:'center'}}>Coordinate Meet 'n Eat with friends</Card.Title>
-            <div style={{ display:'flex', flexDirection:'row', justifyContent:'space-between', width:'105%', alignItems:'self-end'}}>
+            <div style={{ display:'flex', flexDirection:'row', justifyContent:'space-between', width:'105%', alignItems:'self-end'}} className="input-group justify-content-between">
                 <Dropdown  onSelect={handleSelect}>
                     <Dropdown.Toggle  style={{ width:'100%', border:'1px solid #D6300F', backgroundColor:'white', color:'black' }}  variant="secondary" id="dropdown-basic">
                         {value}

@@ -5,6 +5,7 @@ import { Card, ListGroup } from 'react-bootstrap'
 const ProfileCard = ( {username, location, profileimg, about} ) => {
 
 return (
+    
     <Card style={{ width: '90%', padding:'3%', border:'none'}}>
         <Card.Img style={{borderRadius:'50%', border:'1px solid #D6300F'}} variant="top" src={profileimg} />
         <Card.Body style={{display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center'}}>

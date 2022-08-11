@@ -32,7 +32,7 @@ return (
             </div>
             </Card.Body>
         </Card.Body>
-            <a style={{ margin:'0 auto', textAlign:'center', color:'#D6300F', textDecoration:'none', border:'1px solid #D6300F', borderRadius:'10px', padding:'3px'}} href=''>Browse Friends</a>
+            <a style={{ margin:'0 auto', textAlign:'center', color:'#D6300F', textDecoration:'none', border:'1px solid #D6300F', borderRadius:'10px', padding:'3px'}} href=''>browse friends</a>
     </Card>
 )
 }

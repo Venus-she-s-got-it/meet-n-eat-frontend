@@ -60,12 +60,12 @@ const Search = () => {
                                 <Button
                                     style={{backgroundColor:'#D6300F', border:'1px solid #D6300F'}}
                                     type='submit'
-                                >Search</Button>
+                                >search</Button>
                                 <Button
                                     style={{backgroundColor:'#D6300F', border:'1px solid #D6300F', borderLeft:'2px solid white'}}
                                     type='button'
                                     onClick={filterClick}
-                                >Filters</Button>
+                                >filters</Button>
                             </ButtonGroup>
                         </Col>
                     </Row>

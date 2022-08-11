@@ -2,7 +2,10 @@ import React from 'react'
 import MyProfile from '../pages/MyProfile'
 import { Card, ListGroup } from 'react-bootstrap'
 
-const ProfileCard = ( {username, location, profileimg, about} ) => {
+const ProfileCard = ( {profile} ) => {
+    const { username, about, profileimg, location } = profile
+    console.log(username, about, profileimg, location)
+    console.log(profile)
 
 return (
     

@@ -4,6 +4,7 @@ import { Context } from '../App'
 import axios from 'axios'
 import Message from '../components/Message'
 import FriendRequest from '../components/FriendRequest'
+import { axiosAll, axiosReducer } from '../data-and-functions/axiosAll'
 
 const dummyFriendRequest = [{
     _id: '62ed53ab80c7c665832e887a',

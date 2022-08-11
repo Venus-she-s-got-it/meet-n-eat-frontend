@@ -20,14 +20,11 @@ const RestaurantDetail = () => {
     // ===========================================================================
     useEffect(() => {
         axiosAll('GET', `/restaurants/${restaurantId}`, loggedInUser.token, dispatch)
-        console.log('axios call ran')
         }, [])
     // Event Handler
     async function handleShow() {
-        setModalShow(!modalShow)
-        console.log('axios call ran')
+        setModalShow(!modalShow) 
     }
-    console.log(resDetails.response)
 
  // conditional rendering & once resDetails is rendered, address variable declaration   
 if (resDetails.response) {

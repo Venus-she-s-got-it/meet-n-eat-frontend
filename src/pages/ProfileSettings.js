@@ -116,12 +116,15 @@ const ProfileSettings = () => {
                         <Form.Label>about me</Form.Label>
                         <Form.Control  
                         className="about"
+                        as="textarea" 
+                        rows={3}
                         type="about-me" 
                         placeholder="write your about me here for others to see"
                         onChange={inputChange}  
                         value={userData.about}
                         style={{width: '105%'}}
                         />
+                        <Form.Text className="text-muted d-block mt-3">maximum length: 500 characters</Form.Text>
                         <Button variant="danger" 
                         type="submit"
                         id="save-changes"

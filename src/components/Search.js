@@ -46,9 +46,9 @@ const Search = () => {
             <Form style={{marginBottom:'2%'}} onSubmit={formSubmit}>
                 <Form.Group style={{width:'100%', display:'flex', flexDirection:'row', justifyContent:'center'}} controlId='searchInput'>
                     <Row className='d-flex justify-content-end'>
-                        <Col className='gx-1'>
+                        <Col className='gx-5'>
                             <Form.Control
-                                style={{ width:'100%', border:'1px solid #D6300F', backgroundColor:'white'}}
+                                style={{ width:'200%', border:'1px solid #D6300F', backgroundColor:'white'}}
                                 type='text'
                                 placeholder='find restaurants'
                                 onChange={inputChange}

@@ -30,22 +30,22 @@ let restaurantlist = profile.likedrestaurants;
 console.log(profile)
 
 return (
-    <div style={{margin:'4%', height:'85vh', display:'flex', flexDirection:'row' }} className='my-profile'>
-        <div style={{ border:'1px solid #D6300F', boxShadow:'2px 5px 26px -9px rgba(0,0,0,0.75)', width:'30%', marginRight:'3%', display:'flex', justifyContent:'center', borderRadius:'10px' }} className='info-section'>
+    <div style={{margin:'4%', height:'85vh', display:'flex', flexDirection:'row' }} className='d-sm-flex d-md-flex d-lg-flex flex-sm-column flex-md-column flex-lg-row'>
+        <div style={{ border:'1px solid #D6300F', boxShadow:'2px 5px 26px -9px rgba(0,0,0,0.75)', width:'30%', marginRight:'3%', display:'flex', justifyContent:'center', borderRadius:'10px' }} className='container-lg mx-auto me-lg-2 mb-sm-3 mb-lg-0'>
             <ProfileCard username={profile && profile.username} location={profile && profile.location} profileimg={profile && profile.profileimg} about={profile && profile.about}/>
         </div>
-        <div style={{width:'45%', marginRight:'3%', display:'flex', flexWrap:'wrap', justifyContent:'space-between'}} className='middle-section'>
-            <div style={{ boxShadow:'2px 5px 26px -9px rgba(0,0,0,0.75)', height:'68%', width:'49%', borderRadius:'10px',overflow:'scroll', overflowX:'hidden', border:'1px solid #D6300F'}} className='restaurants-block'>
+        <div style={{width:'45%', marginRight:'3%', display:'flex', flexWrap:'wrap', justifyContent:'space-between'}} className='d-ms-flex d-md-flex f-lg-flex justify-content-sm-between mx-sm-auto mx-md-auto me-lg-2'>
+            <div style={{ boxShadow:'2px 5px 26px -9px rgba(0,0,0,0.75)', height:'68%', width:'49%', borderRadius:'10px',overflow:'scroll', overflowX:'hidden', border:'1px solid #D6300F'}} className=''>
                 <LikedRestaurant restaurantlist={restaurantlist} />
             </div>
             <div style={{ boxShadow:'2px 5px 26px -9px rgba(0,0,0,0.75)', height:'68%', width:'49%', borderRadius:'10px', overflow:'scroll', overflowX:'hidden', border:'1px solid #D6300F' }} className='friends-block'>
                 <Friends profileExample={profileExample} />             
             </div>
-            <div style={{ boxShadow:'2px 5px 26px -9px rgba(0,0,0,0.75)', height:'30%', width:'100%', marginTop:'2%', borderRadius:'10px'}} className='coordinate-block'>
+            <div style={{ boxShadow:'2px 5px 26px -9px rgba(0,0,0,0.75)', height:'30%', width:'100%', marginTop:'2%', borderRadius:'10px'}} className=''>
                 <CoordinateMeetup profileExample={profileExample}/>
             </div>
         </div>
-        <div style={{ boxShadow:'2px 5px 26px -9px rgba(0,0,0,0.75)', width:'25%', borderRadius:'10px', border:'1px solid #D6300F'}} className='itinerary-section'>
+        <div style={{ boxShadow:'2px 5px 26px -9px rgba(0,0,0,0.75)', width:'25%', borderRadius:'10px', border:'1px solid #D6300F'}} className='mx-sm-auto mx-md-auto'>
               <Itinerary />                      
         </div>
     </div>

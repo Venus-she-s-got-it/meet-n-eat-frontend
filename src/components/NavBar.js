@@ -1,11 +1,12 @@
-import { useEffect, useState } from "react"
-import { Col, Row, NavDropdown, Navbar, Container } from "react-bootstrap"
+import { useContext, useEffect, useState } from "react"
+import { NavDropdown, Navbar, Container } from "react-bootstrap"
 import { Link, NavLink, useNavigate } from "react-router-dom"
 import { HiMail, HiCog } from 'react-icons/hi'
 import { CgProfile } from 'react-icons/cg'
+import { Context } from "../App"
 
 const NavBar = () => {
-const [sessionId, setSessionId] = useState(null)
+const { loggedInUser } = useContext(Context)
 const [option, setOption] = useState('')
 const navigate = useNavigate()
 
@@ -40,7 +41,7 @@ return (
 
                         <NavLink to='/message-center' style={{color: '#EB3510'}}><HiMail size={40}/></NavLink>
 
-                        {sessionId ?
+                        {loggedInUser.token ?
 
                             <NavLink to='/profile' style={{color: '#EB3510'}}><CgProfile size={40}/></NavLink>
                             : (

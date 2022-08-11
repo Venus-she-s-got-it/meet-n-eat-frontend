@@ -5,11 +5,15 @@ import { Context } from '../App';
 import { axiosAll, axiosReducer } from '../data-and-functions/axiosAll';
 
 const LogIn = () => {
+  // State Hooks and Variables
+  // ===========================================================================
   const [loginInfo, dispatch] = useReducer(axiosReducer, { username: '', password: '' })
-  const { authToken, dispatchToken } = useContext(Context)
+  const { loggedInUser, dispatchUser } = useContext(Context)
   const navigate = useNavigate()
-  console.log(authToken)
-  // console.log(loginInfo)
+  console.log(loggedInUser)
+
+  // Functions
+  // ===========================================================================
   function changeHandler(e) {
     dispatch({
       key: e.target.classList[0],
@@ -19,13 +23,16 @@ const LogIn = () => {
 
   function submitHandler(e) {
     e.preventDefault()
-    axiosAll('POST', `/users/signin`, null, dispatchToken, loginInfo)
+    axiosAll('POST', `/users/signin`, null, dispatchUser, loginInfo)
   }
 
   useEffect(() => {
-    authToken && navigate('/home')
-  },[authToken])
+    dispatchUser({ key: 'username', value: loginInfo.username })
+    loggedInUser.token && navigate('/home')
+  },[loggedInUser.token])
 
+  // Return
+  // ===========================================================================
   return (
     <div>
       <div className='container'>

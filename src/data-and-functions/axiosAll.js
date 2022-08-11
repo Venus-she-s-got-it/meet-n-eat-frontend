@@ -1,7 +1,12 @@
 import axios from "axios"
 
 export async function axiosAll(method, path, authToken, dispatch, body) {
-   const headers = { headers: { Authorization: `Bearer ${authToken}`}}
+   const headers = { 
+      headers: { 
+         'Authorization': `Bearer ${authToken}`,
+      }
+   }
+
    let res
    switch(method) {
       case 'GET':
@@ -11,6 +16,7 @@ export async function axiosAll(method, path, authToken, dispatch, body) {
                   value: res.data
                })
                console.log(res.data)
+               console.log(path)
          break
       
       case 'PUT':
@@ -19,10 +25,8 @@ export async function axiosAll(method, path, authToken, dispatch, body) {
 
       case 'POST':
          res = await axios.post(`http://localhost:8000${path}`,body, headers)
-         !authToken ? dispatch(res.data.token)
-               : dispatch({ key: 'response', value: res.data.token })
-
-         
+         !authToken ? dispatch({ key: 'token', value: res.data.token})
+               : dispatch({ key: 'response', value: res.data })
          break
 
       case 'DELETE':
@@ -47,6 +51,44 @@ export function axiosReducer (state, object) {
 
       case 'password':
          return {...state, password: object.value}
+
+      case 'token':
+         return {...state, token: object.value}
+
+      case 'profileimg':
+         return {...state, profileimg: object.value}
+         
+      case 'location':
+         return {...state, location: object.value}
+
+      case 'displayname':
+         return {...state, displayname: object.value}
+
+      case 'email':
+         return {...state, email: object.value}
+         
+      case 'about':
+         return {...state, about: object.value}      
+      
+      case 'confirmPassword':
+         return {...state, confirmPassword: object.value}      
+      
+      case 'stars':
+         return {...state, stars: object.value}      
+      
+      case 'body':
+         return {...state, body: object.value}      
+      
+      case 'loadProfile':
+         return {
+            ...state, 
+            profileimg: object.value.profileimg,
+            about: object.value.about,
+            location: object.value.location,
+            displayname: object.value.displayname,
+            email: object.value.email,
+            likedrestaurants: object.value.likedrestaurants
+         }      
 
       default:
          return state

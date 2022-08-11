@@ -29,16 +29,16 @@ const FAQ = () => {
         <Col sm={3} >
           <Nav variant="pills" className="flex-column" >
             <Nav.Item>
-              <Nav.Link style={{color: 'white', border: '1px solid black', backgroundColor: '#eb350f', margin: '0.2rem',}} eventKey="first">Troubleshooting</Nav.Link>
+              <Nav.Link style={{color: 'white', border: '1px solid black', backgroundColor: '#eb350f', margin: '0.2rem',}} eventKey="first">troubleshooting</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link style={{color: 'white', border: '1px solid black', backgroundColor: '#eb350f', margin: '0.2rem'}} eventKey="second">User Interactions</Nav.Link>
+              <Nav.Link style={{color: 'white', border: '1px solid black', backgroundColor: '#eb350f', margin: '0.2rem'}} eventKey="second">user interactions</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link style={{color: 'white', border: '1px solid black', backgroundColor: '#eb350f', margin: '0.2rem'}} eventKey="third">Search Questions</Nav.Link>
+              <Nav.Link style={{color: 'white', border: '1px solid black', backgroundColor: '#eb350f', margin: '0.2rem'}} eventKey="third">search questions</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link style={{color: 'white', border: '1px solid black', backgroundColor: '#eb350f', margin: '0.2rem'}} eventKey="fourth">Personal Info</Nav.Link>
+              <Nav.Link style={{color: 'white', border: '1px solid black', backgroundColor: '#eb350f', margin: '0.2rem'}} eventKey="fourth">personal info</Nav.Link>
             </Nav.Item>
           </Nav>
         </Col>

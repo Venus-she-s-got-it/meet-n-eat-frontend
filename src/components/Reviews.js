@@ -24,7 +24,7 @@ if(!reviews.response) {
 return (
     <div style={{  display:'flex', justifyContent:'center', marginTop:'2%'}}>
 
-        <Card style={{width:'50%', borderColor:'#D6300F'}}>
+        <Card style={{width:'50%', borderColor:'white'}}>
             <Card.Body>
                 {reviews.response.reviews && reviews.response.reviews.map(review => <Review review={review} key={review._id} />)}
             </Card.Body>

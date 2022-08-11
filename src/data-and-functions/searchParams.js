@@ -8,7 +8,7 @@ export function getSearchParams(searchCriteria) {
    let searchString
    searchCriteria.searchString ?
       (searchString = '/results/' + searchCriteria.searchString.toLowerCase())
-      : (searchString = '/results/blank')
+      : (searchString = '/results/no-search-string')
    
    // Change keys for backend
    const updatedKeys = keyArray.map(key => {
@@ -35,6 +35,7 @@ export function getSearchParams(searchCriteria) {
 }
 
 export function buildSearchParams(paramArray, valueArray) {
+   if(!paramArray) return '?empty=empty'
    let searchParams = ''
    for(let i=0; i < paramArray.length; i++) {
          searchParams.includes('?') ?

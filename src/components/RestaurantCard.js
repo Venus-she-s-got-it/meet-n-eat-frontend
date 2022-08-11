@@ -1,17 +1,19 @@
-import React, { useContext, useState, useEffect} from 'react';
+import React, { useContext, useState, useEffect, useReducer} from 'react';
 import { Context } from '../App'
 import { Link } from 'react-router-dom'
-import Card from 'react-bootstrap/Card'
-import Container from 'react-bootstrap/Container'
-import Image from 'react-bootstrap/Image'
-import Col from 'react-bootstrap/Col'
-import {Row, ButtonGroup, ToggleButton} from 'react-bootstrap'
+import {Card, Button, Container, Image, Col, Row, ButtonGroup, ToggleButton} from 'react-bootstrap/'
+import { axiosReducer, axiosAll } from '../data-and-functions/axiosAll';
 
 
 const RestaurantCard = ({ restaurant }) => {
-    const { colorTemplate }  = useContext(Context)
-
+    const { colorTemplate, loggedInUser }  = useContext(Context)
+    const initialState = {
+        likedrestaurants: ''
+    }
+    const [buttonIcon, setButtonIcon] = useState('https://www.iconpacks.net/icons/1/free-heart-icon-492-thumb.png')
     const [categories, setCategories] = useState()
+    const [usersLikedRestaurant, dispatch] = useReducer(axiosReducer, initialState)
+    const [currentUser, dispatchUser] = useReducer(axiosReducer, { response: null })
     const { name, image_url, display_phone, price  } = restaurant
     const city = restaurant.location.city
     const state = restaurant.location.state
@@ -21,21 +23,29 @@ const RestaurantCard = ({ restaurant }) => {
     }
     useEffect(() => {
         setCategories(categoriesArr)
+        axiosAll('GET', `/users/username/${loggedInUser.username}`, loggedInUser.token, dispatchUser)
     }, [])
+    function likeHandler() {
+        axiosAll('POST', `/users/${currentUser.response._id}/likedrestaurants/${restaurant._id}`, loggedInUser.token, dispatch, usersLikedRestaurant);
+        setButtonIcon('https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Heart_coraz%C3%B3n.svg/1200px-Heart_coraz%C3%B3n.svg.png')
+    }
+    
     
     if (categories) {
         return (
-            <Card style={{marginBottom:'5%', fontSize:'70%', display:'flex', flexWrap:'wrap', justifyContent:'center', alignItems:'center', width:'40%', border:`1px solid ${colorTemplate.darkColor}`, margin:'1%', boxShadow:'-1px 3px 11px 0px rgba(0,0,0,0.75)'}} className="fluid">
+            <Card style={{marginBottom:'5%', fontSize:'70%', display:'flex', flexWrap:'wrap', justifyContent:'center', alignItems:'center', width:'100%', border:`1px solid ${colorTemplate.darkColor}`, margin:'1%', height:'100%'}} className="fluid">
                 <div style={{width:'100%'}}>
                     <ButtonGroup style={{float:'right', margin:'1%'}}className="mb-2">
-                        <ToggleButton type="checkbox" variant="outline-danger">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-heart" viewBox="0 0 16 16">
-                        <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
-                        </svg>
-                        </ToggleButton>
+                        <Button type="checkbox" variant="outline-light">
+                        <Image
+                        width={50}
+                        src={buttonIcon} 
+                        onClick={likeHandler}
+                        />
+                        </Button>
                     </ButtonGroup>
                 </div>
-        <Card style={{border:'none', border:"none", padding:'5%'}} className="fluid">
+        <Card style={{border:'none', border:"none", padding:'5%', minWidth: '300px', minHeight: '400px'}} className="fluid">
             <Link style={{ color:'black', textDecoration:'none' }} to={`/restaurants/${restaurant._id}`}>
             <Card
             style={{ display:'flex', flexDirection:'column'}}
@@ -55,15 +65,6 @@ const RestaurantCard = ({ restaurant }) => {
                     </Col>
                     <Col>
                         <Card.Body>
-                            <Row>
-                                <Col>
-                                    {/* show results from other users who've liked restaurant */}
-                                    <p>Rating stars here</p>
-                                </Col>
-                                <Col>
-                                    {/* add onClick eventHandler to update users likedrestaurants */}
-                                </Col>
-                            </Row>
                             <p>{price}</p>
                             <p>M - F 9:00 AM - 8:00 PM</p>
                             <Row>

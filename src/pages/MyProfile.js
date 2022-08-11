@@ -83,9 +83,8 @@ return (
                 height:'68%', 
                 width:'49%', 
                 borderRadius:'10px', 
-                overflow:'scroll', 
-                overflowX:'hidden', 
-                border:'1px solid #D6300F' 
+                overflowY:'scroll', 
+                border:'1px solid #D6300F',
                 }} 
                 className='friends-block'>
 
@@ -110,7 +109,7 @@ return (
             borderRadius:'10px', 
             border:'1px solid #D6300F'}}
              className='mx-sm-auto mx-md-auto'>
-              <Itinerary />                      
+              <Itinerary profile={profile.response}/>                      
         </div>
     </div>
 )

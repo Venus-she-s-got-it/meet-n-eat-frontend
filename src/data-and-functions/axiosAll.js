@@ -15,8 +15,8 @@ export async function axiosAll(method, path, authToken, dispatch, body) {
                   key: 'response',
                   value: res.data
                })
-               console.log(res.data)
-               console.log(path)
+               // console.log(res.data)
+               // console.log(path)
          break
       
       case 'PUT':
@@ -27,6 +27,7 @@ export async function axiosAll(method, path, authToken, dispatch, body) {
          res = await axios.post(`http://localhost:8000${path}`,body, headers)
          !authToken ? dispatch({ key: 'token', value: res.data.token})
                : dispatch({ key: 'response', value: res.data })
+            // console.log(path)
          break
 
       case 'DELETE':

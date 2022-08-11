@@ -12,7 +12,7 @@ const Review = ({ review }) => {
     useEffect(() => {
         axiosAll('GET', `/users/${review.reviewer}`, loggedInUser.token, dispatch)
     },[])
-    console.log(reviewer)
+    // console.log(reviewer)
 
 if(!reviewer.response) return <Container>Loading...</Container>
 return (

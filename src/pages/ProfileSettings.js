@@ -50,9 +50,8 @@ const ProfileSettings = () => {
     function onDelete(e) {
         e.preventDefault()
         axiosAll('DELETE', `/users/${userData.response._id}/likedrestaurants/${e.target.classList[0]}`, loggedInUser.token)
-        console.log('iz deleted')
+        console.log("- e.target.classList[0]", e.target.classList[0])
         const likedrestaurants = userData.likedrestaurants
-        console.log("- likedrestaurants", likedrestaurants)
         likedrestaurants.map(restaurant => {
             if(restaurant._id === e.target.classList[0]) {
                 return

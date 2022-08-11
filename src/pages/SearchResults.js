@@ -24,11 +24,8 @@ const SearchResults = () => {
             values.push(value)
         }
         axiosAll('GET', `/restaurants/results/${searchString}${buildSearchParams(params, values)}`, loggedInUser.token, dispatch)
-        console.log('axios call ran')
     },[])
-    console.log()
 
-    // console.log('type', typeof restaurantsData.response)
     if (typeof restaurantsData.response === 'string') {
         return <h1>Loading restaurants...</h1>
     } else {

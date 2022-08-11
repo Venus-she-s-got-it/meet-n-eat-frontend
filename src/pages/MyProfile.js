@@ -15,18 +15,14 @@ const [profile, dispatch] = useReducer(axiosReducer, { response: null })
 const { loggedInUser } = useContext(Context)
 const profileExample = require('../data-and-functions/userexample.json')
 
-
 useEffect(() => {
     axiosAll('GET', `/users/username/${loggedInUser.username}`, loggedInUser.token, dispatch)
 },[])
 
-console.log("- response", profile.response)
 
 if(!profile.response){
     return <Container>Loading...</Container>
 }
-
-console.log(profile)
 
 return (
     

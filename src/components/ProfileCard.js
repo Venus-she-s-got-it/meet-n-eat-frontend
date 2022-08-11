@@ -4,8 +4,6 @@ import { Card, ListGroup } from 'react-bootstrap'
 
 const ProfileCard = ( {profile} ) => {
     const { username, about, profileimg, location } = profile
-    console.log(username, about, profileimg, location)
-    console.log(profile)
 
 return (
     

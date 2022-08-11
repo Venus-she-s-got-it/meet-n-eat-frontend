@@ -20,7 +20,9 @@ return (
                         )}
                     } placeholder="liked restaurants" aria-label="Recipient's username" aria-describedby="basic-addon2"/>
         </InputGroup>
-        <div style={{ padding:'5%', overflow:'scroll', overflowX:'hidden', maxHeight:'76%', display:'flex', flexDirection:'column', alignItems:'center' }}>
+        <div 
+            style={{ padding:'5%', overflow:'scroll', overflowX:'hidden', maxHeight:'76%', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:"center" }}
+        >
             {likedrestaurants && likedrestaurants.filter((restaurant) => {
             if (searchCharacters == ''){
                 return restaurant

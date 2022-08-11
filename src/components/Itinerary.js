@@ -4,7 +4,6 @@ import Event from './Event'
 const Itinerary = ({ profile }) => {
 
 let today = new Date().toLocaleDateString()
-console.log(profile)
 
 return (
     <div>

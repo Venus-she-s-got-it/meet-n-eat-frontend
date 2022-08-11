@@ -50,7 +50,7 @@ const Search = () => {
                             <Form.Control
                                 style={{ width:'200%', border:'1px solid #D6300F', backgroundColor:'white'}}
                                 type='text'
-                                placeholder='find restaurants'
+                                placeholder='search by restaurant or category'
                                 onChange={inputChange}
                                 value={searchCriteria.searchString}
                             />

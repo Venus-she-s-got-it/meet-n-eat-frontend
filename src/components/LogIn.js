@@ -10,7 +10,6 @@ const LogIn = () => {
   const [loginInfo, dispatch] = useReducer(axiosReducer, { username: '', password: '' })
   const { loggedInUser, dispatchUser } = useContext(Context)
   const navigate = useNavigate()
-  console.log(loggedInUser)
 
   // Functions
   // ===========================================================================

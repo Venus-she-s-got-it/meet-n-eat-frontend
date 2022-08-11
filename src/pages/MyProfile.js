@@ -15,18 +15,14 @@ const [profile, dispatch] = useReducer(axiosReducer, { response: null })
 const { loggedInUser } = useContext(Context)
 const profileExample = require('../data-and-functions/userexample.json')
 
-
 useEffect(() => {
     axiosAll('GET', `/users/username/${loggedInUser.username}`, loggedInUser.token, dispatch)
 },[])
 
-console.log("- response", profile.response)
 
 if(!profile.response){
     return <Container>Loading...</Container>
 }
-
-console.log(profile)
 
 return (
     
@@ -83,9 +79,8 @@ return (
                 height:'68%', 
                 width:'49%', 
                 borderRadius:'10px', 
-                overflow:'scroll', 
-                overflowX:'hidden', 
-                border:'1px solid #D6300F' 
+                overflowY:'scroll', 
+                border:'1px solid #D6300F',
                 }} 
                 className='friends-block'>
 
@@ -110,7 +105,7 @@ return (
             borderRadius:'10px', 
             border:'1px solid #D6300F'}}
              className='mx-sm-auto mx-md-auto'>
-              <Itinerary />                      
+              <Itinerary profile={profile.response}/>                      
         </div>
     </div>
 )

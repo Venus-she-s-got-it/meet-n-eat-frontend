@@ -1,37 +1,23 @@
-import axios from 'axios'
-import { axiosAll, axiosReducer } from '../data-and-functions/axiosAll';
-
-export function reviewStars() {
-
-    // '/:restaurantId/reviews'
-    // 62ef031d30bddbafcc0ba7c5
-
-    const initialState = {
-        stars: null
+export function reviewStars(reviews) {
+    if(!reviews) return
+    const starsArr = reviews.map(review => review.stars)
+    let sum, avg, avgRound
+    sum = starsArr.reduce((a, b) => a + b, 0)
+    avg = sum / reviews.length
+    avgRound = avg.toString().split('.')
+    console.log(avgRound)
+    console.log(sum)
+    let decimal = avgRound[1].split('')
+    if(decimal[0] < 2) {
+        return avgRound[0]
+    } else if(decimal[0] >= 3 && decimal[0] <= 7) {
+        return avgRound[0] + '5'
+    } else {
+        let number = parseInt(avgRound[0])
+        return number += 1
     }
-    axiosAll('GET', `/restaurants/62ef031d30bddbafcc0ba7c5/reviews`, loggedInUser.token, dispatch)
-
-    const [starState, dispatch] = useReducer(axiosReducer, initialState)
     
-    {reviews.map(review => 
-        review.stars)}
-    for (let i=0; i < review.stars.length; i++) {
-        const sum = review.stars.reduce((a, b) => a + b, 0)
-        const avg = sum / review.stars.length
-        const roundedAvg = Math.round((avg) * 2, MindpointRounding.AwayFromZero) / 2
-        } return roundedAvg
-        
-    // const oneicon = '1'
-    // const twoicon = '2'
-    // const threeicon = '3'
-    // const fouricon = '4'
-    // map over reviews
-    // review.rating 
 
-    // const starMenu = ['1', '2', '3', '4', '5']
-    // for (let i=0; i < stars.length; i++) {
-    //     stars[i
-    // }
-
-
+    
+    return
 }

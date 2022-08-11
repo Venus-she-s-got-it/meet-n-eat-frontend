@@ -1,11 +1,10 @@
 import React from 'react'
 import Event from './Event'
 
-const Itinerary = () => {
+const Itinerary = ({ profile }) => {
 
 let today = new Date().toLocaleDateString()
-// console.log(today)
-
+console.log(profile)
 
 return (
     <div>
@@ -14,9 +13,7 @@ return (
                 <h2> {today} </h2>
             </div>
             <div style={{margin:'5%', height:'80%', display:'flex', flexDirection:'column', alignItems:'center' }}>
-                <Event />
-                <Event />
-                <Event />
+                {profile.events.map(event => <Event event={event} key={event._id}/>)}
             </div>
     </div>
 )

@@ -26,7 +26,6 @@ if(!profile.response){
     return <Container>Loading...</Container>
 }
 
-let restaurantlist = profile.likedrestaurants;
 console.log(profile)
 
 return (
@@ -52,7 +51,7 @@ return (
             }} 
             className='container-lg mx-auto me-lg-2 mb-sm-3 mb-lg-0'>
 
-            <ProfileCard username={profile && profile.username} location={profile && profile.location} profileimg={profile && profile.profileimg} about={profile && profile.about}/>
+            <ProfileCard profile={profile.response}/>
             
         </div>
 
@@ -76,7 +75,7 @@ return (
                 }} 
                 className=''>
 
-                <LikedRestaurant restaurantlist={restaurantlist} />
+                <LikedRestaurant likedrestaurants={profile.response.likedrestaurants} />
             </div>
 
             <div style={{ 
@@ -90,7 +89,7 @@ return (
                 }} 
                 className='friends-block'>
 
-                <Friends profileExample={profileExample} />           
+                <Friends friends={profile.response.friends} />           
 
             </div>
             <div style={{ 
@@ -101,7 +100,7 @@ return (
                 borderRadius:'10px'}}
                 className=''>
 
-                <CoordinateMeetup profileExample={profileExample}/>
+                <CoordinateMeetup profile={profile.response}/>
                 
             </div>
         </div>

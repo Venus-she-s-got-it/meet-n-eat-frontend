@@ -12,7 +12,7 @@ return (
         <Row>
             <Search />
         </Row>
-        <h2 style={{paddingTop:'10%', marginBottom:'5%'}}>Not sure where to go? Start with a cuisine and see where it leads!</h2>
+        <h2 style={{paddingTop:'10%', marginBottom:'5%'}}>not sure where to go? start with a cuisine and see where it leads!</h2>
         <Row className="d-flex">
             {categories.map((category, index) => <CuisineCategory key={index} category={category} />)}
         </Row>

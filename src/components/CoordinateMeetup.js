@@ -8,7 +8,7 @@ const CoordinateMeetup = ( {profileExample} ) => {
     const profile = profileExample[0]
 
     const [value, setValue ] = useState(friends[0].username)
-    const [therestaurant, setTheRestaurant] = useState('Choose Restaurant')
+    const [therestaurant, setTheRestaurant] = useState('choose restaurant')
     const [date, setDate] = useState(null)
     const [hour, setHour] = useState(null)
     
@@ -38,7 +38,7 @@ const CoordinateMeetup = ( {profileExample} ) => {
 return (
     <Card style={{ width: '100%', height:'100%', display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center', border:'1px solid #D6300F'}}>
         <Card.Body>
-            <Card.Title style={{textAlign:'center'}}>Coordinate Meet 'n Eat with friends</Card.Title>
+            <Card.Title style={{textAlign:'center'}}>coordinate meet 'n eat with friends</Card.Title>
             <div style={{ display:'flex', flexDirection:'row', justifyContent:'space-between', width:'105%', alignItems:'self-end'}} className="input-group justify-content-between">
                 <Dropdown  onSelect={handleSelect}>
                     <Dropdown.Toggle  style={{ width:'100%', border:'1px solid #D6300F', backgroundColor:'white', color:'black' }}  variant="secondary" id="dropdown-basic">
@@ -60,7 +60,7 @@ return (
             <input style={{padding:'1%', borderRadius:'5px', border:"1px solid #D6300F"}} onChange={handleDate} type='date'></input>
             <input style={{padding:'1%', borderRadius:'5px', border:"1px solid #D6300F"}} onChange={handleHour} type='time' ></input>
             </div>
-            <Button style={{ width:'100%', marginTop:'5%', backgroundColor:'#D6300F', border:'none' }} id="button-addon2"> Invite </Button>
+            <Button style={{ width:'100%', marginTop:'5%', backgroundColor:'#D6300F', border:'none' }} id="button-addon2"> invite </Button>
         </Card.Body>
     </Card>
 )

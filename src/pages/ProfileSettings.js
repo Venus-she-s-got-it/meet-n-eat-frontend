@@ -105,19 +105,19 @@ const ProfileSettings = () => {
                     style={{border: '1px solid #EB3510', margin: '1rem', borderRadius: '5px'}}></Image>
                     <Form.Control className="profileimg"
                         type="profile-image" 
-                        placeholder="Paste a picture URL here"
+                        placeholder="paste a picture URL here"
                         onChange={inputChange}  
                         value={userData.profileimg}
                         style={{width: '105%'}}
                     />
-                    <Form.Text className="text-muted">Only JPG and PNG files supported.</Form.Text>
+                    <Form.Text className="text-muted">only JPG and PNG files supported.</Form.Text>
                     <h3 style={{marginTop:'1rem'}}>{userData.username}</h3>
                     <Form> 
-                        <Form.Label>About me</Form.Label>
+                        <Form.Label>about me</Form.Label>
                         <Form.Control  
                         className="about"
                         type="about-me" 
-                        placeholder="Write your About Me here for others to see"
+                        placeholder="write your about me here for others to see"
                         onChange={inputChange}  
                         value={userData.about}
                         style={{width: '105%'}}
@@ -127,34 +127,34 @@ const ProfileSettings = () => {
                         id="save-changes"
                         onClick={onSubmit}
                         style={{marginTop: '1rem',backgroundColor:'#EB3510', borderColor: '#D6300F'}}
-                        >Save Changes</Button>
+                        >save changes</Button>
                     </Form>
                 </Col>
                 <Col style={{textAlign: 'left', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
                     <Form style={{paddingLeft: '4rem'}}>
                         <Row>
-                            <Form.Label>Location</Form.Label>
+                            <Form.Label>location</Form.Label>
                             <Form.Control 
                             className="location"
                             type="location" 
-                            placeholder="eg. Los Angeles, California"
+                            placeholder="eg. los angeles, california"
                             onChange={inputChange}
                             value={userData.location}
                             style={{border: '1px solid #EB3510', width: '70%'}}
                             />
-                            <Form.Label style={{marginTop:'2rem'}}>Display Name</Form.Label>
+                            <Form.Label style={{marginTop:'2rem'}}>display name</Form.Label>
                             <Form.Control 
                             className="displayname" 
                             type="display-name"
-                            placeholder="Change Display Name"
+                            placeholder="change display name"
                             onChange={inputChange}
                             value={userData.displayname}
                             style={{border: '1px solid #EB3510', width: '70%'}}
                             />
-                            <Form.Text className="text-muted">This will be the name other users see when they view your profile.</Form.Text>
+                            <Form.Text className="text-muted">this will be the name other users see when they view your profile.</Form.Text>
                         </Row>
                         <Row>
-                            <Form.Label style={{marginTop:'2rem'}}>Email</Form.Label>
+                            <Form.Label style={{marginTop:'2rem'}}>email</Form.Label>
                             <Form.Control 
                             className="email"
                             type="email-address" 
@@ -165,7 +165,7 @@ const ProfileSettings = () => {
                             />
                         </Row>
                     </Form>
-                            <Button variant="danger" style={{width: 'auto', marginLeft:'2rem', backgroundColor:'#EB3510', borderColor: '#D6300F', marginTop:'5rem'}} onClick={handleShow}>Edit Liked Restaurants</Button>
+                            <Button variant="danger" style={{width: 'auto', marginLeft:'2rem', backgroundColor:'#EB3510', borderColor: '#D6300F', marginTop:'5rem'}} onClick={handleShow}>edit liked restaurants</Button>
                             <Modal 
                                 show={modalShow}
                                 onHide={handleShow}
@@ -176,7 +176,7 @@ const ProfileSettings = () => {
                             >
                                 <Modal.Header closeButton>
                                     <Modal.Title id="likedrestaurants-modal">
-                                        Liked Restaurants
+                                        liked restaurants
                                     </Modal.Title>
                                 </Modal.Header>
                                 <Modal.Body>

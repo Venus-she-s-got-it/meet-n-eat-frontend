@@ -1,6 +1,6 @@
 import axios from "axios"
 import { useContext, useEffect, useState } from "react"
-import { Card, ButtonGroup, Button, Row, Col } from "react-bootstrap"
+import { Card, ButtonGroup, Button, Row, Col, Container } from "react-bootstrap"
 import { Context } from "../App"
 import { formatDateTime } from "../data-and-functions/formatDateTime"
 
@@ -34,7 +34,7 @@ const FriendRequest = ({ request, noImage }) => {
 
 return (
    
-    <Card className='d-flex flex-row justify-content-center align-items-center' style={{ width: '90%', padding:'1%', marginTop: '1rem'}}>
+    <Card className='d-flex flex-row justify-content-center align-items-center' style={{ width: '90%', padding:'1%', marginTop: '1rem', border:'1px solid #D6300F'}}>
         <div style={{ width:'30%', textAlign: 'center', border: '1px solid #eb350f', borderRadius: '6px', boxShadow: '1px 1px 7px -2px rgba(0,0,0,0.75)' }} >
 
         
@@ -56,13 +56,13 @@ return (
                             style={{ marginBottom: '5%', backgroundColor:'#D6300F', border:'1px solid #D6300F' }} 
                             variant="secondary"
                             onClick={clickHandler}                            
-                        >Accept</Button>
+                        >accept</Button>
                         <Button 
                             className='decline' 
                             variant="secondary"
                             onClick={clickHandler}
                             style={{ marginLeft: '1px', backgroundColor:'#D6300F', border:'1px solid #D6300F' }}
-                        >Decline</Button>
+                        >decline</Button>
                     </Container>
                 </Col>
             </Row>

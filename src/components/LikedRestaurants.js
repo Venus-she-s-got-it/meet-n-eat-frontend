@@ -31,7 +31,7 @@ return (
                 }).map(restaurant => <RestaurantCard key={restaurant._id} restaurant={restaurant}/> )}
                 </div>
                 <div style={{display:'flex' }}>
-                    <a style={{ margin:'0 auto', textAlign:'center', color:'#D6300F', textDecoration:'none', border:'1px solid #D6300F', borderRadius:'10px', padding:'3px'}} href=''>Browse Restaurants</a>
+                    <a style={{ margin:'0 auto', textAlign:'center', color:'#D6300F', textDecoration:'none', border:'1px solid #D6300F', borderRadius:'10px', padding:'3px'}} href=''>browse restaurants</a>
                 </div>
         
     </div>

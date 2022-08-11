@@ -16,9 +16,9 @@ const Review = ({ review }) => {
 
 if(!reviewer.response) return <Container>Loading...</Container>
 return (
-    <ListGroup horizontal>
-        <ListGroup.Item style={{borderRightColor:'#D6300F'}}>{reviewer.response.displayname}</ListGroup.Item>
-        <ListGroup.Item style={{ borderRightColor:'#D6300F' }}>{review.body}</ListGroup.Item>
+    <ListGroup style={{border:'1px solid #D6300F'}} horizontal>
+        <ListGroup.Item style={{borderRightColor:'#D6300F', width:'20%'}}>{reviewer.response.displayname}</ListGroup.Item>
+        <ListGroup.Item style={{ borderRightColor:'#D6300F', width:'60%' }}>{review.body}</ListGroup.Item>
         <ListGroup.Item>{`${date} ${time}`}</ListGroup.Item>
     </ListGroup>
             

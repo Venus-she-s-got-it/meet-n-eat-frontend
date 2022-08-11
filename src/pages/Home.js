@@ -1,13 +1,11 @@
-import React, { useContext, useEffect, useState } from 'react'
 import { Container, Row } from 'react-bootstrap'
 import Search from '../components/Search'
-import { UrlContext } from '../App'
 import CuisineCategory from '../components/CuisineCategory'
 
 const Home = () => {
 // State
 const categories = ['Italian', 'Southern', 'American (Traditional)']
-const url = useContext(UrlContext)
+
 
 return (
     <Container style={{height:'90vh', display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center'}}>

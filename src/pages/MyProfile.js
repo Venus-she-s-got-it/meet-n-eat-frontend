@@ -1,31 +1,29 @@
 import axios from 'axios'
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useReducer } from 'react'
 import { useState } from 'react'
-import { UrlContext } from '../App'
 import LikedRestaurant from '../components/LikedRestaurants'
 import Friends from '../components/Friends'
 import CoordinateMeetup from '../components/CoordinateMeetup'
 import ProfileCard from '../components/ProfileCard'
 import Itinerary from '../components/Itinerary'
+import { Container } from 'react-bootstrap'
+import { axiosAll, axiosReducer } from '../data-and-functions/axiosAll'
+import { Context } from '../App'
 
 const MyProfile = () => {
-const { url } = useContext(UrlContext)
-const [profile, setProfile] = useState(null)
-
+const [profile, dispatch] = useReducer(axiosReducer, { response: null })
+const { loggedInUser } = useContext(Context)
 const profileExample = require('../data-and-functions/userexample.json')
 
 
 useEffect(() => {
-
-    axios.get(`${url}/users/62ed53ae80c5c665832c887d`) //Temporary ID just to test out page
-    .then((res) => {
-        setProfile(res.data)
-    })
+    axiosAll('GET', `/users/username/${loggedInUser.username}`, loggedInUser.token, dispatch)
 },[])
 
+console.log("- response", profile.response)
 
-if(!profile){
-    return null
+if(!profile.response){
+    return <Container>Loading...</Container>
 }
 
 let restaurantlist = profile.likedrestaurants;

@@ -1,22 +1,19 @@
 import React, { useContext, useEffect, useReducer, useState } from 'react';
 import { useParams, useSearchParams } from 'react-router-dom';
-import axios from 'axios';
-import { UrlContext } from '../App';
 import RestaurantCard from '../components/RestaurantCard'
 import Search from '../components/Search'
 import { Container } from 'react-bootstrap'
 import { axiosAll, axiosReducer } from '../data-and-functions/axiosAll';
 import { buildSearchParams } from '../data-and-functions/searchParams';
+import { Context } from '../App';
 
 
 const SearchResults = () => {
-    const { url } = useContext(UrlContext)
     const { searchString } = useParams()
     const [ searchParams ] = useSearchParams()
     const [restaurantsData, dispatch] = useReducer(axiosReducer, { response: '', searchString: '' })
-    const authToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZjJmNWMzMzgxNjY4NzhkYzVkNTUxZSIsImlhdCI6MTY2MDE1MDY1MSwiZXhwIjoxNjYwMjM3MDUxfQ.FT76SgYlECDCuBaQyR5w0SavnDRSJacDdTDnHXFz-vs'
-    // const [likedRestaurants, setLikedRestaurants] = useState()
-    // const [usersLikes, setUsersLikes] = useState()
+    const { loggedInUser } = useContext(Context)
+
     useEffect(() => {
         let params = [], values = []
         for(const entry of searchParams.entries()) {
@@ -26,17 +23,10 @@ const SearchResults = () => {
             params.push(param)
             values.push(value)
         }
-        // Update state with search parameters
-        dispatch({
-            key: 'searchString',
-            value: buildSearchParams(params, values)
-        })
+        axiosAll('GET', `/restaurants/results/${searchString}${buildSearchParams(params, values)}`, loggedInUser.token, dispatch)
+        console.log('axios call ran')
     },[])
-
-    useEffect(() => {
-        // Make axios call to retrieve data
-        axiosAll('GET', `/restaurants/results/${searchString}${restaurantsData.searchString}`, authToken, dispatch)
-    },[restaurantsData.searchString])
+    console.log()
 
     // console.log('type', typeof restaurantsData.response)
     if (typeof restaurantsData.response === 'string') {

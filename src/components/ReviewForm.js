@@ -1,37 +1,47 @@
 import axios from 'axios'
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useReducer, useState } from 'react'
 import { Button, Container, Dropdown, Form } from 'react-bootstrap'
-import DropdownItem from 'react-bootstrap/esm/DropdownItem'
 import { useNavigate } from 'react-router-dom'
-import { UrlContext } from '../App'
+import { Context } from '../App'
+import { axiosAll, axiosReducer } from '../data-and-functions/axiosAll'
 
-const ReviewForm = ({ restaurantId }) => {
+const ReviewForm = ({ restaurantId, handleShow }) => {
     const initialState = {
+        reviewer: '',
         stars: '',
         body: ''
     }
-    const [reviewState, setReviewState] = useState(initialState)
-    const { url } = useContext(UrlContext)
+    console.log(restaurantId)
+    const [reviewState, dispatch] = useReducer(axiosReducer, initialState)
     const navigate = useNavigate()
+    const { loggedInUser } = useContext(Context)
     const starMenu = ['None', '1', '2', '3', '4', '5']
+
+    useEffect(() => {
+        axiosAll('GET', `/users/username/${loggedInUser.username}`, loggedInUser.token, dispatch)
+    },[])
 
     function starClick(e) {
         e.target.text !== 'None' ?
-        setReviewState({...reviewState, stars: e.target.text})
-        : setReviewState({...reviewState, stars: ''})
+        dispatch({
+            key: 'stars',
+            value: e.target.text})
+        : dispatch({
+            key: 'stars',
+            value: ''})
     }
 
     function reviewChange(e) {
-        setReviewState({...reviewState, body: e.target.value})
+        dispatch({
+            key: 'body',
+            value: e.target.value})
     }
 
     function reviewSubmit(e) {
         e.preventDefault()
-        reviewState.stars !== '' && axios.put(`${url}/restaurants/${restaurantId}`, reviewState)
-            .then(() => {
-                setReviewState(initialState)
-                navigate(`/restaurants/${restaurantId}`)
-            })
+        reviewState.stars !== '' && 
+            axiosAll('POST', `/restaurants/${restaurantId}/reviews`, loggedInUser.token, dispatch, { reviewer: reviewState.response._id, stars: reviewState.stars, body: reviewState.body})
+            handleShow()
     }
 
 return (

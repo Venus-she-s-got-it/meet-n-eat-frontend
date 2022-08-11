@@ -1,6 +1,6 @@
 import { useState, useContext, useEffect } from 'react'
 import { Button, Form, InputGroup } from 'react-bootstrap'
-import { UrlContext } from '../App'
+import { Context } from '../App'
 import axios from 'axios'
 import Message from '../components/Message'
 import FriendRequest from '../components/FriendRequest'
@@ -22,16 +22,16 @@ const dummyFriendRequest = [{
 const MessageCenter = () => {
 // ID of currently logged in user (will be implemented later)
 const userId = '62ed53ae80c5c665832c887d'
-const { url, defaultImage } = useContext(UrlContext)
+const { defaultImage } = useContext(Context)
 const [messages, setMessages] = useState(null)
 const [requests, setRequests] = useState(dummyFriendRequest)
 
 useEffect ( () => {
     // Get messages
-    axios.get(`${url}/messages`)
-    .then((res) => {
-        setMessages(res.data)
-    })
+    // axios.get(`${url}/messages`)
+    // .then((res) => {
+    //     setMessages(res.data)
+    // })
     
     // Get friend requests
     // axios.get(`${url}/users/${userId}`)

@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect} from 'react';
-import { UrlContext } from '../App'
+import { Context } from '../App'
 import { Link } from 'react-router-dom'
 import Card from 'react-bootstrap/Card'
 import Container from 'react-bootstrap/Container'
@@ -9,7 +9,7 @@ import Row from 'react-bootstrap/Row'
 
 
 const RestaurantCard = ({ restaurant }) => {
-    const { colorTemplate }  = useContext(UrlContext)
+    const { colorTemplate }  = useContext(Context)
 
     const [categories, setCategories] = useState()
     const { name, image_url, display_phone, price  } = restaurant

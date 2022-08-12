@@ -1,5 +1,5 @@
 import React from 'react';
-import { Col, Row, Nav, Tab, TabIndicatorProps} from 'react-bootstrap';
+import { Col, Row, Nav, Tab } from 'react-bootstrap';
 import { useState } from 'react';
 import PersonalInfo from '../components/PersonalInfo';
 import Troubleshooting from '../components/Troubleshooting';

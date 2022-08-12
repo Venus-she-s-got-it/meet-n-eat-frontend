@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, InputGroup, Form } from 'react-bootstrap'
+import { InputGroup, Form } from 'react-bootstrap'
 import { useState } from 'react'
 import RestaurantCard from './RestaurantCard';
 

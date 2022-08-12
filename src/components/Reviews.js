@@ -1,7 +1,6 @@
 
-import React, { useContext, useEffect, useReducer } from 'react'
+import { useContext, useEffect, useReducer } from 'react'
 import {  Card, Container } from 'react-bootstrap'
-import { useParams } from 'react-router-dom'
 import { Context } from '../App'
 import { axiosAll, axiosReducer } from '../data-and-functions/axiosAll'
 import Review from './Review'

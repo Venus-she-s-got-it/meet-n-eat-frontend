@@ -1,6 +1,5 @@
-import React, { useReducer, useEffect, useContext, useState } from 'react'
+import { useReducer, useEffect, useContext, useState } from 'react'
 import { Context } from '../App'
-import axios from 'axios'
 import { Container, Card, Form, Row, Col, Image, Modal, Button, ListGroup } from 'react-bootstrap'
 import { BsFillTrashFill } from "react-icons/bs"
 import { axiosAll, axiosReducer } from '../data-and-functions/axiosAll'
@@ -22,11 +21,9 @@ const ProfileSettings = () => {
     const [userData, dispatch] = useReducer(axiosReducer, initialState)
     const [reload, setReload] = useState(true)
     const [modalShow, setModalShow] = useState(false)
-    // const [image, setImage] = useState()
-    const maxNum = 1
 
     useEffect(() => {
-        userData.response &&dispatch({
+        userData.response && dispatch({
             key: 'loadProfile',
             value: {
                 profileimg: userData.response.profileimg,
@@ -54,11 +51,8 @@ const ProfileSettings = () => {
         const likedrestaurants = userData.likedrestaurants
         console.log("- likedrestaurants", likedrestaurants)
         likedrestaurants.map(restaurant => {
-            if(restaurant._id === e.target.classList[0]) {
-                return
-            } else {
-                return restaurant
-            }
+            if(restaurant._id === e.target.classList[0]) return
+            return restaurant
         })
     }
 

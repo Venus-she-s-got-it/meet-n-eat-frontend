@@ -1,5 +1,4 @@
-import axios from 'axios'
-import { useContext, useEffect, useReducer, useState } from 'react'
+import { useContext, useEffect, useReducer } from 'react'
 import { Button, Container, Dropdown, Form } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 import { Context } from '../App'

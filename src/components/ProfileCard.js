@@ -1,5 +1,4 @@
 import React from 'react'
-import MyProfile from '../pages/MyProfile'
 import { Card, ListGroup } from 'react-bootstrap'
 
 const ProfileCard = ( {profile} ) => {

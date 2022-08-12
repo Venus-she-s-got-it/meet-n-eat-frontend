@@ -1,7 +1,6 @@
 import { useState, useContext, useEffect } from 'react'
 import { Button, Form, InputGroup } from 'react-bootstrap'
 import { Context } from '../App'
-import axios from 'axios'
 import Message from '../components/Message'
 import FriendRequest from '../components/FriendRequest'
 import { axiosAll, axiosReducer } from '../data-and-functions/axiosAll'
@@ -21,8 +20,6 @@ const dummyFriendRequest = [{
 }]
 
 const MessageCenter = () => {
-// ID of currently logged in user (will be implemented later)
-const userId = '62ed53ae80c5c665832c887d'
 const { defaultImage } = useContext(Context)
 const [messages, setMessages] = useState(null)
 const [requests, setRequests] = useState(dummyFriendRequest)

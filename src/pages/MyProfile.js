@@ -13,7 +13,6 @@ import { Context } from '../App'
 const MyProfile = () => {
 const [profile, dispatch] = useReducer(axiosReducer, { response: null })
 const { loggedInUser } = useContext(Context)
-const profileExample = require('../data-and-functions/userexample.json')
 
 useEffect(() => {
     axiosAll('GET', `/users/username/${loggedInUser.username}`, loggedInUser.token, dispatch)

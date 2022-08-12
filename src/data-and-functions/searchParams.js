@@ -1,4 +1,6 @@
 // Creates search parameters from the search filter options selected
+// ========================================================================
+
 export function getSearchParams(searchCriteria) {
    if(!searchCriteria) return
    // Create an array of keys from searchCriteria object
